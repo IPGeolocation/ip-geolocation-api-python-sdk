@@ -103,7 +103,7 @@ print(timezone)
 
 # Get time zone information by latitude and longitude of the location
 timezoneParams = TimezoneParams()
-timezoneParams.setCoordinates(37.1838139, -123.8105225)
+timezoneParams.setCoordinates("37.1838139", "-123.8105225")
 
 timezone = ipgeolocationAPI.getTimezone(timezoneParams)
 

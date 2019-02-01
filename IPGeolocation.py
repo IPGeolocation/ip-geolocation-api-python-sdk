@@ -65,8 +65,8 @@ class TimezoneParams:
     def __init__(self):
         self.__ipAddress = ""
         self.__timezone = ""
-        self.__latitude = 0.0
-        self.__longitude = 0.0
+        self.__latitude = ""
+        self.__longitude = ""
         self.__lang = "en"
     
     def setIPAddress(self, ipAddress: str):
@@ -81,14 +81,14 @@ class TimezoneParams:
     def getTimezone(self) -> str:
         return self.__timezone
     
-    def setCoordinates(self, latitude: float, longitude: float):
+    def setCoordinates(self, latitude: str, longitude: str):
         self.__latitude = latitude
         self.__longitude = longitude
     
-    def getLatitude(self) -> float:
+    def getLatitude(self) -> str:
         return self.__latitude
 
-    def getLongitude(self) -> float: 
+    def getLongitude(self) -> str: 
         return self.__longitude
 
     def setLang(self, lang: str = "en"):
@@ -129,15 +129,24 @@ class IPGeolocationAPI:
         if geolocationParams != None:
             if len(geolocationParams.getIPAddresses()) > 0:
                 requestData = json.dumps({"ips": geolocationParams.getIPAddresses()})
-                return self.__post("ipgeo-bulk", requestData, {**self.__urlParams, **geolocationParams.getURLParams()})
+                geolocationURLParams = geolocationParams.getURLParams()
+                geolocationURLParams.update(self.__urlParams)
+
+                return self.__post("ipgeo-bulk", requestData, geolocationURLParams)
             else:
-                return self.__get("ipgeo", {**self.__urlParams, **geolocationParams.getURLParams()})
+                geolocationURLParams = geolocationParams.getURLParams()
+                geolocationURLParams.update(self.__urlParams)
+
+                return self.__get("ipgeo", geolocationURLParams)
         else:
             return self.__get("ipgeo", self.__urlParams)
     
     def getTimezone(self, timezoneParams: TimezoneParams = None):
         if timezoneParams:
-            return self.__get("timezone", {**self.__urlParams, **timezoneParams.getURLParams()})
+            timezoneURLParams = timezoneParams.getURLParams()
+            timezoneURLParams.update(self.__urlParams)
+            
+            return self.__get("timezone", timezoneURLParams)
         else:
             return self.__get("timezone", self.__urlParams)
         
