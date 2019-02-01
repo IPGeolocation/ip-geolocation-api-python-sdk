@@ -20,7 +20,7 @@ You need a valid 'IPGeolocation API key' to use this SDK. [Sign up](https://ipge
 
 ## System Requirements
 
-Internet connection is required to run this component. This SDK uses ```requests, json``` modules that you need to install before using it. 
+Internet connection is required to run this component. This SDK uses ```requests``` and ```json``` modules that you need to install before using it. 
 
 **Note:** This SDK was tested against Python 3.7.1.
 
