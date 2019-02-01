@@ -1,5 +1,11 @@
 # Files
+setup.py
 Test.py
 
 # Directories
-__pycache__
+__pycache__/
+build/
+dist/
+IPGeolocation/
+ip_geolocation_api_sdk.egg-info/
+
