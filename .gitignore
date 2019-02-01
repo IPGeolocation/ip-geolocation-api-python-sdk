@@ -1,7 +1,9 @@
 # Files
 setup.py
 Test.py
+Main.py
 .DS_Store
+*.pyc
 
 # Directories
 __pycache__/
