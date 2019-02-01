@@ -1,6 +1,7 @@
 # Files
 setup.py
 Test.py
+.DS_Store
 
 # Directories
 __pycache__/
@@ -8,4 +9,3 @@ build/
 dist/
 IPGeolocation/
 ip_geolocation_api_sdk.egg-info/
-
