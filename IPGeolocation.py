@@ -11,40 +11,40 @@ class GeolocationParams:
         self.__lang = "en"
         self.__ipAddresses = []
     
-    def setIPAddress(self, ipAddress: str):
+    def setIPAddress(self, ipAddress):
         self.__ipAddress = ipAddress
     
-    def getIPAddress(self) -> str:
+    def getIPAddress(self):
         return self.__ipAddress
     
-    def setFields(self, fields: str):
+    def setFields(self, fields):
         self.__fields = fields
     
-    def getFields(self) -> str:
+    def getFields(self):
         return self.__fields
     
-    def setExcludes(self, excludes: str):
+    def setExcludes(self, excludes):
         self.__excludes = excludes
     
-    def getExcludes(self) -> str:
+    def getExcludes(self):
         return self.__excludes
 
-    def setLang(self, lang: str = "en"):
+    def setLang(self, lang = "en"):
         self.__lang = lang
 
-    def getLang(self) -> str:
+    def getLang(self):
         return self.__lang
 
-    def setIPAddresses(self, ipAddresses: [] = []):
+    def setIPAddresses(self, ipAddresses = []):
         if len(ipAddresses) > 50:
             ValueError("Maximum number of IP addresses for bulk lookup cannot be more than 50.")
         else:
             self.__ipAddresses = ipAddresses
 
-    def getIPAddresses(self) -> []: 
+    def getIPAddresses(self): 
         return self.__ipAddresses
     
-    def getURLParams(self) -> dict:
+    def getURLParams(self):
         urlParams = {}
 
         if self.__ipAddress:
@@ -69,35 +69,35 @@ class TimezoneParams:
         self.__longitude = ""
         self.__lang = "en"
     
-    def setIPAddress(self, ipAddress: str):
+    def setIPAddress(self, ipAddress):
         self.__ipAddress = ipAddress
     
-    def getIPAddress(self) -> str:
+    def getIPAddress(self):
         return self.__ipAddress
     
-    def setTimezone(self, timezone: str):
+    def setTimezone(self, timezone):
         self.__timezone = timezone
     
-    def getTimezone(self) -> str:
+    def getTimezone(self):
         return self.__timezone
     
-    def setCoordinates(self, latitude: str, longitude: str):
+    def setCoordinates(self, latitude, longitude):
         self.__latitude = latitude
         self.__longitude = longitude
     
-    def getLatitude(self) -> str:
+    def getLatitude(self):
         return self.__latitude
 
-    def getLongitude(self) -> str: 
+    def getLongitude(self): 
         return self.__longitude
 
-    def setLang(self, lang: str = "en"):
+    def setLang(self, lang = "en"):
         self.__lang = lang
 
-    def getLang(self) -> str:
+    def getLang(self):
         return self.__lang
     
-    def getURLParams(self) -> dict:
+    def getURLParams(self):
         urlParams = {}
 
         if self.__ipAddress:
@@ -125,7 +125,7 @@ class IPGeolocationAPI:
     def getApiKey(self):
         return self.__apiKey
 
-    def getGeolocation(self, geolocationParams: GeolocationParams = None):
+    def getGeolocation(self, geolocationParams = None):
         if geolocationParams != None:
             if len(geolocationParams.getIPAddresses()) > 0:
                 requestData = json.dumps({"ips": geolocationParams.getIPAddresses()})
@@ -141,7 +141,7 @@ class IPGeolocationAPI:
         else:
             return self.__get("ipgeo", self.__urlParams)
     
-    def getTimezone(self, timezoneParams: TimezoneParams = None):
+    def getTimezone(self, timezoneParams = None):
         if timezoneParams:
             timezoneURLParams = timezoneParams.getURLParams()
             timezoneURLParams.update(self.__urlParams)
@@ -150,7 +150,7 @@ class IPGeolocationAPI:
         else:
             return self.__get("timezone", self.__urlParams)
         
-    def __get(self, path: str, urlParams: dict = {}) -> dict:
+    def __get(self, path, urlParams = {}):
         url = "https://api.ipgeolocation.io/{0}".format(path)
         jsonResponse = None
         
@@ -167,7 +167,7 @@ class IPGeolocationAPI:
         
         return jsonResponse
     
-    def __post(self, path: str, requestData: str = "", urlParams: dict = {}) -> []:
+    def __post(self, path, requestData = "", urlParams = {}):
         url = "https://api.ipgeolocation.io/{0}".format(path)
         jsonResponse = None
 

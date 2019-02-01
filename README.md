@@ -20,11 +20,13 @@ You need a valid 'IPGeolocation API key' to use this SDK. [Sign up](https://ipge
 
 ## System Requirements
 
-Internet connection is required to run this component. This SDK uses ```requests``` module that you need to install before it. Here is the command to install ```requests``` module:
+Internet connection is required to run this component. This SDK uses ```requests, json``` modules that you need to install before using it. 
 
-```bash
-pip install requests --upgrade --user
-```
+**Note:** This SDK was tested against Python 3.7.1.
+
+## Installation
+
+We haven't published this package in PyPi. Users must download the ```IPGeolocation.py``` file and include in their project to use it.
 
 ## Basic Usage
 
