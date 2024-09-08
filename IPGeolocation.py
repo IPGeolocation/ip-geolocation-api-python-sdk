@@ -170,9 +170,9 @@ class IPGeolocationAPI:
     def __post(self, path, requestData = "", urlParams = {}):
         url = "https://api.ipgeolocation.io/{0}".format(path)
         jsonResponse = None
-
+        headers = {"Content-Type": "application/json"}
         try:
-            response = requests.post(url, params=urlParams, data=requestData)
+            response = requests.post(url, params=urlParams, data=requestData, headers=headers)
             jsonResponse = response.json()
         
             if response.status_code != 200:
