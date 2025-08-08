@@ -1,0 +1,107 @@
+# coding: utf-8
+
+"""
+    IPGeolocation.io - IP intelligence products
+
+    Ipgeolocation provides a set of APIs to make ip based decisions.
+
+    Creat a free account by signing up here:
+    https://app.ipgeolocation.io/signup
+
+    Do not edit the class manually.
+"""  # noqa: E501
+
+
+from __future__ import annotations
+import pprint
+import re  # noqa: F401
+import json
+
+from pydantic import BaseModel, ConfigDict, StrictBool, StrictInt, StrictStr
+from typing import Any, ClassVar, Dict, List, Optional
+from typing import Optional, Set
+from typing_extensions import Self
+
+class Security(BaseModel):
+    """
+    Security
+    """ # noqa: E501
+    threat_score: Optional[StrictInt] = None
+    is_tor: Optional[StrictBool] = None
+    is_proxy: Optional[StrictBool] = None
+    proxy_type: Optional[StrictStr] = None
+    proxy_provider: Optional[StrictStr] = None
+    is_anonymous: Optional[StrictBool] = None
+    is_known_attacker: Optional[StrictBool] = None
+    is_spam: Optional[StrictBool] = None
+    is_bot: Optional[StrictBool] = None
+    is_cloud_provider: Optional[StrictBool] = None
+    cloud_provider: Optional[StrictStr] = None
+    __properties: ClassVar[List[str]] = ["threat_score", "is_tor", "is_proxy", "proxy_type", "proxy_provider", "is_anonymous", "is_known_attacker", "is_spam", "is_bot", "is_cloud_provider", "cloud_provider"]
+
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
+
+
+    def to_str(self) -> str:
+        """Returns the string representation of the model using alias"""
+        return pprint.pformat(self.model_dump(by_alias=True))
+
+    def to_json(self) -> str:
+        """Returns the JSON representation of the model using alias"""
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
+
+    @classmethod
+    def from_json(cls, json_str: str) -> Optional[Self]:
+        """Create an instance of Security from a JSON string"""
+        return cls.from_dict(json.loads(json_str))
+
+    def to_dict(self) -> Dict[str, Any]:
+        """Return the dictionary representation of the model using alias.
+
+        This has the following differences from calling pydantic's
+        `self.model_dump(by_alias=True)`:
+
+        * `None` is only added to the output dict for nullable fields that
+          were set at model initialization. Other fields with value `None`
+          are ignored.
+        """
+        excluded_fields: Set[str] = set([
+        ])
+
+        _dict = self.model_dump(
+            by_alias=True,
+            exclude=excluded_fields,
+            exclude_none=True,
+        )
+        return _dict
+
+    @classmethod
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
+        """Create an instance of Security from a dict"""
+        if obj is None:
+            return None
+
+        if not isinstance(obj, dict):
+            return cls.model_validate(obj)
+
+        _obj = cls.model_validate({
+            "threat_score": obj.get("threat_score"),
+            "is_tor": obj.get("is_tor"),
+            "is_proxy": obj.get("is_proxy"),
+            "proxy_type": obj.get("proxy_type"),
+            "proxy_provider": obj.get("proxy_provider"),
+            "is_anonymous": obj.get("is_anonymous"),
+            "is_known_attacker": obj.get("is_known_attacker"),
+            "is_spam": obj.get("is_spam"),
+            "is_bot": obj.get("is_bot"),
+            "is_cloud_provider": obj.get("is_cloud_provider"),
+            "cloud_provider": obj.get("cloud_provider")
+        })
+        return _obj
+
+
