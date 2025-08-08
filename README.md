@@ -1,7 +1,7 @@
 # IP Geolocation API Python SDK
 IPGeolocation.io – Real-time IP Intelligence, Threat Detection APIs & Database Solutions
 
-- API version: 1.0.0
+- API version: 2.0.0
 
 ## IPGeolocation.io Package/SDK for Python
 [IPGeolocation API](https://ipgeolocation.io) is the solution to identify country code (ISO2 and ISO3 standard), 
