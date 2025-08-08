@@ -1,0 +1,102 @@
+# coding: utf-8
+
+# flake8: noqa
+
+"""
+    IPGeolocation.io - IP intelligence products
+
+    Ipgeolocation provides a set of APIs to make ip based decisions.
+
+    Creat a free account by signing up here:
+    https://app.ipgeolocation.io/signup
+
+    Do not edit the class manually.
+"""  # noqa: E501
+
+
+__version__ = "1.0.0"
+
+# import apis into sdk package
+from ipgeolocation.api.asn_lookup_api import ASNLookupApi
+from ipgeolocation.api.abuse_contact_api import AbuseContactApi
+from ipgeolocation.api.astronomy_api import AstronomyApi
+from ipgeolocation.api.ipgeolocation_api import IPGeolocationApi
+from ipgeolocation.api.ip_security_api import IPSecurityApi
+from ipgeolocation.api.time_conversion_api import TimeConversionApi
+from ipgeolocation.api.timezone_api import TimezoneApi
+from ipgeolocation.api.user_agent_api import UserAgentApi
+
+# import ApiClient
+from ipgeolocation.api_response import ApiResponse
+from ipgeolocation.api_client import ApiClient
+from ipgeolocation.configuration import Configuration
+from ipgeolocation.exceptions import OpenApiException
+from ipgeolocation.exceptions import ApiTypeError
+from ipgeolocation.exceptions import ApiValueError
+from ipgeolocation.exceptions import ApiKeyError
+from ipgeolocation.exceptions import ApiAttributeError
+from ipgeolocation.exceptions import ApiException
+
+# import models into sdk package
+from ipgeolocation.models.asn_connection import ASNConnection
+from ipgeolocation.models.asn_response import ASNResponse
+from ipgeolocation.models.asn_details import ASNDetails
+from ipgeolocation.models.asn_response_xml import ASNResponseXML
+from ipgeolocation.models.abuse import Abuse
+from ipgeolocation.models.abuse_response import AbuseResponse
+from ipgeolocation.models.abuse_response_xml import AbuseResponseXML
+from ipgeolocation.models.astronomy import Astronomy
+from ipgeolocation.models.astronomy_evening import AstronomyEvening
+from ipgeolocation.models.astronomy_location import AstronomyLocation
+from ipgeolocation.models.astronomy_morning import AstronomyMorning
+from ipgeolocation.models.astronomy_response import AstronomyResponse
+from ipgeolocation.models.astronomy_xml_response import AstronomyXMLResponse
+from ipgeolocation.models.country_metadata import CountryMetadata
+from ipgeolocation.models.currency import Currency
+from ipgeolocation.models.error_response import ErrorResponse
+from ipgeolocation.models.error_xml_response import ErrorXMLResponse
+from ipgeolocation.models.error_xml_response_array import ErrorXMLResponseArray
+from ipgeolocation.models.geolocation_response import GeolocationResponse
+from ipgeolocation.models.geolocation_xml_response import GeolocationXMLResponse
+from ipgeolocation.models.geolocation_xml_response_array import GeolocationXMLResponseArray
+from ipgeolocation.models.get_bulk_ip_geolocation_response import GetBulkIpGeolocationResponse
+from ipgeolocation.models.get_bulk_ip_geolocation_xml_response import GetBulkIpGeolocationXmlResponse
+from ipgeolocation.models.get_bulk_ip_geolocation_request import GetBulkIpGeolocationRequest
+from ipgeolocation.models.get_bulk_ip_security_info_response import GetBulkIpSecurityInfoResponse
+from ipgeolocation.models.get_bulk_ip_security_info_xml_response import GetBulkIpSecurityInfoXmlResponse
+from ipgeolocation.models.location import Location
+from ipgeolocation.models.location_minimal import LocationMinimal
+from ipgeolocation.models.network import Network
+from ipgeolocation.models.network_asn import NetworkAsn
+from ipgeolocation.models.network_company import NetworkCompany
+from ipgeolocation.models.network_minimal import NetworkMinimal
+from ipgeolocation.models.network_minimal_asn import NetworkMinimalAsn
+from ipgeolocation.models.network_minimal_company import NetworkMinimalCompany
+from ipgeolocation.models.parse_bulk_user_agent_strings_request import ParseBulkUserAgentStringsRequest
+from ipgeolocation.models.parse_user_agent_string_request import ParseUserAgentStringRequest
+from ipgeolocation.models.security import Security
+from ipgeolocation.models.ip_security_api_response import IPSecurityAPIResponse
+from ipgeolocation.models.ip_security_api_xml_response import IPSecurityAPIXMLResponse
+from ipgeolocation.models.ip_security_api_xml_response_array import IPSecurityAPIXMLResponseArray
+from ipgeolocation.models.time_conversion_response import TimeConversionResponse
+from ipgeolocation.models.time_conversion_xml_response import TimeConversionXMLResponse
+from ipgeolocation.models.time_series import TimeSeries
+from ipgeolocation.models.time_series_response import TimeSeriesResponse
+from ipgeolocation.models.time_series_xml_response import TimeSeriesXmlResponse
+from ipgeolocation.models.time_zone import TimeZone
+from ipgeolocation.models.time_zone_detailed_response import TimeZoneDetailedResponse
+from ipgeolocation.models.time_zone_detailed_xml_response import TimeZoneDetailedXMLResponse
+from ipgeolocation.models.time_zone_dst_end import TimeZoneDstEnd
+from ipgeolocation.models.time_zone_dst_start import TimeZoneDstStart
+from ipgeolocation.models.timezone_airport import TimezoneAirport
+from ipgeolocation.models.timezone_detail import TimezoneDetail
+from ipgeolocation.models.timezone_detail_dst_end import TimezoneDetailDstEnd
+from ipgeolocation.models.timezone_detail_dst_start import TimezoneDetailDstStart
+from ipgeolocation.models.timezone_location import TimezoneLocation
+from ipgeolocation.models.timezone_locode import TimezoneLocode
+from ipgeolocation.models.user_agent_data import UserAgentData
+from ipgeolocation.models.user_agent_data_device import UserAgentDataDevice
+from ipgeolocation.models.user_agent_data_engine import UserAgentDataEngine
+from ipgeolocation.models.user_agent_data_operating_system import UserAgentDataOperatingSystem
+from ipgeolocation.models.user_agent_xml_data import UserAgentXMLData
+from ipgeolocation.models.user_agent_xml_data_array import UserAgentXMLDataArray
