@@ -1,112 +1,109 @@
-# IP Geolocation API Python SDK
-IPGeolocation.io – Real-time IP Intelligence, Threat Detection APIs & Database Solutions
+## IP Geolocation API Client Library/SDK for Python
 
+The official **Python Client Library** for **[IPGeolocation.io](https://ipgeolocation.io)**'s set of APIs, provides a quick, developer friendly, way 
+to access IP Location, Security, Timezone, Astronomy, ASN, Abuse Contact, and useragent data. Lookup your own IP or provide any IPv4, 
+IPv6 or domain name to get structured results in Python, without the need for manual HTTP handling.
+
+- [IP Location API](https://ipgeolocation.io/ip-location-api.html): Get all-in-one unified solution for **location** (city, locality, state, country, etc.), **currency**, 
+  **network** (AS number, ASN name, organization, asn type, date of allocation, company/ISP name, company type, 
+  company domain), **timezone** , **useragent** string parsing, **security** (threat score, is_tor, is_bot, 
+  proxy_provider, cloud_provider), and **abuse contact** (route/CIDR network, country, address, email, phone numbers) information.
+- [IP Security API](https://ipgeolocation.io/ip-security-api.html): Get security, network, location, hostname, timezone and useragent parsing.
+- [ASN API](https://ipgeolocation.io/asn-api.html): Get ASN details along with peers, upstreams, downstreams, routes, and raw WHOIS.
+- [Abuse Contact API](https://ipgeolocation.io/ip-abuse-contact-api.html): Get abuse emails, phone numbers, kind, organization, route/CIDR network and country.
+- [Astronomy API](https://ipgeolocation.io/astronomy-api.html): Get sunrise, sunset, moonrise, moonset, moon phases with precise twilight period times in combination 
+  with location information.
+- [Timezone API](https://ipgeolocation.io/timezone-api.html): Get timezone name, multiple time formats, daylight saving status and its details along with 
+  location information.
+- [Timezone Convert API](https://ipgeolocation.io/timezone-api.html): Convert time between timezone names, geo coordinates, location addresses, IATA codes, 
+  ICAO codes, or UN/LOCODE.
+- [User Agent API](https://ipgeolocation.io/user-agent-api.html): Get browser, Operating System, and device info from single or multiple Useragent string parsing.
+
+This library aims to empower developers to integrate threat intelligence, personalization, fraud prevention, 
+compliance, and analytics features directly into Python based applications. Whether you're enriching signup forms 
+with ip geolocation data, localizing content, embedding threat intelligence in back-end systems, or converting 
+time zones and currencies, the library ensures seamless, scalable integration with IPGeolocation.io’s global API infrastructure.
+
+Based on:
 - API version: 2.0.0
 
-## IPGeolocation.io Package/SDK for Python
-[IPGeolocation API](https://ipgeolocation.io) is the solution to identify country code (ISO2 and ISO3 standard), 
-country name, continent code, continent name, country capital, state/province, district, city, zip code, latitude and 
-longitude of city, is country belongs to Europian Union, calling code, top level domain (TLD), languages, country flag, 
-internet service provider (ISP), connection type, organization, geoname ID, currency code, currency name, time zone ID, 
-time zone offset, current time in the time zone, is time zone in daylight saving time, total daylight savings, 
-IP security info including is_proxy, is_cloud_provider, is_bot, Abuse Contact info related to an IP address and 
-Parse the User Agent String. This document provides important information to help you get up to speed with IPGeolocation API using IP Geolocation 
-API Python SDK.
-
-Developers can use this Python SDK for software and web projects related to, but not limited to:
-
-1. Display native language and currency
-2. Redirect based on the country
-3. Digital rights management
-4. Web log stats and analysis
-5. Auto-selection of country, state/province and city on forms
-6. Filter access from countries you do not do business with
-7. Geo-targeting for increased sales and click-through
-
 ## Table of Contents
-1. [Installation](#installation)
-   - [Using Pip](#pip-install)
-   - [Manual Installation](#setuptools)
-2. [Authentication Setup](#authentication-setup)
-   - [1. How to Get Your API Key](#how-to-get-your-api-key)
-   - [2. ApiKeyAuth](#apikeyauth)
-3. [Tests setup](#tests)
-4. [API Endpoints](#api-endpoints)
-3. [IP Geolocation Examples](#ip-geolocation-examples)
-   - [1. Developer (Free) Plan Examples](#1-developer-plan-examples)
-   - [2. Standard Plan Examples](#2-standard-plan-examples)
-   - [3. Advanced Plan Examples](#3-advanced-plan-examples)
+1. [Requirements](#requirements)
+2. [Installation](#installation)
+   - [From PyPI](#from-pypi)
+   - [From GitHub](#from-github)
+3. [Authentication Setup](#authentication-setup)
+   - [How to Get Your API Key](#how-to-get-your-api-key)
+   - [ApiKeyAuth](#apikeyauth)
+4. [Tests setup](#tests)
+5. [API Endpoints](#api-endpoints)
+6. [Fields and Methods Availability](#fields-and-methods-availability)
+7. [IP Geolocation Examples](#ip-geolocation-examples)
+   - [Developer (Free) Plan Examples](#1-developer-plan-examples)
+   - [Standard Plan Examples](#2-standard-plan-examples)
+   - [Advanced Plan Examples](#3-advanced-plan-examples)
    - [Bulk IP Geolocation Example](#bulk-ip-geolocation-example)
 
-4. [IP Security Examples](#ip-security-examples)
+8. [IP Security Examples](#ip-security-examples)
    - [Basic Request (Minimal Setup)](#basic-request-minimal-setup)
    - [Include Multiple Optional Fields](#include-multiple-optional-fields)
    - [Request with Field Filtering](#request-with-field-filtering)
    - [Bulk IP Security Request](#bulk-ip-security-request)
 
-5. [ASN API Examples](#asn-api-examples)
+9. [ASN API Examples](#asn-api-examples)
    - [Get ASN Information by IP Address](#get-asn-information-by-ip-address)
    - [Get ASN Information by ASN Number](#get-asn-information-by-asn-number)
    - [Combine All objects using Include](#combine-all-objects-using-include)
   
-6. [Abuse Contact API Examples](#abuse-contact-api-examples)
-   - [Lookup Abuse Contact by IP](#lookup-abuse-contact-by-ip)
-   - [Lookup Abuse Contact with Specific Fields](#lookup-abuse-contact-with-specific-fields)
-   - [Lookup Abuse Contact while Excluding Fields](#lookup-abuse-contact-while-excluding-fields)
+10. [Abuse Contact API Examples](#abuse-contact-api-examples)
+    - [Lookup Abuse Contact by IP](#lookup-abuse-contact-by-ip)
+    - [Lookup Abuse Contact with Specific Fields](#lookup-abuse-contact-with-specific-fields)
+    - [Lookup Abuse Contact while Excluding Fields](#lookup-abuse-contact-while-excluding-fields)
 
-7. [Timezone API Examples](#timezone-api-examples)
-   - [Get Timezone by IP Address](#get-timezone-by-ip-address)
-   - [Get Timezone by Timezone Name](#get-timezone-by-timezone-name)
-   - [Get Timezone from Any Address](#get-timezone-from-any-address)
-   - [Get Timezone from Location Coordinates](#get-timezone-from-location-coordinates)
-   - [Get Timezone and Airport Details from IATA Code](#get-timezone-and-airport-details-from-iata-code)
-   - [Get Timezone and City Details from UN/LOCODE](#get-timezone-and-city-details-from-unlocode)
+11. [Timezone API Examples](#timezone-api-examples)
+    - [Get Timezone by IP Address](#get-timezone-by-ip-address)
+    - [Get Timezone by Timezone Name](#get-timezone-by-timezone-name)
+    - [Get Timezone from Any Address](#get-timezone-from-any-address)
+    - [Get Timezone from Location Coordinates](#get-timezone-from-location-coordinates)
+    - [Get Timezone and Airport Details from IATA Code](#get-timezone-and-airport-details-from-iata-code)
+    - [Get Timezone and City Details from UN/LOCODE](#get-timezone-and-city-details-from-unlocode)
 
-8. [Timezone Converter Examples](#timezone-converter-examples)
-   - [Convert Current Time from One Timezone to Another](#convert-current-time-from-one-timezone-to-another)
+12. [Timezone Converter Examples](#timezone-converter-examples)
+    - [Convert Current Time from One Timezone to Another](#convert-current-time-from-one-timezone-to-another)
 
-9. [User Agent API Examples](#user-agent-api-examples)
-   - [Parse a Basic User Agent String](#parse-a-basic-user-agent-string)
-   - [Bulk User Agent Parsing Example](#bulk-user-agent-parsing-example)
-10. [Astronomy API Examples](#astronomy-api-examples)
-   - [Astronomy by Coordinates](#astronomy-by-coordinates)
-   - [Astronomy by IP Address](#astronomy-by-ip-address)
-   - [Astronomy by Location String](#astronomy-by-location-string)
-   - [Astronomy for Specific Date](#astronomy-for-specific-date)
-   - [Astronomy in Different Language](#astronomy-in-different-language)
+13. [User Agent API Examples](#user-agent-api-examples)
+    - [Parse a Basic User Agent String](#parse-a-basic-user-agent-string)
+    - [Bulk User Agent Parsing Example](#bulk-user-agent-parsing-example)
+14. [Astronomy API Examples](#astronomy-api-examples)
+    - [Lookup Astronomy by Coordinates](#lookup-astronomy-api-by-coordinates)
+    - [Lookup Astronomy by IP Address](#lookup-astronomy-api-by-ip-address)
+    - [Lookup Astronomy by Location String](#lookup-astronomy-api-by-location-string)
+    - [Lookup Astronomy for Specific Date](#lookup-astronomy-api-for-a-specific-date)
+    - [Lookup Location Info in Different Language](#lookup-location-info-in-different-language)
 
-11. [Documentation for Models](#documentation-for-models)
+15. [Documentation for Models](#documentation-for-models)
 
-
-
-# Installation
-## Requirements
+# Requirements
 
 - Python 3.9+
+- API Key from [IPGeolocation.io](https://ipgeolocation.io)
 
-## pip install
+# Installation
+## From PyPI
 
 You can install package directly using:
 
 ```sh
 pip install ipgeolocationio
 ```
-(you may need to run `pip` with root permission: `sudo pip install ipgeolocation`)
+(you may need to run `pip` with root permission: `sudo pip install ipgeolocationio`)
 
-Then import the package:
-```python
-import ipgeolocation
-```
-
-### Setuptools
-
-Install via [Setuptools](http://pypi.python.org/pypi/setuptools).
+## From GitHub
 
 ```sh
-git clone https://github.com/IPGeolocation/ip-geolocation-api-python-sdk.git
-python ip-geolocation-api-python-sdk/setup.py install --user
+python -m pip install git+https://github.com/IPGeolocation/ip-geolocation-api-python-sdk.git
 ```
-(or `sudo python ip-geolocation-api-python-sdk/setup.py install` to install the package for all users)
+(or append `sudo` in the start to install the package for all users)
 
 Then import the package:
 ```python
@@ -119,22 +116,45 @@ All URIs are relative to *https://api.ipgeolocation.io/v2*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
+*IPGeolocationApi* | [**get_ip_geolocation**](docs/IPGeolocationApi.md#get_ip_geolocation) | **GET** /ipgeo | Get geolocation data for a single IP address
+*IPGeolocationApi* | [**get_bulk_ip_geolocation**](docs/IPGeolocationApi.md#get_bulk_ip_geolocation) | **POST** /ipgeo-bulk | Get geolocation data for multiple IP addresses in a single API request
+*IPSecurityApi* | [**get_ip_security_info**](docs/IPSecurityApi.md#get_ip_security_info) | **GET** /security | Retrieve security information (VPN, TOR, proxy, etc.) for a single IP
+*IPSecurityApi* | [**get_bulk_ip_security_info**](docs/IPSecurityApi.md#get_bulk_ip_security_info) | **POST** /security-bulk | Retrieve security threat intelligence for multiple IPs
 *ASNLookupApi* | [**get_asn_info**](docs/ASNLookupApi.md#get_asn_info) | **GET** /asn | Get details of any ASN number or associated IP address
 *AbuseContactApi* | [**get_abuse_contact_info**](docs/AbuseContactApi.md#get_abuse_contact_info) | **GET** /abuse | Retrieve abuse reporting contact information for a given IP address
 *AstronomyApi* | [**get_astronomy_details**](docs/AstronomyApi.md#get_astronomy_details) | **GET** /astronomy | Get sunrise, sunset, moonrise, moonset, and related data for a location
 *AstronomyApi* | [**get_time_series_lookup**](docs/AstronomyApi.md#get_time_series_lookup) | **GET** /astronomy/timeSeries | Get astronomy information for given date range at once
-*IPGeolocationApi* | [**get_bulk_ip_geolocation**](docs/IPGeolocationApi.md#get_bulk_ip_geolocation) | **POST** /ipgeo-bulk | Get geolocation data for multiple IP addresses in a single API request
-*IPGeolocationApi* | [**get_ip_geolocation**](docs/IPGeolocationApi.md#get_ip_geolocation) | **GET** /ipgeo | Get geolocation data for a single IP address
-*IPSecurityApi* | [**get_bulk_ip_security_info**](docs/IPSecurityApi.md#get_bulk_ip_security_info) | **POST** /security-bulk | Retrieve security threat intelligence for multiple IPs
-*IPSecurityApi* | [**get_ip_security_info**](docs/IPSecurityApi.md#get_ip_security_info) | **GET** /security | Retrieve security information (VPN, TOR, proxy, etc.) for a single IP
-*TimeConversionApi* | [**convert_time_between_timezones**](docs/TimeConversionApi.md#convert_time_between_timezones) | **GET** /timezone/convert | Convert time between two specified timezones
 *TimezoneApi* | [**get_timezone_info**](docs/TimezoneApi.md#get_timezone_info) | **GET** /timezone | Timezone information details
+*TimeConversionApi* | [**convert_time_between_timezones**](docs/TimeConversionApi.md#convert_time_between_timezones) | **GET** /timezone/convert | Convert time between two specified timezones
 *UserAgentApi* | [**get_user_agent_details**](docs/UserAgentApi.md#get_user_agent_details) | **GET** /user-agent | Get details of user-agent
-*UserAgentApi* | [**parse_bulk_user_agent_strings**](docs/UserAgentApi.md#parse_bulk_user_agent_strings) | **POST** /user-agent-bulk | Handle multiple user-agent string lookups
 *UserAgentApi* | [**parse_user_agent_string**](docs/UserAgentApi.md#parse_user_agent_string) | **POST** /user-agent | Handle single User-Agent string
+*UserAgentApi* | [**parse_bulk_user_agent_strings**](docs/UserAgentApi.md#parse_bulk_user_agent_strings) | **POST** /user-agent-bulk | Handle multiple user-agent string lookups
+
+# Fields and Methods Availability
+IP Geolocation offers three plans from billing point of view: **Free, Standard, Security, Advance**. The availability of each method calling
+from the respective class, over all plans are presented below. 
+
+| Class               | Method                                                                                         | Free | Standard | Security | Advance |
+|---------------------|------------------------------------------------------------------------------------------------|:----:|:--------:|:--------:|:-------:|
+| *IPGeolocationApi*  | [**get_ip_geolocation**](docs/IPGeolocationApi.md#get_ip_geolocation)                          |  ✔   |    ✔     |    ✖     |    ✔    |
+| *IPGeolocationApi*  | [**get_bulk_ip_geolocation**](docs/IPGeolocationApi.md#get_bulk_ip_geolocation)                |  ✖   |    ✔     |    ✖     |    ✔    |
+| *IPSecurityApi*     | [**get_ip_security_info**](docs/IPSecurityApi.md#get_ip_security_info)                         |  ✖   |    ✖     |    ✔     |    ✖    |
+| *IPSecurityApi*     | [**get_bulk_ip_security_info**](docs/IPSecurityApi.md#get_bulk_ip_security_info)               |  ✖   |    ✖     |    ✔     |    ✖    |
+| *ASNLookupApi*      | [**get_asn_info**](docs/ASNLookupApi.md#get_asn_info)                                          |  ✖   |    ✖     |    ✖     |    ✔    |
+| *AbuseContactApi*   | [**get_abuse_contact_info**](docs/AbuseContactApi.md#get_abuse_contact_info)                   |  ✖   |    ✖     |    ✖     |    ✔    |
+| *AstronomyApi*      | [**get_astronomy_details**](docs/AstronomyApi.md#get_astronomy_details)                        |  ✔   |    ✔     |    ✔     |    ✔    |
+| *AstronomyApi*      | [**get_time_series_lookup**](docs/AstronomyApi.md#get_time_series_lookup)                      |  ✔   |    ✔     |    ✔     |    ✔    |
+| *TimezoneApi*       | [**get_timezone_info**](docs/TimezoneApi.md#get_timezone_info)                                 |  ✔   |    ✔     |    ✔     |    ✔    |
+| *TimeConversionApi* | [**convert_time_between_timezones**](docs/TimeConversionApi.md#convert_time_between_timezones) |  ✔   |    ✔     |    ✔     |    ✔    |
+| *UserAgentApi*      | [**get_user_agent_details**](docs/UserAgentApi.md#get_user_agent_details)                      |  ✔   |    ✔     |    ✔     |    ✔    |
+| *UserAgentApi*      | [**parse_user_agent_string**](docs/UserAgentApi.md#parse_user_agent_string)                    |  ✔   |    ✔     |    ✔     |    ✔    |
+| *UserAgentApi*      | [**parse_bulk_user_agent_strings**](docs/UserAgentApi.md#parse_bulk_user_agent_strings)        |  ✖   |    ✔     |    ✔     |    ✔    |
+
+_Note: The availability of fields in every API endpoint across all API plans is provided in the **_Reference Table_** within 
+each respective API Documentation. e.g., for IPGeolocationApi, please visit https://ipgeolocation.io/ip-location-api.html#fields-reference._ 
 
 ## Authentication Setup
-To authenticate API requests, you need an API key from [ipgeolocation.io](https://ipgeolocation.io/).
+To authenticate API requests, you need to get an API key from [ipgeolocation.io](https://ipgeolocation.io/).
 
 ## How to Get Your API Key
 
@@ -162,6 +182,8 @@ policy.
 ```python
 import ipgeolocation
 import os
+# from dotenv import load_dotenv
+# load_dotenv(".env")
 
 # Defining the host is optional and defaults to https://api.ipgeolocation.io/v2
 # See configuration.py for a list of all supported configuration parameters.
@@ -173,17 +195,17 @@ configuration = ipgeolocation.Configuration(
 configuration.api_key['ApiKeyAuth'] = os.getenv("API_KEY")
 ```
 
+_**Note:**_ Uncomment the `dotenv` part, if you placed the API_KEY in `.env` file. 
 
 ### Tests
 
 Set the environment variable for `API_KEY` or specify in `.env` file and execute `pytest` to run the tests.
 
-
 # Example Usage
 
 ## IP Geolocation Examples
 
-This section provides usage examples of the `get_ip_geolocation()` method from the package across Free, Standard, and Advanced subscription tiers. Each example highlights different combinations of parameters: `fields`, `include`, and `excludes`.
+This section provides usage examples of the `get_ip_geolocation()` method from the package across **Free**, **Standard**, and **Advanced** subscription tiers. Each example highlights different combinations of parameters: `fields`, `include`, and `excludes`.
 
 ### Parameters
 
@@ -1319,7 +1341,7 @@ This section provides usage examples of the `get_astronomy_details()` method fro
 
 Refer to the [official Astronomy API documentation](https://ipgeolocation.io/astronomy-api.html#documentation-overview) for more details.
 
-### Astronomy by Coordinates
+### Lookup Astronomy API by Coordinates
 ```python
 with ipgeolocation.ApiClient(configuration) as client:
     api_instance = ipgeolocation.AstronomyApi(client)
@@ -1379,7 +1401,7 @@ Sample Response:
               'longitude': '-74.00600',
               'state_prov': 'New York'}}
 ```
-### Astronomy by IP Address
+### Lookup Astronomy API by IP Address
 ```python
 with ipgeolocation.ApiClient(configuration) as client:
     api_instance = ipgeolocation.AstronomyApi(client)
@@ -1449,7 +1471,7 @@ Sample Response:
               'state_prov': 'California',
               'zipcode': '94043-1351'}}
 ```
-### Astronomy by Location String
+### Lookup Astronomy API by Location String
 ```python
 with ipgeolocation.ApiClient(configuration) as client:
     api_instance = ipgeolocation.AstronomyApi(client)
@@ -1510,7 +1532,7 @@ Sample Response:
               'longitude': '9.18963',
               'state_prov': 'Lombardy'}}
 ```
-### Astronomy for Specific Date
+### Lookup Astronomy API for a Specific Date
 ```python
 with ipgeolocation.ApiClient(configuration) as client:
     api_instance = ipgeolocation.AstronomyApi(client)
@@ -1570,7 +1592,7 @@ Sample Response:
               'longitude': '153.02000',
               'state_prov': 'Queensland'}}
 ```
-### Astronomy in Different Language
+### Lookup Location info in Different Language
 You can also get Astronomy Data in other languages as well. Only paid subscriptions can access this feature.
 ```python
 with ipgeolocation.ApiClient(configuration) as client:
@@ -1641,7 +1663,6 @@ Sample Response:
               'state_prov': 'Queensland',
               'zipcode': '4101'}}
 ```
-
 
 ## Documentation For Models
 
