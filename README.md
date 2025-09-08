@@ -131,7 +131,7 @@ Class | Method | HTTP request | Description
 *UserAgentApi* | [**parse_bulk_user_agent_strings**](docs/UserAgentApi.md#parse_bulk_user_agent_strings) | **POST** /user-agent-bulk | Handle multiple user-agent string lookups
 
 # Fields and Methods Availability
-IP Geolocation offers three plans from billing point of view: **Free, Standard, Security, Advance**. The availability of each method calling
+IP Geolocation offers four plans from billing point of view: **Free, Standard, Security, Advance**. The availability of each method calling
 from the respective class, over all plans are presented below. 
 
 | Class               | Method                                                                                         | Free | Standard | Security | Advance |
@@ -158,9 +158,10 @@ To authenticate API requests, you need to get an API key from [ipgeolocation.io]
 
 ## How to Get Your API Key
 
-1. **Sign up** here: [https://app.ipgeolocation.io/signup](https://app.ipgeolocation.io/signup)  
-2. **Log in** to your account: [https://app.ipgeolocation.io/login](https://app.ipgeolocation.io/login)  
-3. After logging in, navigate to your **Dashboard** to find your API key: [https://app.ipgeolocation.io/dashboard](https://app.ipgeolocation.io/dashboard)
+1. **Sign up** here: [https://app.ipgeolocation.io/signup](https://app.ipgeolocation.io/signup)
+2. **(optional)** Verify your email, you signed up using email.
+3. **Log in** to your account: [https://app.ipgeolocation.io/login](https://app.ipgeolocation.io/login)  
+4. After logging in, navigate to your **Dashboard** to find your API key: [https://app.ipgeolocation.io/dashboard](https://app.ipgeolocation.io/dashboard)
 
 ## API Plan Tiers and Documentation
 
