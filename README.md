@@ -747,167 +747,28 @@ Sample Response:
          'peers': [{'as_number': 'AS3269',
                     'country': 'IT',
                     'description': 'Telecom Italia S.p.A.'},
-                   {'as_number': 'AS8220',
-                    'country': 'GB',
-                    'description': 'COLT Technology Services Group Limited'},
-                   {'as_number': 'AS394666',
-                    'country': 'US',
-                    'description': 'NYU Langone Health'},
-                   {'as_number': 'AS286',
-                    'country': 'NL',
-                    'description': 'GTT Communications Inc.'},
-                   {'as_number': 'AS286',
-                    'country': 'US',
-                    'description': 'GTT Communications Inc.'},
-                   {'as_number': 'AS3257',
-                    'country': 'US',
-                    'description': 'GTT Communications Inc.'},
-                   {'as_number': 'AS3754',
-                    'country': 'US',
-                    'description': 'NYSERNet'},
-                   {'as_number': 'AS3356',
-                    'country': 'US',
-                    'description': 'Level 3 Parent, LLC'},
-                   {'as_number': 'AS6461',
-                    'country': 'US',
-                    'description': 'Zayo Bandwidth'},
-                   {'as_number': 'AS137',
-                    'country': 'IT',
-                    'description': 'Consortium GARR'},
+                   ...
                    {'as_number': 'AS54965',
                     'country': 'US',
                     'description': 'Polytechnic Institute of NYU'}],
          'rir': 'ARIN',
          'routes': ['192.76.177.0/24',
-                    '216.165.96.0/20',
-                    '216.165.89.0/24',
-                    '216.165.0.0/18',
-                    '2607:f600::/32',
-                    '216.165.112.0/21',
-                    '128.122.0.0/16',
-                    '216.165.102.0/24',
-                    '216.165.64.0/19',
-                    '216.165.120.0/22',
-                    '192.86.139.0/24',
+                    ...
                     '216.165.103.0/24'],
          'type': 'EDUCATION',
          'upstreams': [{'as_number': 'AS3269',
                         'country': 'IT',
                         'description': 'Telecom Italia S.p.A.'},
-                       {'as_number': 'AS8220',
-                        'country': 'GB',
-                        'description': 'COLT Technology Services Group '
-                                       'Limited'},
-                       {'as_number': 'AS286',
-                        'country': 'US',
-                        'description': 'GTT Communications Inc.'},
-                       {'as_number': 'AS3257',
-                        'country': 'US',
-                        'description': 'GTT Communications Inc.'},
-                       {'as_number': 'AS3754',
-                        'country': 'US',
-                        'description': 'NYSERNet'},
-                       {'as_number': 'AS3356',
-                        'country': 'US',
-                        'description': 'Level 3 Parent, LLC'},
-                       {'as_number': 'AS6461',
-                        'country': 'US',
-                        'description': 'Zayo Bandwidth'},
+                       ...
                        {'as_number': 'AS137',
                         'country': 'IT',
                         'description': 'Consortium GARR'}],
          'whois_response': '\n'
-                           '#\n'
-                           '# ARIN WHOIS data and services are subject to the '
-                           'Terms of Use\n'
-                           '# available at: '
-                           'https://www.arin.net/resources/registry/whois/tou/\n'
-                           '#\n'
-                           '# If you see inaccuracies in the results, please '
-                           'report at\n'
-                           '# '
-                           'https://www.arin.net/resources/registry/whois/inaccuracy_reporting/\n'
-                           '#\n'
-                           '# Copyright 1997-2025, American Registry for '
-                           'Internet Numbers, Ltd.\n'
-                           '#\n'
-                           '\n'
                            '\n'
                            'ASNumber:       12\n'
                            'ASName:         NYU-DOMAIN\n'
                            'ASHandle:       AS12\n'
-                           'RegDate:        1984-07-05\n'
-                           'Updated:        2023-05-25    \n'
-                           'Ref:            '
-                           'https://rdap.arin.net/registry/autnum/12\n'
-                           '\n'
-                           '\n'
-                           'OrgName:        New York University\n'
-                           'OrgId:          NYU-Z\n'
-                           'Address:        726 Broadway, 8th Floor - ITS\n'
-                           'City:           New York\n'
-                           'StateProv:      NY\n'
-                           'PostalCode:     10003\n'
-                           'Country:        US\n'
-                           'RegDate:        2023-05-15\n'
-                           'Updated:        2023-05-15\n'
-                           'Ref:            '
-                           'https://rdap.arin.net/registry/entity/NYU-Z\n'
-                           '\n'
-                           '\n'
-                           'OrgTechHandle: COSI-ARIN\n'
-                           'OrgTechName:   Communications Operations Services '
-                           '- ITS\n'
-                           'OrgTechPhone:  +1-212-998-3444 \n'
-                           'OrgTechEmail:  noc-cosi-arin@nyu.edu\n'
-                           'OrgTechRef:    '
-                           'https://rdap.arin.net/registry/entity/COSI-ARIN\n'
-                           '\n'
-                           'OrgNOCHandle: COSI-ARIN\n'
-                           'OrgNOCName:   Communications Operations Services - '
-                           'ITS\n'
-                           'OrgNOCPhone:  +1-212-998-3444 \n'
-                           'OrgNOCEmail:  noc-cosi-arin@nyu.edu\n'
-                           'OrgNOCRef:    '
-                           'https://rdap.arin.net/registry/entity/COSI-ARIN\n'
-                           '\n'
-                           'OrgAbuseHandle: OIS9-ARIN\n'
-                           'OrgAbuseName:   Office of Information Security\n'
-                           'OrgAbusePhone:  +1-212-998-3333 \n'
-                           'OrgAbuseEmail:  abuse@nyu.edu\n'
-                           'OrgAbuseRef:    '
-                           'https://rdap.arin.net/registry/entity/OIS9-ARIN\n'
-                           '\n'
-                           'RNOCHandle: COSI-ARIN\n'
-                           'RNOCName:   Communications Operations Services - '
-                           'ITS\n'
-                           'RNOCPhone:  +1-212-998-3444 \n'
-                           'RNOCEmail:  noc-cosi-arin@nyu.edu\n'
-                           'RNOCRef:    '
-                           'https://rdap.arin.net/registry/entity/COSI-ARIN\n'
-                           '\n'
-                           'RTechHandle: COSI-ARIN\n'
-                           'RTechName:   Communications Operations Services - '
-                           'ITS\n'
-                           'RTechPhone:  +1-212-998-3444 \n'
-                           'RTechEmail:  noc-cosi-arin@nyu.edu\n'
-                           'RTechRef:    '
-                           'https://rdap.arin.net/registry/entity/COSI-ARIN\n'
-                           '\n'
-                           '\n'
-                           '#\n'
-                           '# ARIN WHOIS data and services are subject to the '
-                           'Terms of Use\n'
-                           '# available at: '
-                           'https://www.arin.net/resources/registry/whois/tou/\n'
-                           '#\n'
-                           '# If you see inaccuracies in the results, please '
-                           'report at\n'
-                           '# '
-                           'https://www.arin.net/resources/registry/whois/inaccuracy_reporting/\n'
-                           '#\n'
-                           '# Copyright 1997-2025, American Registry for '
-                           'Internet Numbers, Ltd.\n'
+                           ...
                            '#\n'}}
 ```
 ## Abuse Contact API Examples
@@ -1604,46 +1465,7 @@ with ipgeolocation.ApiClient(configuration) as client:
 Sample Response:
 ```text
 {'astronomy': {'current_time': '15:39:12.077',
-               'date': '2025-08-08',
-               'day_length': '10:58',
-               'evening': {'astronomical_twilight_begin': '18:15',
-                           'astronomical_twilight_end': '18:42',
-                           'blue_hour_begin': '17:38',
-                           'blue_hour_end': '17:56',
-                           'civil_twilight_begin': '17:23',
-                           'civil_twilight_end': '17:47',
-                           'golden_hour_begin': '16:50',
-                           'golden_hour_end': '17:38',
-                           'nautical_twilight_begin': '17:47',
-                           'nautical_twilight_end': '18:15'},
-               'mid_night': '23:53',
-               'moon_altitude': -6.093842643644992,
-               'moon_angle': 166.3965211706784,
-               'moon_azimuth': 120.25140833908989,
-               'moon_distance': 384832.731852605,
-               'moon_illumination_percentage': '98.60',
-               'moon_parallactic_angle': -123.44281070347506,
-               'moon_phase': 'FULL_MOON',
-               'moon_status': '-',
-               'moonrise': '16:12',
-               'moonset': '05:35',
-               'morning': {'astronomical_twilight_begin': '05:04',
-                           'astronomical_twilight_end': '05:32',
-                           'blue_hour_begin': '05:50',
-                           'blue_hour_end': '06:09',
-                           'civil_twilight_begin': '06:00',
-                           'civil_twilight_end': '06:24',
-                           'golden_hour_begin': '06:09',
-                           'golden_hour_end': '06:57',
-                           'nautical_twilight_begin': '05:32',
-                           'nautical_twilight_end': '06:00'},
-               'night_begin': '18:42',
-               'night_end': '05:04',
-               'solar_noon': '11:53',
-               'sun_altitude': 20.145285015118457,
-               'sun_azimuth': 301.51439150528006,
-               'sun_distance': 151721123.1991657,
-               'sun_status': '-',
+               ...
                'sunrise': '06:24',
                'sunset': '17:23'},
  'ip': '1.1.1.1',
