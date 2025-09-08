@@ -159,7 +159,7 @@ To authenticate API requests, you need to get an API key from [ipgeolocation.io]
 ## How to Get Your API Key
 
 1. **Sign up** here: [https://app.ipgeolocation.io/signup](https://app.ipgeolocation.io/signup)
-2. **(optional)** Verify your email, you signed up using email.
+2. **(optional)** Verify your email, if you signed up using email.
 3. **Log in** to your account: [https://app.ipgeolocation.io/login](https://app.ipgeolocation.io/login)  
 4. After logging in, navigate to your **Dashboard** to find your API key: [https://app.ipgeolocation.io/dashboard](https://app.ipgeolocation.io/dashboard)
 
