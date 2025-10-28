@@ -1,4 +1,4 @@
-## IP Geolocation API Client Library/SDK for Python
+# IP Geolocation API Client Library/SDK for Python
 
 The official **Python Client Library** for **[IPGeolocation.io](https://ipgeolocation.io)**'s set of APIs, provides a quick, developer friendly, way 
 to access IP Location, Security, Timezone, Astronomy, ASN, Abuse Contact, and useragent data. Lookup your own IP or provide any IPv4, 
@@ -32,73 +32,67 @@ Based on:
 2. [Installation](#installation)
    - [From PyPI](#from-pypi)
    - [From GitHub](#from-github)
-3. [Authentication Setup](#authentication-setup)
+3. [API Plan Tiers and Documentation](#api-plan-tiers-and-documentation)
+4. [API Endpoints](#api-endpoints)
+5. [Fields and Methods Availability](#fields-and-methods-availability)
+6. [Authentication Setup](#authentication-setup)
    - [How to Get Your API Key](#how-to-get-your-api-key)
    - [ApiKeyAuth](#apikeyauth)
-4. [Tests setup](#tests)
-5. [API Endpoints](#api-endpoints)
-6. [Fields and Methods Availability](#fields-and-methods-availability)
-7. [IP Geolocation Examples](#ip-geolocation-examples)
-   - [Developer (Free) Plan Examples](#1-developer-plan-examples)
-   - [Standard Plan Examples](#2-standard-plan-examples)
-   - [Advanced Plan Examples](#3-advanced-plan-examples)
+7. [Tests setup](#tests)
+8. [IP Geolocation Examples](#ip-geolocation-examples)
+   - [Developer (Free) Plan Examples](#developer-plan-examples) 
+   - [Standard Plan Examples](#standard-plan-examples)
+   - [Advanced Plan Examples](#advanced-plan-examples)
    - [Bulk IP Geolocation Example](#bulk-ip-geolocation-example)
-
-8. [IP Security Examples](#ip-security-examples)
-   - [Basic Request (Minimal Setup)](#basic-request-minimal-setup)
+9. [IP Security Examples](#ip-security-examples)
+   - [Basic Request](#basic-request-minimal-setup)
    - [Include Multiple Optional Fields](#include-multiple-optional-fields)
    - [Request with Field Filtering](#request-with-field-filtering)
    - [Bulk IP Security Request](#bulk-ip-security-request)
-
-9. [ASN API Examples](#asn-api-examples)
-   - [Get ASN Information by IP Address](#get-asn-information-by-ip-address)
-   - [Get ASN Information by ASN Number](#get-asn-information-by-asn-number)
-   - [Combine All objects using Include](#combine-all-objects-using-include)
-  
-10. [Abuse Contact API Examples](#abuse-contact-api-examples)
+10. [ASN API Examples](#asn-api-examples)
+    - [Get ASN Information by IP Address](#get-asn-information-by-ip-address)
+    - [Get ASN Information by ASN Number](#get-asn-information-by-asn-number)
+    - [Combine All objects using Include](#combine-all-objects-using-include)
+11. [Abuse Contact API Examples](#abuse-contact-api-examples)
     - [Lookup Abuse Contact by IP](#lookup-abuse-contact-by-ip)
     - [Lookup Abuse Contact with Specific Fields](#lookup-abuse-contact-with-specific-fields)
     - [Lookup Abuse Contact while Excluding Fields](#lookup-abuse-contact-while-excluding-fields)
-
-11. [Timezone API Examples](#timezone-api-examples)
+12. [Timezone API Examples](#timezone-api-examples)
     - [Get Timezone by IP Address](#get-timezone-by-ip-address)
     - [Get Timezone by Timezone Name](#get-timezone-by-timezone-name)
     - [Get Timezone from Any Address](#get-timezone-from-any-address)
     - [Get Timezone from Location Coordinates](#get-timezone-from-location-coordinates)
     - [Get Timezone and Airport Details from IATA Code](#get-timezone-and-airport-details-from-iata-code)
     - [Get Timezone and City Details from UN/LOCODE](#get-timezone-and-city-details-from-unlocode)
-
-12. [Timezone Converter Examples](#timezone-converter-examples)
+13. [Timezone Converter Examples](#timezone-converter-examples)
     - [Convert Current Time from One Timezone to Another](#convert-current-time-from-one-timezone-to-another)
-
-13. [User Agent API Examples](#user-agent-api-examples)
+14. [User Agent API Examples](#user-agent-api-examples)
     - [Parse a Basic User Agent String](#parse-a-basic-user-agent-string)
     - [Bulk User Agent Parsing Example](#bulk-user-agent-parsing-example)
-14. [Astronomy API Examples](#astronomy-api-examples)
+15. [Astronomy API Examples](#astronomy-api-examples)
     - [Lookup Astronomy by Coordinates](#lookup-astronomy-api-by-coordinates)
     - [Lookup Astronomy by IP Address](#lookup-astronomy-api-by-ip-address)
     - [Lookup Astronomy by Location String](#lookup-astronomy-api-by-location-string)
     - [Lookup Astronomy for Specific Date](#lookup-astronomy-api-for-a-specific-date)
     - [Lookup Location Info in Different Language](#lookup-location-info-in-different-language)
+16. [Documentation for Models](#documentation-for-models)
 
-15. [Documentation for Models](#documentation-for-models)
-
-# Requirements
+## Requirements
 
 - Python 3.9+
 - API Key from [IPGeolocation.io](https://ipgeolocation.io)
 
-# Installation
-## From PyPI
+## Installation
+### From PyPI
 
-You can install package directly using:
+You can install package directly from [![PyPI](https://badge.fury.io/py/ipgeolocationio.svg)](https://pypi.org/project/ipgeolocationio/) using:
 
 ```sh
 pip install ipgeolocationio
 ```
 (you may need to run `pip` with root permission: `sudo pip install ipgeolocationio`)
 
-## From GitHub
+### From GitHub
 
 ```sh
 python -m pip install git+https://github.com/IPGeolocation/ip-geolocation-api-python-sdk.git
@@ -110,7 +104,18 @@ Then import the package:
 import ipgeolocation
 ```
 
-# API Endpoints
+## API Plan Tiers and Documentation
+
+The documentation below corresponds to the four available API tier plans:
+
+- **Developer Plan** (Free): [Full Documentation](https://ipgeolocation.io/ip-location-api.html#Free)
+- **Standard Plan**: [Full Documentation](https://ipgeolocation.io/ip-location-api.html#Standard)
+- **Advance Plan**: [Full Documentation](https://ipgeolocation.io/ip-location-api.html#Advance)
+- **Security Plan**: [Full Documentation](https://ipgeolocation.io/ip-security-api.html#documentation-overview)
+
+For a detailed comparison of what each plan offers, visit the [Pricing Page](https://ipgeolocation.io/pricing.html).
+
+## API Endpoints
 
 All URIs are relative to *https://api.ipgeolocation.io/v2*
 
@@ -130,7 +135,7 @@ Class | Method | HTTP request | Description
 *UserAgentApi* | [**parse_user_agent_string**](docs/UserAgentApi.md#parse_user_agent_string) | **POST** /user-agent | Handle single User-Agent string
 *UserAgentApi* | [**parse_bulk_user_agent_strings**](docs/UserAgentApi.md#parse_bulk_user_agent_strings) | **POST** /user-agent-bulk | Handle multiple user-agent string lookups
 
-# Fields and Methods Availability
+## Fields and Methods Availability
 IP Geolocation offers four plans from billing point of view: **Free, Standard, Security, Advance**. The availability of each method calling
 from the respective class, over all plans are presented below. 
 
@@ -150,32 +155,21 @@ from the respective class, over all plans are presented below.
 | *UserAgentApi*      | [**parse_user_agent_string**](docs/UserAgentApi.md#parse_user_agent_string)                    |  ✔   |    ✔     |    ✔     |    ✔    |
 | *UserAgentApi*      | [**parse_bulk_user_agent_strings**](docs/UserAgentApi.md#parse_bulk_user_agent_strings)        |  ✖   |    ✔     |    ✔     |    ✔    |
 
-_Note: The availability of fields in every API endpoint across all API plans is provided in the **_Reference Table_** within 
-each respective API Documentation. e.g., for IPGeolocationApi, please visit https://ipgeolocation.io/ip-location-api.html#fields-reference._ 
+> **Note:** The availability of fields in every API endpoint across all API plans is provided in the **_Reference Table_** within 
+each respective API Documentation. e.g., for IPGeolocationApi, please visit https://ipgeolocation.io/ip-location-api.html#fields-reference. 
 
 ## Authentication Setup
 To authenticate API requests, you need to get an API key from [ipgeolocation.io](https://ipgeolocation.io/).
 
-## How to Get Your API Key
+### How to Get Your API Key
 
 1. **Sign up** here: [https://app.ipgeolocation.io/signup](https://app.ipgeolocation.io/signup)
 2. **(optional)** Verify your email, if you signed up using email.
 3. **Log in** to your account: [https://app.ipgeolocation.io/login](https://app.ipgeolocation.io/login)  
 4. After logging in, navigate to your **Dashboard** to find your API key: [https://app.ipgeolocation.io/dashboard](https://app.ipgeolocation.io/dashboard)
 
-## API Plan Tiers and Documentation
-
-The documentation below corresponds to the four available API tier plans:
-
-- **Developer Plan** (Free): [Full Documentation](https://ipgeolocation.io/ip-location-api.html#Free)
-- **Standard Plan**: [Full Documentation](https://ipgeolocation.io/ip-location-api.html#Standard)
-- **Advance Plan**: [Full Documentation](https://ipgeolocation.io/ip-location-api.html#Advance)
-- **Security Plan**: [Full Documentation](https://ipgeolocation.io/ip-security-api.html#documentation-overview)
-
-For a detailed comparison of what each plan offers, visit the [Pricing Page](https://ipgeolocation.io/pricing.html).
-
 <a id="ApiKeyAuth"></a>
-## ApiKeyAuth
+### ApiKeyAuth
 Once you've obtained the api key, configure your API client as follows:
 
 The client must configure the authentication and authorization parameters in accordance with the API server security 
@@ -196,43 +190,40 @@ configuration = ipgeolocation.Configuration(
 configuration.api_key['ApiKeyAuth'] = os.getenv("API_KEY")
 ```
 
-_**Note:**_ Uncomment the `dotenv` part, if you placed the API_KEY in `.env` file. 
+> **Note:** Uncomment the `dotenv` part, if you placed the API_KEY in `.env` file. 
 
-### Tests
+## Tests
 
 Set the environment variable for `API_KEY` or specify in `.env` file and execute `pytest` to run the tests.
-
-# Example Usage
 
 ## IP Geolocation Examples
 
 This section provides usage examples of the `get_ip_geolocation()` method from the package across **Free**, **Standard**, and **Advanced** subscription tiers. Each example highlights different combinations of parameters: `fields`, `include`, and `excludes`.
 
-### Parameters
+**Parameters**
 
-#### `fields`
+- `fields`
 Use this parameter to include specific fields in the response.
 
-#### `excludes`
+- `excludes`
 Use this parameter to omit specific fields from the response.
 
-#### `include`
-Use this parameter to add optional modules to the response, such as:
-- `security`
-- `user_agent`
-- `hostname`
-- `liveHostname`
-- `hostnameFallbackLive`
-- `abuse`
-- `dma`
-- `time_zone`
-
+- `include`
+  Use this parameter to add optional modules to the response, such as:
+  - `security`
+  - `user_agent`
+  - `hostname`
+  - `liveHostname`
+  - `hostnameFallbackLive`
+  - `abuse`
+  - `dma`
+  - `time_zone`
 
 For complete details, refer to the official documentation: [IP Geolocation API Documentation](https://ipgeolocation.io/ip-location-api.html#documentation-overview)
 
 The `ip` parameter in the package can accept any valid IPv4 address, IPv6 address, or domain name. If `ip=` the parameter is omitted, the API will return information about the public IP address of the device or server where the package is executing.
 
-### 1. Developer Plan Examples
+### Developer Plan Examples
 
 #### Default Fields
 ```python
@@ -299,7 +290,7 @@ Sample Response:
               'state_prov': 'Queensland',
               'zipcode': '4101'}}
 ```
-### 2. Standard Plan Examples
+### Standard Plan Examples
 #### Default Fields
 
 ```python
@@ -339,7 +330,7 @@ Sample Response:
              'company': {'name': 'Google LLC'}}}
 ```
 
-### Retrieving Geolocation Data in Multiple Languages
+#### Retrieving Geolocation Data in Multiple Languages
 Here is an example to get the geolocation data for IP address '2001:4230:4890::1' in French language:
 ```python
 with ipgeolocation.ApiClient(configuration) as client:
@@ -427,7 +418,7 @@ The IP Geolocation API supports hostname lookup for all paid subscriptions. Howe
 - `liveHostname`: Queries live sources for accurate hostname resolution. This may increase response time.
 - `hostnameFallbackLive`: Attempts the internal database first, and falls back to live sources if no result is found. This option provides a balance of speed and reliability.
 
-### 3. Advanced Plan Examples
+### Advanced Plan Examples
 #### Include DMA, Abuse and Security
 
 ```python
@@ -505,9 +496,9 @@ Sample Response:
 
 These examples demonstrate typical usage of the IP Geolocation API with different subscription tiers. Use `fields` to specify exactly which data to receive, `include` for optional data like security and user agent, and `excludes` to omit specific keys from the response.
 
-**Note:** All features available in the Free plan are also included in the Standard and Advanced plans. Similarly, all features of the Standard plan are available in the Advanced plan.
+> **Note:** All features available in the Free plan are also included in the Standard and Advanced plans. Similarly, all features of the Standard plan are available in the Advanced plan.
 
-## Bulk IP Geolocation Example
+### Bulk IP Geolocation Example
 The Package also supports bulk IP geolocation requests using the `get_bulk_ip_geolocation()` method. All parameters like `fields`, `include`, and `excludes` can also be used in bulk requests.
 ```python
 with ipgeolocation.ApiClient(configuration) as client:
@@ -655,7 +646,7 @@ Sample Response:
               'is_spam': False,
               'is_tor': False}}
 ```
-## Bulk IP Security Request
+### Bulk IP Security Request
 The SDK also supports bulk IP Security requests using the `get_bulk_ip_security_info()` method. All parameters like `fields`, `include`, and `excludes` can also be used in bulk requests.
 ```python
 with ipgeolocation.ApiClient(configuration) as client:
@@ -669,7 +660,7 @@ with ipgeolocation.ApiClient(configuration) as client:
 
 This section provides usage examples of the `get_asn_info()` method from the SDK. These methods allow developers to retrieve detailed ASN-level network data either by ASN number or by IP address.
 
-> **Note**: ASN API is only available in the Advanced Plan
+> **Note:** ASN API is only available in the Advanced Plan
 
 Refer to the [ASN API documentation](https://ipgeolocation.io/asn-api.html#documentation-overview) for a detailed list of supported fields and behaviors.
 
@@ -773,7 +764,7 @@ Sample Response:
 ```
 ## Abuse Contact API Examples
 This section demonstrates how to use the `get_abuse_contact_info()` method of the AbuseContact API. This API helps security teams, hosting providers, and compliance professionals quickly identify the correct abuse reporting contacts for any IPv4 or IPv6 address. You can retrieve data like the responsible organization, role, contact emails, phone numbers, and address to take appropriate mitigation action against abusive or malicious activity.
-> **Note**: Abuse Contact API is only available in the Advanced Plan
+> **Note:**: Abuse Contact API is only available in the Advanced Plan
 
 Refer to the official [Abuse Contact API documentation](https://ipgeolocation.io/ip-abuse-contact-api.html#documentation-overview) for details on all available fields.
 ### Lookup Abuse Contact by IP
@@ -1488,51 +1479,49 @@ Sample Response:
 ```
 
 ## Documentation For Models
-
- - [ASNConnection](docs/ASNConnection.md)
- - [ASNResponse](docs/ASNResponse.md)
- - [ASNDetails](docs/ASNDetails.md)
- - [Abuse](docs/Abuse.md)
- - [AbuseResponse](docs/AbuseResponse.md)
- - [Astronomy](docs/Astronomy.md)
- - [AstronomyEvening](docs/AstronomyEvening.md)
- - [AstronomyLocation](docs/AstronomyLocation.md)
- - [AstronomyMorning](docs/AstronomyMorning.md)
- - [AstronomyResponse](docs/AstronomyResponse.md)
- - [CountryMetadata](docs/CountryMetadata.md)
- - [Currency](docs/Currency.md)
- - [ErrorResponse](docs/ErrorResponse.md)
- - [GeolocationResponse](docs/GeolocationResponse.md)
- - [GetBulkIpGeolocationResponse](docs/GetBulkIpGeolocationResponse.md)
- - [GetBulkIpGeolocationRequest](docs/GetBulkIpGeolocationRequest.md)
- - [GetBulkIpSecurityInfoResponse](docs/GetBulkIpSecurityInfoResponse.md)
- - [Location](docs/Location.md)
- - [LocationMinimal](docs/LocationMinimal.md)
- - [Network](docs/Network.md)
- - [NetworkAsn](docs/NetworkAsn.md)
- - [NetworkCompany](docs/NetworkCompany.md)
- - [NetworkMinimal](docs/NetworkMinimal.md)
- - [NetworkMinimalAsn](docs/NetworkMinimalAsn.md)
- - [NetworkMinimalCompany](docs/NetworkMinimalCompany.md)
- - [ParseBulkUserAgentStringsRequest](docs/ParseBulkUserAgentStringsRequest.md)
- - [ParseUserAgentStringRequest](docs/ParseUserAgentStringRequest.md)
- - [Security](docs/Security.md)
- - [IPSecurityAPIResponse](docs/IPSecurityAPIResponse.md)
- - [TimeConversionResponse](docs/TimeConversionResponse.md)
- - [TimeSeries](docs/TimeSeries.md)
- - [TimeZone](docs/TimeZone.md)
- - [TimeZoneDetailedResponse](docs/TimeZoneDetailedResponse.md)
- - [TimeZoneDstEnd](docs/TimeZoneDstEnd.md)
- - [TimeZoneDstStart](docs/TimeZoneDstStart.md)
- - [TimezoneAirport](docs/TimezoneAirport.md)
- - [TimezoneDetail](docs/TimezoneDetail.md)
- - [TimezoneDetailDstEnd](docs/TimezoneDetailDstEnd.md)
- - [TimezoneDetailDstStart](docs/TimezoneDetailDstStart.md)
- - [TimezoneLocation](docs/TimezoneLocation.md)
- - [TimezoneLocode](docs/TimezoneLocode.md)
- - [UserAgentData](docs/UserAgentData.md)
- - [UserAgentDataDevice](docs/UserAgentDataDevice.md)
- - [UserAgentDataEngine](docs/UserAgentDataEngine.md)
- - [UserAgentDataOperatingSystem](docs/UserAgentDataOperatingSystem.md)
-
+- [ASNConnection](https://github.com/IPGeolocation/ip-geolocation-api-python-sdk/blob/master/docs/ASNConnection.md)
+- [ASNResponse](https://github.com/IPGeolocation/ip-geolocation-api-python-sdk/blob/master/docs/ASNResponse.md)
+- [ASNDetails](https://github.com/IPGeolocation/ip-geolocation-api-python-sdk/blob/master/docs/ASNDetails.md)
+- [Abuse](https://github.com/IPGeolocation/ip-geolocation-api-python-sdk/blob/master/docs/Abuse.md)
+- [AbuseResponse](https://github.com/IPGeolocation/ip-geolocation-api-python-sdk/blob/master/docs/AbuseResponse.md)
+- [Astronomy](https://github.com/IPGeolocation/ip-geolocation-api-python-sdk/blob/master/docs/Astronomy.md)
+- [AstronomyEvening](https://github.com/IPGeolocation/ip-geolocation-api-python-sdk/blob/master/docs/AstronomyEvening.md)
+- [AstronomyLocation](https://github.com/IPGeolocation/ip-geolocation-api-python-sdk/blob/master/docs/AstronomyLocation.md)
+- [AstronomyMorning](https://github.com/IPGeolocation/ip-geolocation-api-python-sdk/blob/master/docs/AstronomyMorning.md)
+- [AstronomyResponse](https://github.com/IPGeolocation/ip-geolocation-api-python-sdk/blob/master/docs/AstronomyResponse.md)
+- [CountryMetadata](https://github.com/IPGeolocation/ip-geolocation-api-python-sdk/blob/master/docs/CountryMetadata.md)
+- [Currency](https://github.com/IPGeolocation/ip-geolocation-api-python-sdk/blob/master/docs/Currency.md)
+- [ErrorResponse](https://github.com/IPGeolocation/ip-geolocation-api-python-sdk/blob/master/docs/ErrorResponse.md)
+- [GeolocationResponse](https://github.com/IPGeolocation/ip-geolocation-api-python-sdk/blob/master/docs/GeolocationResponse.md)
+- [GetBulkIpGeolocationResponse](https://github.com/IPGeolocation/ip-geolocation-api-python-sdk/blob/master/docs/GetBulkIpGeolocationResponse.md)
+- [GetBulkIpGeolocationRequest](https://github.com/IPGeolocation/ip-geolocation-api-python-sdk/blob/master/docs/GetBulkIpGeolocationRequest.md)
+- [GetBulkIpSecurityInfoResponse](https://github.com/IPGeolocation/ip-geolocation-api-python-sdk/blob/master/docs/GetBulkIpSecurityInfoResponse.md)
+- [Location](https://github.com/IPGeolocation/ip-geolocation-api-python-sdk/blob/master/docs/Location.md)
+- [LocationMinimal](https://github.com/IPGeolocation/ip-geolocation-api-python-sdk/blob/master/docs/LocationMinimal.md)
+- [Network](https://github.com/IPGeolocation/ip-geolocation-api-python-sdk/blob/master/docs/Network.md)
+- [NetworkAsn](https://github.com/IPGeolocation/ip-geolocation-api-python-sdk/blob/master/docs/NetworkAsn.md)
+- [NetworkCompany](https://github.com/IPGeolocation/ip-geolocation-api-python-sdk/blob/master/docs/NetworkCompany.md)
+- [NetworkMinimal](https://github.com/IPGeolocation/ip-geolocation-api-python-sdk/blob/master/docs/NetworkMinimal.md)
+- [NetworkMinimalAsn](https://github.com/IPGeolocation/ip-geolocation-api-python-sdk/blob/master/docs/NetworkMinimalAsn.md)
+- [NetworkMinimalCompany](https://github.com/IPGeolocation/ip-geolocation-api-python-sdk/blob/master/docs/NetworkMinimalCompany.md)
+- [ParseBulkUserAgentStringsRequest](https://github.com/IPGeolocation/ip-geolocation-api-python-sdk/blob/master/docs/ParseBulkUserAgentStringsRequest.md)
+- [ParseUserAgentStringRequest](https://github.com/IPGeolocation/ip-geolocation-api-python-sdk/blob/master/docs/ParseUserAgentStringRequest.md)
+- [Security](https://github.com/IPGeolocation/ip-geolocation-api-python-sdk/blob/master/docs/Security.md)
+- [IPSecurityAPIResponse](https://github.com/IPGeolocation/ip-geolocation-api-python-sdk/blob/master/docs/IPSecurityAPIResponse.md)
+- [TimeConversionResponse](https://github.com/IPGeolocation/ip-geolocation-api-python-sdk/blob/master/docs/TimeConversionResponse.md)
+- [TimeSeries](https://github.com/IPGeolocation/ip-geolocation-api-python-sdk/blob/master/docs/TimeSeries.md)
+- [TimeZone](https://github.com/IPGeolocation/ip-geolocation-api-python-sdk/blob/master/docs/TimeZone.md)
+- [TimeZoneDetailedResponse](https://github.com/IPGeolocation/ip-geolocation-api-python-sdk/blob/master/docs/TimeZoneDetailedResponse.md)
+- [TimeZoneDstEnd](https://github.com/IPGeolocation/ip-geolocation-api-python-sdk/blob/master/docs/TimeZoneDstEnd.md)
+- [TimeZoneDstStart](https://github.com/IPGeolocation/ip-geolocation-api-python-sdk/blob/master/docs/TimeZoneDstStart.md)
+- [TimezoneAirport](https://github.com/IPGeolocation/ip-geolocation-api-python-sdk/blob/master/docs/TimezoneAirport.md)
+- [TimezoneDetail](https://github.com/IPGeolocation/ip-geolocation-api-python-sdk/blob/master/docs/TimezoneDetail.md)
+- [TimezoneDetailDstEnd](https://github.com/IPGeolocation/ip-geolocation-api-python-sdk/blob/master/docs/TimezoneDetailDstEnd.md)
+- [TimezoneDetailDstStart](https://github.com/IPGeolocation/ip-geolocation-api-python-sdk/blob/master/docs/TimezoneDetailDstStart.md)
+- [TimezoneLocation](https://github.com/IPGeolocation/ip-geolocation-api-python-sdk/blob/master/docs/TimezoneLocation.md)
+- [TimezoneLocode](https://github.com/IPGeolocation/ip-geolocation-api-python-sdk/blob/master/docs/TimezoneLocode.md)
+- [UserAgentData](https://github.com/IPGeolocation/ip-geolocation-api-python-sdk/blob/master/docs/UserAgentData.md)
+- [UserAgentDataDevice](https://github.com/IPGeolocation/ip-geolocation-api-python-sdk/blob/master/docs/UserAgentDataDevice.md)
+- [UserAgentDataEngine](https://github.com/IPGeolocation/ip-geolocation-api-python-sdk/blob/master/docs/UserAgentDataEngine.md)
+- [UserAgentDataOperatingSystem](https://github.com/IPGeolocation/ip-geolocation-api-python-sdk/blob/master/docs/UserAgentDataOperatingSystem.md)
 
