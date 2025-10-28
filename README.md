@@ -45,7 +45,7 @@ Based on:
    - [Advanced Plan Examples](#advanced-plan-examples)
    - [Bulk IP Geolocation Example](#bulk-ip-geolocation-example)
 9. [IP Security Examples](#ip-security-examples)
-   - [Basic Request](#basic-request-minimal-setup)
+   - [Get Default Fields](#get-default-fields-2)
    - [Include Multiple Optional Fields](#include-multiple-optional-fields)
    - [Request with Field Filtering](#request-with-field-filtering)
    - [Bulk IP Security Request](#bulk-ip-security-request)
@@ -225,7 +225,7 @@ The `ip` parameter in the package can accept any valid IPv4 address, IPv6 addres
 
 ### Developer Plan Examples
 
-#### Default Fields
+#### Get Default Fields
 ```python
 import ipgeolocation
 from pprint import pprint
@@ -291,7 +291,7 @@ Sample Response:
               'zipcode': '4101'}}
 ```
 ### Standard Plan Examples
-#### Default Fields
+#### Get Default Fields
 
 ```python
 with ipgeolocation.ApiClient(configuration) as client:
@@ -517,7 +517,7 @@ For full API specifications, refer to the [official IP Security API documentatio
 
 ---
 
-### Basic Request (Minimal Setup)
+### Get Default Fields
 
 ```python
 with ipgeolocation.ApiClient(configuration) as client:
