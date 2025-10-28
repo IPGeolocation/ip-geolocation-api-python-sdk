@@ -27,6 +27,10 @@ time zones and currencies, the library ensures seamless, scalable integration wi
 Based on:
 - API version: 2.0.0
 
+**Official Release:**
+- Available on [**PyPI**](https://pypi.org/project/ipgeolocationio/)  
+- Source Code: [**GitHub Repository**](https://github.com/your-org/ipgeolocationio-python-sdk)
+
 ## Table of Contents
 1. [Requirements](#requirements)
 2. [Installation](#installation)
