@@ -29,7 +29,7 @@ Based on:
 
 **Official Release:**
 - Available on [**PyPI**](https://pypi.org/project/ipgeolocationio/)  
-- Source Code: [**GitHub Repository**](https://github.com/your-org/ipgeolocationio-python-sdk)
+- Source Code: [**GitHub Repository**](https://github.com/IPGeolocation/ip-geolocation-api-python-sdk)
 
 ## Table of Contents
 1. [Requirements](#requirements)
