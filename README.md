@@ -240,30 +240,42 @@ with ipgeolocation.ApiClient(configuration) as client:
     pprint(response.to_dict()) 
 ```
 Sample Response:
-```text
-{'country_metadata': {'calling_code': '+61',
-                      'languages': ['en-AU'],
-                      'tld': '.au'},
- 'currency': {'code': 'AUD', 'name': 'Australian Dollar', 'symbol': 'A$'},
- 'ip': '1.1.1.1',
- 'location': {'city': 'South Brisbane',
-              'continent_code': 'OC',
-              'continent_name': 'Oceania',
-              'country_capital': 'Canberra',
-              'country_code2': 'AU',
-              'country_code3': 'AUS',
-              'country_emoji': '🇦🇺',
-              'country_flag': 'https://ipgeolocation.io/static/flags/au_64.png',
-              'country_name': 'Australia',
-              'country_name_official': 'Commonwealth of Australia',
-              'district': 'Brisbane',
-              'geoname_id': '10113228',
-              'is_eu': False,
-              'latitude': '-27.47306',
-              'longitude': '153.01421',
-              'state_code': 'AU-QLD',
-              'state_prov': 'Queensland',
-              'zipcode': '4101'}}
+```json
+{
+  "ip": "1.1.1.1",
+  "location": {
+    "continent_code": "OC",
+    "continent_name": "Oceania",
+    "country_code2": "AU",
+    "country_code3": "AUS",
+    "country_name": "Australia",
+    "country_name_official": "Commonwealth of Australia",
+    "country_capital": "Canberra",
+    "state_prov": "Queensland",
+    "state_code": "AU-QLD",
+    "district": "Brisbane",
+    "city": "South Brisbane",
+    "zipcode": "4101",
+    "latitude": "-27.47306",
+    "longitude": "153.01421",
+    "is_eu": false,
+    "country_flag": "https://ipgeolocation.io/static/flags/au_64.png",
+    "geoname_id": "10113228",
+    "country_emoji": "🇦🇺"
+  },
+  "country_metadata": {
+    "calling_code": "+61",
+    "tld": ".au",
+    "languages": [
+      "en-AU"
+    ]
+  },
+  "currency": {
+    "code": "AUD",
+    "name": "Australian Dollar",
+    "symbol": "A$"
+  }
+}
 ```
 
 Filtering Specific Fields from the Response (Use of 'exclude' and 'fields')
@@ -275,24 +287,28 @@ with ipgeolocation.ApiClient(configuration) as client:
 ```
 
 Sample Response:
-```text
-{'ip': '1.1.1.1',
- 'location': {'city': 'South Brisbane',
-              'country_capital': 'Canberra',
-              'country_code2': 'AU',
-              'country_code3': 'AUS',
-              'country_emoji': '🇦🇺',
-              'country_flag': 'https://ipgeolocation.io/static/flags/au_64.png',
-              'country_name': 'Australia',
-              'country_name_official': 'Commonwealth of Australia',
-              'district': 'Brisbane',
-              'geoname_id': '10113228',
-              'is_eu': False,
-              'latitude': '-27.47306',
-              'longitude': '153.01421',
-              'state_code': 'AU-QLD',
-              'state_prov': 'Queensland',
-              'zipcode': '4101'}}
+```json
+{
+  "ip": "1.1.1.1",
+  "location": {
+    "country_code2": "AU",
+    "country_code3": "AUS",
+    "country_name": "Australia",
+    "country_name_official": "Commonwealth of Australia",
+    "country_capital": "Canberra",
+    "state_prov": "Queensland",
+    "state_code": "AU-QLD",
+    "district": "Brisbane",
+    "city": "South Brisbane",
+    "zipcode": "4101",
+    "latitude": "-27.47306",
+    "longitude": "153.01421",
+    "is_eu": false,
+    "country_flag": "https://ipgeolocation.io/static/flags/au_64.png",
+    "geoname_id": "10113228",
+    "country_emoji": "🇦🇺"
+  }
+}
 ```
 ### Standard Plan Examples
 #### Get Default Fields
@@ -304,34 +320,55 @@ with ipgeolocation.ApiClient(configuration) as client:
     pprint(response.to_json())
 ```
 Sample Response:
-```text
-{'country_metadata': {'calling_code': '+1',
-                      'languages': ['en-US', 'es-US', 'haw', 'fr'],
-                      'tld': '.us'},
- 'currency': {'code': 'USD', 'name': 'US Dollar', 'symbol': '$'},
- 'ip': '8.8.8.8',
- 'location': {'city': 'Mountain View',
-              'continent_code': 'NA',
-              'continent_name': 'North America',
-              'country_capital': 'Washington, D.C.',
-              'country_code2': 'US',
-              'country_code3': 'USA',
-              'country_emoji': '🇺🇸',
-              'country_flag': 'https://ipgeolocation.io/static/flags/us_64.png',
-              'country_name': 'United States',
-              'country_name_official': 'United States of America',
-              'district': 'Santa Clara',
-              'geoname_id': '6301403',
-              'is_eu': False,
-              'latitude': '37.42240',
-              'longitude': '-122.08421',
-              'state_code': 'US-CA',
-              'state_prov': 'California',
-              'zipcode': '94043-1351'},
- 'network': {'asn': {'as_number': 'AS15169',
-                     'country': 'US',
-                     'organization': 'Google LLC'},
-             'company': {'name': 'Google LLC'}}}
+```json
+{
+  "ip": "8.8.8.8",
+  "location": {
+    "continent_code": "NA",
+    "continent_name": "North America",
+    "country_code2": "US",
+    "country_code3": "USA",
+    "country_name": "United States",
+    "country_name_official": "United States of America",
+    "country_capital": "Washington, D.C.",
+    "state_prov": "California",
+    "state_code": "US-CA",
+    "district": "Santa Clara",
+    "city": "Mountain View",
+    "zipcode": "94043-1351",
+    "latitude": "37.42240",
+    "longitude": "-122.08421",
+    "is_eu": false,
+    "country_flag": "https://ipgeolocation.io/static/flags/us_64.png",
+    "geoname_id": "6301403",
+    "country_emoji": "🇺🇸"
+  },
+  "country_metadata": {
+    "calling_code": "+1",
+    "tld": ".us",
+    "languages": [
+      "en-US",
+      "es-US",
+      "haw",
+      "fr"
+    ]
+  },
+  "network": {
+    "asn": {
+      "as_number": "AS15169",
+      "organization": "Google LLC",
+      "country": "US"
+    },
+    "company": {
+      "name": "Google LLC"
+    }
+  },
+  "currency": {
+    "code": "USD",
+    "name": "US Dollar",
+    "symbol": "$"
+  }
+}
 ```
 
 #### Retrieving Geolocation Data in Multiple Languages
@@ -343,33 +380,54 @@ with ipgeolocation.ApiClient(configuration) as client:
     pprint(response.to_dict())
 ```
 Sample Response:
-```text
-{'country_metadata': {'calling_code': '+230',
-                      'languages': ['en-MU', 'bho', 'fr'],
-                      'tld': '.mu'},
- 'currency': {'code': 'MUR', 'name': 'Mauritius Rupee', 'symbol': '₨'},
- 'ip': '2001:4230:4890:0:0:0:0:1',
- 'location': {'city': 'Quatre Bornes',
-              'continent_code': 'AF',
-              'continent_name': 'Afrique',
-              'country_capital': 'Port Louis',
-              'country_code2': 'MU',
-              'country_code3': 'MUS',
-              'country_emoji': '🇲🇺',
-              'country_flag': 'https://ipgeolocation.io/static/flags/mu_64.png',
-              'country_name': 'Maurice',
-              'country_name_official': '',
-              'district': 'Quatre Bornes',
-              'geoname_id': '1106777',
-              'is_eu': False,
-              'latitude': '-20.24304',
-              'longitude': '57.49631',
-              'state_code': 'MU-PW',
-              'state_prov': 'Wilhems des plaines',
-              'zipcode': '72201'},
- 'network': {'asn': {'as_number': 'AS0', 'country': '', 'organization': ''},
-             'company': {'name': 'African Network Information Center AfriNIC '
-                                 'Ltd'}}}
+```json
+{
+  "ip": "2001:4230:4890:0:0:0:0:1",
+  "location": {
+    "continent_code": "AF",
+    "continent_name": "Afrique",
+    "country_code2": "MU",
+    "country_code3": "MUS",
+    "country_name": "Maurice",
+    "country_name_official": "",
+    "country_capital": "Port Louis",
+    "state_prov": "Wilhems des plaines",
+    "state_code": "MU-PW",
+    "district": "Quatre Bornes",
+    "city": "Quatre Bornes",
+    "zipcode": "72201",
+    "latitude": "-20.24304",
+    "longitude": "57.49631",
+    "is_eu": false,
+    "country_flag": "https://ipgeolocation.io/static/flags/mu_64.png",
+    "geoname_id": "1106777",
+    "country_emoji": "🇲🇺"
+  },
+  "country_metadata": {
+    "calling_code": "+230",
+    "tld": ".mu",
+    "languages": [
+      "en-MU",
+      "bho",
+      "fr"
+    ]
+  },
+  "network": {
+    "asn": {
+      "as_number": "AS52095",
+      "organization": "Netassist International s.r.o.",
+      "country": "CZ"
+    },
+    "company": {
+      "name": "African Network Information Center AfriNIC Ltd"
+    }
+  },
+  "currency": {
+    "code": "MUR",
+    "name": "Mauritius Rupee",
+    "symbol": "₨"
+  }
+}
 ```
 
 #### Include HostName, Timezone and User-Agent
@@ -381,38 +439,53 @@ with ipgeolocation.ApiClient(configuration) as client:
     pprint(response.to_dict())
 ```
 Sample Response:
-```text
-{'hostname': 'public-vpn-13-15.vpngate.v4.open.ad.jp',
- 'ip': '219.100.37.207',
- 'location': {'country_capital': 'Tokyo', 'country_name': 'Japan'},
- 'time_zone': {'current_time': '2025-08-07 18:47:11.809+0900',
-               'current_time_unix': 1754560031.809,
-               'dst_end': {},
-               'dst_exists': False,
-               'dst_savings': 0,
-               'dst_start': {},
-               'is_dst': False,
-               'name': 'Asia/Tokyo',
-               'offset': 9,
-               'offset_with_dst': 9},
- 'user_agent': {'device': {'brand': 'Unknown',
-                           'cpu': 'Unknown',
-                           'name': 'Unknown',
-                           'type': 'Unknown'},
-                'engine': {'name': 'Unknown',
-                           'type': 'Unknown',
-                           'version': '??',
-                           'version_major': '??'},
-                'name': 'IPGeolocation-API',
-                'operating_system': {'build': '??',
-                                     'name': 'Unknown',
-                                     'type': 'Unknown',
-                                     'version': '??',
-                                     'version_major': '??'},
-                'type': 'Special',
-                'user_agent_string': 'IPGeolocation-API/1.0.0/python',
-                'version': '1.0.0',
-                'version_major': '1'}}
+```json
+{
+  "ip": "219.100.37.207",
+  "hostname": "public-vpn-13-15.vpngate.v4.open.ad.jp",
+  "location": {
+    "country_name": "Japan",
+    "country_capital": "Tokyo"
+  },
+  "time_zone": {
+    "name": "Asia/Tokyo",
+    "offset": 9,
+    "offset_with_dst": 9,
+    "current_time": "2025-10-29 20:55:57.268+0900",
+    "current_time_unix": 1761738957.268,
+    "is_dst": false,
+    "dst_savings": 0,
+    "dst_exists": false,
+    "dst_start": {},
+    "dst_end": {}
+  },
+  "user_agent": {
+    "user_agent_string": "IPGeolocation-API/1.0.0/python",
+    "name": "IPGeolocation-API",
+    "type": "Special",
+    "version": "1.0.0",
+    "version_major": "1",
+    "device": {
+      "name": "Unknown",
+      "type": "Unknown",
+      "brand": "Unknown",
+      "cpu": "Unknown"
+    },
+    "engine": {
+      "name": "Unknown",
+      "type": "Unknown",
+      "version": "??",
+      "version_major": "??"
+    },
+    "operating_system": {
+      "name": "Unknown",
+      "type": "Unknown",
+      "version": "??",
+      "version_major": "??",
+      "build": "??"
+    }
+  }
+}
 ```
 **Note on Hostname Parameters**
 
@@ -433,69 +506,96 @@ with ipgeolocation.ApiClient(configuration) as client:
     pprint(response.to_dict())
 ```
 Sample Response:
-```text
-{'abuse': {'address': '1600 Amphitheatre Parkway\n'
-                      'Mountain View\n'
-                      'CA\n'
-                      '94043\n'
-                      'United States',
-           'country': '',
-           'emails': ['network-abuse@google.com'],
-           'handle': 'ABUSE5250-ARIN',
-           'kind': 'group',
-           'name': 'Abuse',
-           'organization': 'Abuse',
-           'phone_numbers': ['+1-650-253-0000'],
-           'role': 'abuse',
-           'route': '8.8.8.0/24'},
- 'country_metadata': {'calling_code': '+1',
-                      'languages': ['en-US', 'es-US', 'haw', 'fr'],
-                      'tld': '.us'},
- 'currency': {'code': 'USD', 'name': 'US Dollar', 'symbol': '$'},
- 'ip': '8.8.8.8',
- 'location': {'accuracy_radius': '',
-              'city': 'Mountain View',
-              'continent_code': 'NA',
-              'continent_name': 'North America',
-              'country_capital': 'Washington, D.C.',
-              'country_code2': 'US',
-              'country_code3': 'USA',
-              'country_name': 'United States',
-              'country_name_official': 'United States of America',
-              'district': 'Santa Clara',
-              'dma_code': '807',
-              'geoname_id': '6301403',
-              'is_eu': False,
-              'latitude': '37.42240',
-              'locality': 'Mountain View',
-              'longitude': '-122.08421',
-              'state_code': 'US-CA',
-              'state_prov': 'California',
-              'zipcode': '94043-1351'},
- 'network': {'asn': {'allocation_status': 'assigned',
-                     'as_number': 'AS15169',
-                     'asn_name': 'GOOGLE',
-                     'country': 'US',
-                     'date_allocated': '',
-                     'domain': 'about.google',
-                     'num_of_ipv4_routes': '991',
-                     'num_of_ipv6_routes': '104',
-                     'organization': 'Google LLC',
-                     'rir': 'ARIN',
-                     'type': 'BUSINESS'},
-             'company': {'domain': '', 'name': 'Google LLC', 'type': ''},
-             'connection_type': ''},
- 'security': {'cloud_provider': '',
-              'is_anonymous': False,
-              'is_bot': False,
-              'is_cloud_provider': False,
-              'is_known_attacker': False,
-              'is_proxy': False,
-              'is_spam': False,
-              'is_tor': False,
-              'proxy_provider': '',
-              'proxy_type': '',
-              'threat_score': 0}}
+```json
+{
+  "ip": "8.8.8.8",
+  "location": {
+    "continent_code": "NA",
+    "continent_name": "North America",
+    "country_code2": "US",
+    "country_code3": "USA",
+    "country_name": "United States",
+    "country_name_official": "United States of America",
+    "country_capital": "Washington, D.C.",
+    "state_prov": "California",
+    "state_code": "US-CA",
+    "district": "Santa Clara",
+    "city": "Mountain View",
+    "zipcode": "94043-1351",
+    "latitude": "37.42240",
+    "longitude": "-122.08421",
+    "is_eu": false,
+    "geoname_id": "6301403",
+    "accuracy_radius": "25.388",
+    "locality": "Mountain View",
+    "dma_code": "807"
+  },
+  "country_metadata": {
+    "calling_code": "+1",
+    "tld": ".us",
+    "languages": [
+      "en-US",
+      "es-US",
+      "haw",
+      "fr"
+    ]
+  },
+  "network": {
+    "asn": {
+      "as_number": "AS15169",
+      "organization": "Google LLC",
+      "country": "US",
+      "asn_name": "GOOGLE",
+      "type": "BUSINESS",
+      "domain": "google.com",
+      "date_allocated": "",
+      "allocation_status": "",
+      "num_of_ipv4_routes": "1026",
+      "num_of_ipv6_routes": "106",
+      "rir": "ARIN"
+    },
+    "connection_type": "",
+    "company": {
+      "name": "Google LLC",
+      "type": "business",
+      "domain": "google.com"
+    }
+  },
+  "currency": {
+    "code": "USD",
+    "name": "US Dollar",
+    "symbol": "$"
+  },
+  "security": {
+    "threat_score": 0,
+    "is_tor": false,
+    "is_proxy": false,
+    "proxy_type": "",
+    "proxy_provider": "",
+    "is_anonymous": false,
+    "is_known_attacker": false,
+    "is_spam": false,
+    "is_bot": false,
+    "is_cloud_provider": false,
+    "cloud_provider": ""
+  },
+  "abuse": {
+    "route": "8.8.8.0/24",
+    "country": "",
+    "handle": "ABUSE5250-ARIN",
+    "name": "Abuse",
+    "organization": "Abuse",
+    "role": "abuse",
+    "kind": "group",
+    "address": "1600 Amphitheatre Parkway\nMountain View\nCA\n94043\nUnited States",
+    "emails": [
+      "network-abuse@google.com"
+    ],
+    "phone_numbers": [
+      "+1-650-253-0000"
+    ]
+  }
+}
 ```
 
 These examples demonstrate typical usage of the IP Geolocation API with different subscription tiers. Use `fields` to specify exactly which data to receive, `include` for optional data like security and user agent, and `excludes` to omit specific keys from the response.
@@ -531,19 +631,23 @@ with ipgeolocation.ApiClient(configuration) as client:
 ```
 
 Sample Response:
-```text
-{'ip': '2.56.188.34',
- 'security': {'cloud_provider': 'Packethub S.A.',
-              'is_anonymous': True,
-              'is_bot': False,
-              'is_cloud_provider': True,
-              'is_known_attacker': True,
-              'is_proxy': True,
-              'is_spam': False,
-              'is_tor': False,
-              'proxy_provider': 'Nord VPN',
-              'proxy_type': 'VPN',
-              'threat_score': 80}}
+```json
+{
+  "ip": "2.56.188.34",
+  "security": {
+    "threat_score": 80,
+    "is_tor": false,
+    "is_proxy": true,
+    "proxy_type": "VPN",
+    "proxy_provider": "Nord VPN",
+    "is_anonymous": true,
+    "is_known_attacker": true,
+    "is_spam": false,
+    "is_bot": false,
+    "is_cloud_provider": true,
+    "cloud_provider": "Packethub S.A."
+  }
+}
 ```
 
 ### Include Multiple Optional Fields
@@ -553,86 +657,7 @@ with ipgeolocation.ApiClient(configuration) as client:
     response = api_instance.get_ip_security_info(ip="2.56.188.34", include="location,network,currency,time_zone,user_agent,country_metadata,hostname")
     pprint(response.to_dict())
 ```
-Sample Response:
-```text
-{'country_metadata': {'calling_code': '+1',
-                      'languages': ['en-US', 'es-US', 'haw', 'fr'],
-                      'tld': '.us'},
- 'currency': {'code': 'USD', 'name': 'US Dollar', 'symbol': '$'},
- 'hostname': '2.56.188.34',
- 'ip': '2.56.188.34',
- 'location': {'city': 'Dallas',
-              'continent_code': 'NA',
-              'continent_name': 'North America',
-              'country_capital': 'Washington, D.C.',
-              'country_code2': 'US',
-              'country_code3': 'USA',
-              'country_emoji': '🇺🇸',
-              'country_flag': 'https://ipgeolocation.io/static/flags/us_64.png',
-              'country_name': 'United States',
-              'country_name_official': 'United States of America',
-              'district': 'Dallas',
-              'geoname_id': '4684902',
-              'is_eu': False,
-              'latitude': '32.77822',
-              'longitude': '-96.79512',
-              'state_code': 'US-TX',
-              'state_prov': 'Texas',
-              'zipcode': '75201'},
- 'network': {'asn': {'as_number': 'AS62240',
-                     'country': 'GB',
-                     'organization': 'Clouvider Limited'},
-             'company': {'name': 'Packethub S.A.'}},
- 'security': {'cloud_provider': 'Packethub S.A.',
-              'is_anonymous': True,
-              'is_bot': False,
-              'is_cloud_provider': True,
-              'is_known_attacker': True,
-              'is_proxy': True,
-              'is_spam': False,
-              'is_tor': False,
-              'proxy_provider': 'Nord VPN',
-              'proxy_type': 'VPN',
-              'threat_score': 80},
- 'time_zone': {'current_time': '2025-08-07 14:31:46.086-0500',
-               'current_time_unix': 1754595106.086,
-               'dst_end': {'date_time_after': '2025-11-02 TIME 01',
-                           'date_time_before': '2025-11-02 TIME 02',
-                           'duration': '-1H',
-                           'gap': False,
-                           'overlap': True,
-                           'utc_time': '2025-11-02 TIME 07'},
-               'dst_exists': True,
-               'dst_savings': 1,
-               'dst_start': {'date_time_after': '2025-03-09 TIME 03',
-                             'date_time_before': '2025-03-09 TIME 02',
-                             'duration': '+1H',
-                             'gap': True,
-                             'overlap': False,
-                             'utc_time': '2025-03-09 TIME 08'},
-               'is_dst': True,
-               'name': 'America/Chicago',
-               'offset': -6,
-               'offset_with_dst': -5},
- 'user_agent': {'device': {'brand': 'Unknown',
-                           'cpu': 'Unknown',
-                           'name': 'Unknown',
-                           'type': 'Unknown'},
-                'engine': {'name': 'Unknown',
-                           'type': 'Unknown',
-                           'version': '??',
-                           'version_major': '??'},
-                'name': 'IPGeolocation-API',
-                'operating_system': {'build': '??',
-                                     'name': 'Unknown',
-                                     'type': 'Unknown',
-                                     'version': '??',
-                                     'version_major': '??'},
-                'type': 'Special',
-                'user_agent_string': 'IPGeolocation-API/1.0.0/python',
-                'version': '1.0.0',
-                'version_major': '1'}}
-```
+> **Note**: You can get all the available fields in standard plan in combination with security data.
 
 ### Request with Field Filtering
 ```python
@@ -643,12 +668,16 @@ with ipgeolocation.ApiClient(configuration) as client:
     pprint(response.to_dict())
 ```
 Sample Response:
-```text
-{'ip': '195.154.221.54',
- 'security': {'is_bot': False,
-              'is_proxy': True,
-              'is_spam': False,
-              'is_tor': False}}
+```json
+{
+  "ip": "195.154.221.54",
+  "security": {
+    "is_tor": false,
+    "is_proxy": true,
+    "is_spam": false,
+    "is_bot": false
+  }
+}
 ```
 ### Bulk IP Security Request
 The SDK also supports bulk IP Security requests using the `get_bulk_ip_security_info()` method. All parameters like `fields`, `include`, and `excludes` can also be used in bulk requests.
@@ -676,19 +705,23 @@ with ipgeolocation.ApiClient(configuration) as client:
     pprint(response.to_dict())
 ```
 Sample Response:
-```text
-{'asn': {'allocation_status': 'assigned',
-         'as_number': 'AS15169',
-         'asn_name': 'GOOGLE',
-         'country': 'US',
-         'date_allocated': '',
-         'domain': 'about.google',
-         'num_of_ipv4_routes': '991',
-         'num_of_ipv6_routes': '104',
-         'organization': 'Google LLC',
-         'rir': 'ARIN',
-         'type': 'BUSINESS'},
- 'ip': '8.8.8.8'}
+```json
+{
+  "ip": "8.8.8.8",
+  "asn": {
+    "as_number": "AS15169",
+    "organization": "Google LLC",
+    "country": "US",
+    "asn_name": "GOOGLE",
+    "type": "BUSINESS",
+    "domain": "google.com",
+    "date_allocated": "",
+    "allocation_status": "",
+    "num_of_ipv4_routes": "1026",
+    "num_of_ipv6_routes": "106",
+    "rir": "ARIN"
+  }
+}
 ```
 
 ### Get ASN Information by ASN Number
@@ -699,18 +732,22 @@ with ipgeolocation.ApiClient(configuration) as client:
     pprint(response.to_dict())
 ```
 Sample Response:
-```text
-{'asn': {'allocation_status': 'assigned',
-         'as_number': 'AS15169',
-         'asn_name': 'GOOGLE',
-         'country': 'US',
-         'date_allocated': '',
-         'domain': 'about.google',
-         'num_of_ipv4_routes': '991',
-         'num_of_ipv6_routes': '104',
-         'organization': 'Google LLC',
-         'rir': 'ARIN',
-         'type': 'BUSINESS'}}
+```json
+{
+  "asn": {
+    "as_number": "AS15169",
+    "organization": "Google LLC",
+    "country": "US",
+    "asn_name": "GOOGLE",
+    "type": "BUSINESS",
+    "domain": "google.com",
+    "date_allocated": "",
+    "allocation_status": "",
+    "num_of_ipv4_routes": "1026",
+    "num_of_ipv6_routes": "106",
+    "rir": "ARIN"
+  }
+}
 ```
 
 ### Combine All objects using Include
@@ -718,53 +755,71 @@ Sample Response:
 ```python
 with ipgeolocation.ApiClient(configuration) as client:
     api_instance = ipgeolocation.ASNLookupApi(client)
-    response = api_instance.get_asn_info(asn=12,
+    response = api_instance.get_asn_info(asn="12",
                                          include="peers,downstreams,upstreams,routes,whois_response")
     pprint(response.to_dict())
 ```
 Sample Response:
-```text
-{'asn': {'allocation_status': 'assigned',
-         'as_number': 'AS12',
-         'asn_name': 'NYU-DOMAIN',
-         'country': 'US',
-         'date_allocated': '',
-         'domain': 'nyu.edu',
-         'downstreams': [{'as_number': 'AS394666',
-                          'country': 'US',
-                          'description': 'NYU Langone Health'},
-                         {'as_number': 'AS54965',
-                          'country': 'US',
-                          'description': 'Polytechnic Institute of NYU'}],
-         'num_of_ipv4_routes': '11',
-         'num_of_ipv6_routes': '1',
-         'organization': 'New York University',
-         'peers': [{'as_number': 'AS3269',
-                    'country': 'IT',
-                    'description': 'Telecom Italia S.p.A.'},
-                   ...
-                   {'as_number': 'AS54965',
-                    'country': 'US',
-                    'description': 'Polytechnic Institute of NYU'}],
-         'rir': 'ARIN',
-         'routes': ['192.76.177.0/24',
-                    ...
-                    '216.165.103.0/24'],
-         'type': 'EDUCATION',
-         'upstreams': [{'as_number': 'AS3269',
-                        'country': 'IT',
-                        'description': 'Telecom Italia S.p.A.'},
-                       ...
-                       {'as_number': 'AS137',
-                        'country': 'IT',
-                        'description': 'Consortium GARR'}],
-         'whois_response': '\n'
-                           '\n'
-                           'ASNumber:       12\n'
-                           'ASName:         NYU-DOMAIN\n'
-                           'ASHandle:       AS12\n'
-                           ...
-                           '#\n'}}
+```json
+{
+  "asn": {
+    "as_number": "AS12",
+    "organization": "New York University",
+    "country": "US",
+    "asn_name": "NYU-DOMAIN",
+    "type": "EDUCATION",
+    "domain": "nyu.edu",
+    "date_allocated": "",
+    "allocation_status": "",
+    "num_of_ipv4_routes": "11",
+    "num_of_ipv6_routes": "1",
+    "rir": "ARIN",
+    "routes": [
+      "192.76.177.0/24",
+      "...",
+      "216.165.103.0/24"
+    ],
+    "upstreams": [
+      {
+        "as_number": "AS3269",
+        "description": "Telecom Italia S.p.A.",
+        "country": "IT"
+      },
+      "...",
+      {
+        "as_number": "AS137",
+        "description": "Consortium GARR",
+        "country": "IT"
+      }
+    ],
+    "downstreams": [
+      {
+        "as_number": "AS394666",
+        "description": "NYU Langone Health",
+        "country": "US"
+      },
+      {
+        "as_number": "AS54965",
+        "description": "Polytechnic Institute of NYU",
+        "country": "US"
+      }
+    ],
+    "peers": [
+      {
+        "as_number": "AS3269",
+        "description": "Telecom Italia S.p.A.",
+        "country": "IT"
+      },
+      "...",
+      {
+        "as_number": "AS54965",
+        "description": "Polytechnic Institute of NYU",
+        "country": "US"
+      }
+    ],
+    "whois_response": "<raw-whois-response>"
+  }
+}
 ```
 ## Abuse Contact API Examples
 This section demonstrates how to use the `get_abuse_contact_info()` method of the AbuseContact API. This API helps security teams, hosting providers, and compliance professionals quickly identify the correct abuse reporting contacts for any IPv4 or IPv6 address. You can retrieve data like the responsible organization, role, contact emails, phone numbers, and address to take appropriate mitigation action against abusive or malicious activity.
@@ -779,18 +834,27 @@ with ipgeolocation.ApiClient(configuration) as client:
     pprint(response.to_dict())
 ```
 Sample Response:
-```text
-{'abuse': {'address': 'No.31 ,jingrong street,beijing\n100032',
-           'country': 'CN',
-           'emails': ['anti-spam@chinatelecom.cn'],
-           'handle': 'IRT-CHINANET-CN',
-           'kind': 'group',
-           'name': 'IRT-CHINANET-CN',
-           'organization': '',
-           'phone_numbers': ['+86-591-83371954', ' +86-591-83309761'],
-           'role': 'abuse',
-           'route': '1.0.1.0/24'},
- 'ip': '1.0.1.0'}
+```json
+{
+  "ip": "1.0.1.0",
+  "abuse": {
+    "route": "1.0.1.0/24",
+    "country": "CN",
+    "handle": "IRT-CHINANET-CN",
+    "name": "IRT-CHINANET-CN",
+    "organization": "",
+    "role": "abuse",
+    "kind": "group",
+    "address": "No.31 ,jingrong street,beijing\n100032",
+    "emails": [
+      "anti-spam@chinatelecom.cn"
+    ],
+    "phone_numbers": [
+      "+86-591-83371954",
+      " +86-591-83309761"
+    ]
+  }
+}
 ```
 ### Lookup Abuse Contact with Specific Fields
 ```python
@@ -800,10 +864,16 @@ with ipgeolocation.ApiClient(configuration) as client:
     pprint(response.to_dict())
 ```
 Sample Response:
-```text
-{'abuse': {'emails': ['abuse@kcell.kz'], 
-            'role': 'abuse'}, 
-'ip': '2.76.19.0'}
+```json
+{
+  "ip": "2.76.19.0",
+  "abuse": {
+    "role": "abuse",
+    "emails": [
+      "abuse@kcell.kz"
+    ]
+  }
+}
 ```
 ### Lookup Abuse Contact while Excluding Fields
 ```python
@@ -813,19 +883,22 @@ with ipgeolocation.ApiClient(configuration) as client:
     pprint(response.to_dict())
 ```
 Sample Response:
-```text
-{'abuse': {'address': 'MEDEU DISTRICT, Alimzhanov street, house 51\n'
-                      '050004\n'
-                      'Almaty\n'
-                      'KAZAKHSTAN',
-           'country': 'KZ',
-           'kind': 'group',
-           'name': 'Abuse-C Role',
-           'organization': '',
-           'phone_numbers': ['+77272582755 ext. 1889'],
-           'role': 'abuse',
-           'route': '2.76.0.0/15'},
- 'ip': '2.76.19.0'}
+```json
+{
+  "ip": "2.76.19.0",
+  "abuse": {
+    "route": "2.76.0.0/15",
+    "country": "KZ",
+    "name": "Abuse-C Role",
+    "organization": "",
+    "role": "abuse",
+    "kind": "group",
+    "address": "MEDEU DISTRICT, Alimzhanov street, house 51\n050004\nAlmaty\nKAZAKHSTAN",
+    "phone_numbers": [
+      "+77272582755 ext. 1889"
+    ]
+  }
+}
 ```
 ## Timezone API Examples
 
@@ -841,52 +914,62 @@ with ipgeolocation.ApiClient(configuration) as client:
     pprint(response.to_dict())
 ```
 Sample Response:
-```text
-{'ip': '8.8.8.8',
- 'location': {'city': 'Mountain View',
-              'continent_code': 'NA',
-              'continent_name': 'North America',
-              'country_code2': 'US',
-              'country_code3': 'USA',
-              'country_name': 'United States',
-              'country_name_official': 'United States of America',
-              'district': 'Santa Clara',
-              'is_eu': False,
-              'latitude': '37.42240',
-              'longitude': '-122.08421',
-              'state_code': 'US-CA',
-              'state_prov': 'California',
-              'zipcode': '94043-1351'},
- 'time_zone': {'date': '2025-08-07',
-               'date_time': '2025-08-07 21:39:59',
-               'date_time_txt': 'Thursday, August 07, 2025 21:39:59',
-               'date_time_unix': 1754627999.594,
-               'date_time_wti': 'Thu, 07 Aug 2025 21:39:59 -0700',
-               'date_time_ymd': '2025-08-07T21:39:59-0700',
-               'dst_end': {'date_time_after': '2025-11-02 TIME 01',
-                           'date_time_before': '2025-11-02 TIME 02',
-                           'duration': '-1H',
-                           'gap': False,
-                           'overlap': True,
-                           'utc_time': '2025-11-02 TIME 09'},
-               'dst_exists': True,
-               'dst_savings': 1,
-               'dst_start': {'date_time_after': '2025-03-09 TIME 03',
-                             'date_time_before': '2025-03-09 TIME 02',
-                             'duration': '+1H',
-                             'gap': True,
-                             'overlap': False,
-                             'utc_time': '2025-03-09 TIME 10'},
-               'is_dst': True,
-               'month': 8,
-               'name': 'America/Los_Angeles',
-               'offset': -8,
-               'offset_with_dst': -7,
-               'time_12': '09:39:59 PM',
-               'time_24': '21:39:59',
-               'week': 32,
-               'year': 2025,
-               'year_abbr': '25'}}
+```json
+{
+  "ip": "8.8.8.8",
+  "location": {
+    "continent_code": "NA",
+    "continent_name": "North America",
+    "country_code2": "US",
+    "country_code3": "USA",
+    "country_name": "United States",
+    "country_name_official": "United States of America",
+    "is_eu": false,
+    "state_prov": "California",
+    "state_code": "US-CA",
+    "district": "Santa Clara",
+    "city": "Mountain View",
+    "zipcode": "94043-1351",
+    "latitude": "37.42240",
+    "longitude": "-122.08421"
+  },
+  "time_zone": {
+    "name": "America/Los_Angeles",
+    "offset": -8,
+    "offset_with_dst": -7,
+    "date": "2025-10-29",
+    "date_time": "2025-10-29 05:32:11",
+    "date_time_txt": "Wednesday, October 29, 2025 05:32:11",
+    "date_time_wti": "Wed, 29 Oct 2025 05:32:11 -0700",
+    "date_time_ymd": "2025-10-29T05:32:11-0700",
+    "date_time_unix": 1761741131.303,
+    "time_24": "05:32:11",
+    "time_12": "05:32:11 AM",
+    "week": 44,
+    "month": 10,
+    "year": 2025,
+    "year_abbr": "25",
+    "is_dst": true,
+    "dst_savings": 1,
+    "dst_exists": true,
+    "dst_start": {
+      "utc_time": "2025-03-09 TIME 10",
+      "duration": "+1H",
+      "gap": true,
+      "date_time_after": "2025-03-09 TIME 03",
+      "date_time_before": "2025-03-09 TIME 02",
+      "overlap": false
+    },
+    "dst_end": {
+      "utc_time": "2025-11-02 TIME 09",
+      "duration": "-1H",
+      "gap": false,
+      "date_time_after": "2025-11-02 TIME 01",
+      "date_time_before": "2025-11-02 TIME 02",
+      "overlap": true
+    }
+  }
+}
 ```
 ### Get Timezone by Timezone Name
 ```python
@@ -896,37 +979,45 @@ with ipgeolocation.ApiClient(configuration) as client:
     pprint(response.to_dict())
 ```
 Sample Response:
-```text
-{'time_zone': {'date': '2025-08-08',
-               'date_time': '2025-08-08 05:41:48',
-               'date_time_txt': 'Friday, August 08, 2025 05:41:48',
-               'date_time_unix': 1754628108.702,
-               'date_time_wti': 'Fri, 08 Aug 2025 05:41:48 +0100',
-               'date_time_ymd': '2025-08-08T05:41:48+0100',
-               'dst_end': {'date_time_after': '2025-10-26 TIME 01',
-                           'date_time_before': '2025-10-26 TIME 02',
-                           'duration': '-1H',
-                           'gap': False,
-                           'overlap': True,
-                           'utc_time': '2025-10-26 TIME 01'},
-               'dst_exists': True,
-               'dst_savings': 1,
-               'dst_start': {'date_time_after': '2025-03-30 TIME 02',
-                             'date_time_before': '2025-03-30 TIME 01',
-                             'duration': '+1H',
-                             'gap': True,
-                             'overlap': False,
-                             'utc_time': '2025-03-30 TIME 01'},
-               'is_dst': True,
-               'month': 8,
-               'name': 'Europe/London',
-               'offset': 0,
-               'offset_with_dst': 1,
-               'time_12': '05:41:48 AM',
-               'time_24': '05:41:48',
-               'week': 32,
-               'year': 2025,
-               'year_abbr': '25'}}
+```json
+{
+  "time_zone": {
+    "name": "Europe/London",
+    "offset": 0,
+    "offset_with_dst": 0,
+    "date": "2025-10-29",
+    "date_time": "2025-10-29 12:33:16",
+    "date_time_txt": "Wednesday, October 29, 2025 12:33:16",
+    "date_time_wti": "Wed, 29 Oct 2025 12:33:16 +0000",
+    "date_time_ymd": "2025-10-29T12:33:16+0000",
+    "date_time_unix": 1761741196.188,
+    "time_24": "12:33:16",
+    "time_12": "12:33:16 PM",
+    "week": 44,
+    "month": 10,
+    "year": 2025,
+    "year_abbr": "25",
+    "is_dst": false,
+    "dst_savings": 0,
+    "dst_exists": true,
+    "dst_start": {
+      "utc_time": "2025-03-30 TIME 01",
+      "duration": "+1H",
+      "gap": true,
+      "date_time_after": "2025-03-30 TIME 02",
+      "date_time_before": "2025-03-30 TIME 01",
+      "overlap": false
+    },
+    "dst_end": {
+      "utc_time": "2025-10-26 TIME 01",
+      "duration": "-1H",
+      "gap": false,
+      "date_time_after": "2025-10-26 TIME 01",
+      "date_time_before": "2025-10-26 TIME 02",
+      "overlap": true
+    }
+  }
+}
 ```
 ### Get Timezone from Any Address
 ```python
@@ -936,44 +1027,54 @@ with ipgeolocation.ApiClient(configuration) as client:
     pprint(response.to_dict())
 ```
 Sample Response:
-```text
-{'location': {'city': 'Munich',
-              'country_name': 'Germany',
-              'latitude': '48.13711',
-              'locality': '',
-              'location_string': 'Munich, Germany',
-              'longitude': '11.57538',
-              'state_prov': 'Bavaria'},
- 'time_zone': {'date': '2025-08-08',
-               'date_time': '2025-08-08 06:42:54',
-               'date_time_txt': 'Friday, August 08, 2025 06:42:54',
-               'date_time_unix': 1754628174.007,
-               'date_time_wti': 'Fri, 08 Aug 2025 06:42:54 +0200',
-               'date_time_ymd': '2025-08-08T06:42:54+0200',
-               'dst_end': {'date_time_after': '2025-10-26 TIME 02',
-                           'date_time_before': '2025-10-26 TIME 03',
-                           'duration': '-1H',
-                           'gap': False,
-                           'overlap': True,
-                           'utc_time': '2025-10-26 TIME 01'},
-               'dst_exists': True,
-               'dst_savings': 1,
-               'dst_start': {'date_time_after': '2025-03-30 TIME 03',
-                             'date_time_before': '2025-03-30 TIME 02',
-                             'duration': '+1H',
-                             'gap': True,
-                             'overlap': False,
-                             'utc_time': '2025-03-30 TIME 01'},
-               'is_dst': True,
-               'month': 8,
-               'name': 'Europe/Berlin',
-               'offset': 1,
-               'offset_with_dst': 2,
-               'time_12': '06:42:54 AM',
-               'time_24': '06:42:54',
-               'week': 32,
-               'year': 2025,
-               'year_abbr': '25'}}
+```json
+{
+  "location": {
+    "location_string": "Munich, Germany",
+    "country_name": "Germany",
+    "state_prov": "Bavaria",
+    "city": "Munich",
+    "locality": "",
+    "latitude": "48.13711",
+    "longitude": "11.57538"
+  },
+  "time_zone": {
+    "name": "Europe/Berlin",
+    "offset": 1,
+    "offset_with_dst": 1,
+    "date": "2025-10-29",
+    "date_time": "2025-10-29 13:34:16",
+    "date_time_txt": "Wednesday, October 29, 2025 13:34:16",
+    "date_time_wti": "Wed, 29 Oct 2025 13:34:16 +0100",
+    "date_time_ymd": "2025-10-29T13:34:16+0100",
+    "date_time_unix": 1761741256.682,
+    "time_24": "13:34:16",
+    "time_12": "01:34:16 PM",
+    "week": 44,
+    "month": 10,
+    "year": 2025,
+    "year_abbr": "25",
+    "is_dst": false,
+    "dst_savings": 0,
+    "dst_exists": true,
+    "dst_start": {
+      "utc_time": "2025-03-30 TIME 01",
+      "duration": "+1H",
+      "gap": true,
+      "date_time_after": "2025-03-30 TIME 03",
+      "date_time_before": "2025-03-30 TIME 02",
+      "overlap": false
+    },
+    "dst_end": {
+      "utc_time": "2025-10-26 TIME 01",
+      "duration": "-1H",
+      "gap": false,
+      "date_time_after": "2025-10-26 TIME 02",
+      "date_time_before": "2025-10-26 TIME 03",
+      "overlap": true
+    }
+  }
+}
 ```
 ### Get Timezone from Location Coordinates
 ```python
@@ -983,37 +1084,45 @@ with ipgeolocation.ApiClient(configuration) as client:
     pprint(response.to_dict())
 ```
 Sample Response:
-```text
-{'time_zone': {'date': '2025-08-08',
-               'date_time': '2025-08-08 06:44:31',
-               'date_time_txt': 'Friday, August 08, 2025 06:44:31',
-               'date_time_unix': 1754628271.639,
-               'date_time_wti': 'Fri, 08 Aug 2025 06:44:31 +0200',
-               'date_time_ymd': '2025-08-08T06:44:31+0200',
-               'dst_end': {'date_time_after': '2025-10-26 TIME 02',
-                           'date_time_before': '2025-10-26 TIME 03',
-                           'duration': '-1H',
-                           'gap': False,
-                           'overlap': True,
-                           'utc_time': '2025-10-26 TIME 01'},
-               'dst_exists': True,
-               'dst_savings': 1,
-               'dst_start': {'date_time_after': '2025-03-30 TIME 03',
-                             'date_time_before': '2025-03-30 TIME 02',
-                             'duration': '+1H',
-                             'gap': True,
-                             'overlap': False,
-                             'utc_time': '2025-03-30 TIME 01'},
-               'is_dst': True,
-               'month': 8,
-               'name': 'Europe/Paris',
-               'offset': 1,
-               'offset_with_dst': 2,
-               'time_12': '06:44:31 AM',
-               'time_24': '06:44:31',
-               'week': 32,
-               'year': 2025,
-               'year_abbr': '25'}}
+```json
+{
+  "time_zone": {
+    "name": "Europe/Paris",
+    "offset": 1,
+    "offset_with_dst": 1,
+    "date": "2025-10-29",
+    "date_time": "2025-10-29 13:35:03",
+    "date_time_txt": "Wednesday, October 29, 2025 13:35:03",
+    "date_time_wti": "Wed, 29 Oct 2025 13:35:03 +0100",
+    "date_time_ymd": "2025-10-29T13:35:03+0100",
+    "date_time_unix": 1761741303.683,
+    "time_24": "13:35:03",
+    "time_12": "01:35:03 PM",
+    "week": 44,
+    "month": 10,
+    "year": 2025,
+    "year_abbr": "25",
+    "is_dst": false,
+    "dst_savings": 0,
+    "dst_exists": true,
+    "dst_start": {
+      "utc_time": "2025-03-30 TIME 01",
+      "duration": "+1H",
+      "gap": true,
+      "date_time_after": "2025-03-30 TIME 03",
+      "date_time_before": "2025-03-30 TIME 02",
+      "overlap": false
+    },
+    "dst_end": {
+      "utc_time": "2025-10-26 TIME 01",
+      "duration": "-1H",
+      "gap": false,
+      "date_time_after": "2025-10-26 TIME 02",
+      "date_time_before": "2025-10-26 TIME 03",
+      "overlap": true
+    }
+  }
+}
 ```
 ### Get Timezone and Airport Details from IATA Code
 ```python
@@ -1023,49 +1132,59 @@ with ipgeolocation.ApiClient(configuration) as client:
     pprint(response.to_dict())
 ```
 Sample Response:
-```text
-{'airport_details': {'city': 'Zurich',
-                     'continent_code': 'EU',
-                     'country_code': 'CH',
-                     'elevation_ft': 1417,
-                     'faa_code': '',
-                     'iata_code': 'ZRH',
-                     'icao_code': 'LSZH',
-                     'latitude': '47.45806',
-                     'longitude': '8.54806',
-                     'name': 'Zurich Airport',
-                     'state_code': 'CH-ZH',
-                     'type': 'large_airport'},
- 'time_zone': {'date': '2025-08-08',
-               'date_time': '2025-08-08 06:46:22',
-               'date_time_txt': 'Friday, August 08, 2025 06:46:22',
-               'date_time_unix': 1754628382.876,
-               'date_time_wti': 'Fri, 08 Aug 2025 06:46:22 +0200',
-               'date_time_ymd': '2025-08-08T06:46:22+0200',
-               'dst_end': {'date_time_after': '2025-10-26 TIME 02',
-                           'date_time_before': '2025-10-26 TIME 03',
-                           'duration': '-1H',
-                           'gap': False,
-                           'overlap': True,
-                           'utc_time': '2025-10-26 TIME 01'},
-               'dst_exists': True,
-               'dst_savings': 1,
-               'dst_start': {'date_time_after': '2025-03-30 TIME 03',
-                             'date_time_before': '2025-03-30 TIME 02',
-                             'duration': '+1H',
-                             'gap': True,
-                             'overlap': False,
-                             'utc_time': '2025-03-30 TIME 01'},
-               'is_dst': True,
-               'month': 8,
-               'name': 'Europe/Zurich',
-               'offset': 1,
-               'offset_with_dst': 2,
-               'time_12': '06:46:22 AM',
-               'time_24': '06:46:22',
-               'week': 32,
-               'year': 2025,
-               'year_abbr': '25'}}
+```json
+{
+  "airport_details": {
+    "type": "large_airport",
+    "name": "Zurich Airport",
+    "latitude": "47.45806",
+    "longitude": "8.54806",
+    "elevation_ft": 1417,
+    "continent_code": "EU",
+    "country_code": "CH",
+    "state_code": "CH-ZH",
+    "city": "Zurich",
+    "iata_code": "ZRH",
+    "icao_code": "LSZH",
+    "faa_code": ""
+  },
+  "time_zone": {
+    "name": "Europe/Zurich",
+    "offset": 1,
+    "offset_with_dst": 1,
+    "date": "2025-10-29",
+    "date_time": "2025-10-29 13:36:36",
+    "date_time_txt": "Wednesday, October 29, 2025 13:36:36",
+    "date_time_wti": "Wed, 29 Oct 2025 13:36:36 +0100",
+    "date_time_ymd": "2025-10-29T13:36:36+0100",
+    "date_time_unix": 1761741396.833,
+    "time_24": "13:36:36",
+    "time_12": "01:36:36 PM",
+    "week": 44,
+    "month": 10,
+    "year": 2025,
+    "year_abbr": "25",
+    "is_dst": false,
+    "dst_savings": 0,
+    "dst_exists": true,
+    "dst_start": {
+      "utc_time": "2025-03-30 TIME 01",
+      "duration": "+1H",
+      "gap": true,
+      "date_time_after": "2025-03-30 TIME 03",
+      "date_time_before": "2025-03-30 TIME 02",
+      "overlap": false
+    },
+    "dst_end": {
+      "utc_time": "2025-10-26 TIME 01",
+      "duration": "-1H",
+      "gap": false,
+      "date_time_after": "2025-10-26 TIME 02",
+      "date_time_before": "2025-10-26 TIME 03",
+      "overlap": true
+    }
+  }
+}
 ```
 Similarly, you can fetch Airport Details and Timezone from using any ICAO code as well
 
@@ -1078,46 +1197,55 @@ with ipgeolocation.ApiClient(configuration) as client:
     pprint(response.to_dict())
 ```
 Sample Response:
-```text
-{'lo_code_details': {'city': 'Barcelona',
-                     'country_code': 'ES',
-                     'country_name': '',
-                     'latitude': '41.38289',
-                     'lo_code': 'ESBCN',
-                     'location_type': 'Port, Rail Terminal, Road Terminal, '
-                                      'Airport, Postal Exchange',
-                     'longitude': '2.17743',
-                     'state_code': ''},
- 'time_zone': {'date': '2025-08-08',
-               'date_time': '2025-08-08 06:48:13',
-               'date_time_txt': 'Friday, August 08, 2025 06:48:13',
-               'date_time_unix': 1754628493.203,
-               'date_time_wti': 'Fri, 08 Aug 2025 06:48:13 +0200',
-               'date_time_ymd': '2025-08-08T06:48:13+0200',
-               'dst_end': {'date_time_after': '2025-10-26 TIME 02',
-                           'date_time_before': '2025-10-26 TIME 03',
-                           'duration': '-1H',
-                           'gap': False,
-                           'overlap': True,
-                           'utc_time': '2025-10-26 TIME 01'},
-               'dst_exists': True,
-               'dst_savings': 1,
-               'dst_start': {'date_time_after': '2025-03-30 TIME 03',
-                             'date_time_before': '2025-03-30 TIME 02',
-                             'duration': '+1H',
-                             'gap': True,
-                             'overlap': False,
-                             'utc_time': '2025-03-30 TIME 01'},
-               'is_dst': True,
-               'month': 8,
-               'name': 'Europe/Madrid',
-               'offset': 1,
-               'offset_with_dst': 2,
-               'time_12': '06:48:13 AM',
-               'time_24': '06:48:13',
-               'week': 32,
-               'year': 2025,
-               'year_abbr': '25'}}
+```json
+{
+  "lo_code_details": {
+    "lo_code": "ESBCN",
+    "city": "Barcelona",
+    "state_code": "",
+    "country_code": "ES",
+    "country_name": "",
+    "location_type": "Port, Rail Terminal, Road Terminal, Airport, Postal Exchange",
+    "latitude": "41.38289",
+    "longitude": "2.17743"
+  },
+  "time_zone": {
+    "name": "Europe/Madrid",
+    "offset": 1,
+    "offset_with_dst": 1,
+    "date": "2025-10-29",
+    "date_time": "2025-10-29 13:37:29",
+    "date_time_txt": "Wednesday, October 29, 2025 13:37:29",
+    "date_time_wti": "Wed, 29 Oct 2025 13:37:29 +0100",
+    "date_time_ymd": "2025-10-29T13:37:29+0100",
+    "date_time_unix": 1761741449.725,
+    "time_24": "13:37:29",
+    "time_12": "01:37:29 PM",
+    "week": 44,
+    "month": 10,
+    "year": 2025,
+    "year_abbr": "25",
+    "is_dst": false,
+    "dst_savings": 0,
+    "dst_exists": true,
+    "dst_start": {
+      "utc_time": "2025-03-30 TIME 01",
+      "duration": "+1H",
+      "gap": true,
+      "date_time_after": "2025-03-30 TIME 03",
+      "date_time_before": "2025-03-30 TIME 02",
+      "overlap": false
+    },
+    "dst_end": {
+      "utc_time": "2025-10-26 TIME 01",
+      "duration": "-1H",
+      "gap": false,
+      "date_time_after": "2025-10-26 TIME 02",
+      "date_time_before": "2025-10-26 TIME 03",
+      "overlap": true
+    }
+  }
+}
 ```
 ## Timezone Converter Examples
 
@@ -1133,11 +1261,13 @@ with ipgeolocation.ApiClient(configuration) as client:
     pprint(response.to_dict())
 ```
 Sample Response:
-```text
-{'converted_time': '2025-08-08 13:50:44',
- 'diff_hour': 13,
- 'diff_min': 780,
- 'original_time': '2025-08-08 00:50:44'}
+```json
+{
+  "original_time": "2025-10-29 08:38:11",
+  "converted_time": "2025-10-29 21:38:11",
+  "diff_hour": 13,
+  "diff_min": 780
+}
 ```
 Similarly, you can convert time from any timezone to another timezone using location coordinates (Latitude and Longitude), location addresses, IATA codes, ICAO codes and UN/LUCODE .
 
@@ -1155,27 +1285,33 @@ with ipgeolocation.ApiClient(configuration) as client:
     pprint(response.to_dict())
 ```
 Sample Response:
-```text
-{'device': {'brand': 'Unknown',
-            'cpu': 'Intel x86_64',
-            'name': 'Desktop',
-            'type': 'Desktop'},
- 'engine': {'name': 'Blink',
-            'type': 'Browser',
-            'version': '125',
-            'version_major': '125'},
- 'name': 'Chrome',
- 'operating_system': {'build': '??',
-                      'name': 'Windows NT',
-                      'type': 'Desktop',
-                      'version': '??',
-                      'version_major': '??'},
- 'type': 'Browser',
- 'user_agent_string': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) '
-                      'AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 '
-                      'Safari/537.36',
- 'version': '125',
- 'version_major': '125'}
+```json
+{
+  "user_agent_string": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36",
+  "name": "Chrome",
+  "type": "Browser",
+  "version": "125",
+  "version_major": "125",
+  "device": {
+    "name": "Desktop",
+    "type": "Desktop",
+    "brand": "Unknown",
+    "cpu": "Intel x86_64"
+  },
+  "engine": {
+    "name": "Blink",
+    "type": "Browser",
+    "version": "125",
+    "version_major": "125"
+  },
+  "operating_system": {
+    "name": "Windows NT",
+    "type": "Desktop",
+    "version": "??",
+    "version_major": "??",
+    "build": "??"
+  }
+}
 ```
 If you don't pass any userAgentString, the API will return the data of device's user agent.
 
@@ -1206,57 +1342,67 @@ with ipgeolocation.ApiClient(configuration) as client:
     pprint(response.to_dict())
 ```
 Sample Response:
-```text
-{'astronomy': {'current_time': '01:24:34.206',
-               'date': '2025-08-08',
-               'day_length': '14:03',
-               'evening': {'astronomical_twilight_begin': '21:09',
-                           'astronomical_twilight_end': '21:49',
-                           'blue_hour_begin': '20:21',
-                           'blue_hour_end': '20:44',
-                           'civil_twilight_begin': '20:03',
-                           'civil_twilight_end': '20:32',
-                           'golden_hour_begin': '19:24',
-                           'golden_hour_end': '20:21',
-                           'nautical_twilight_begin': '20:32',
-                           'nautical_twilight_end': '21:09'},
-               'mid_night': '01:01',
-               'moon_altitude': 23.669055866442545,
-               'moon_angle': 166.27229987123508,
-               'moon_azimuth': 198.75293380735044,
-               'moon_distance': 384876.99936538114,
-               'moon_illumination_percentage': '98.57',
-               'moon_parallactic_angle': 15.390260494111123,
-               'moon_phase': 'FULL_MOON',
-               'moon_status': '-',
-               'moonrise': '20:01',
-               'moonset': '04:52',
-               'morning': {'astronomical_twilight_begin': '04:13',
-                           'astronomical_twilight_end': '04:53',
-                           'blue_hour_begin': '05:17',
-                           'blue_hour_end': '05:41',
-                           'civil_twilight_begin': '05:29',
-                           'civil_twilight_end': '05:59',
-                           'golden_hour_begin': '05:41',
-                           'golden_hour_end': '06:38',
-                           'nautical_twilight_begin': '04:53',
-                           'nautical_twilight_end': '05:29'},
-               'night_begin': '21:49',
-               'night_end': '04:13',
-               'solar_noon': '13:01',
-               'sun_altitude': -32.984922198146315,
-               'sun_azimuth': 6.547113802544914,
-               'sun_distance': 151721123.19916567,
-               'sun_status': '-',
-               'sunrise': '05:59',
-               'sunset': '20:03'},
- 'location': {'city': 'New York',
-              'country_name': '',
-              'elevation': '6',
-              'latitude': '40.71280',
-              'locality': '',
-              'longitude': '-74.00600',
-              'state_prov': 'New York'}}
+```json
+{
+  "location": {
+    "country_name": "",
+    "state_prov": "New York",
+    "city": "New York",
+    "locality": "",
+    "latitude": "40.71280",
+    "longitude": "-74.00600",
+    "elevation": "6"
+  },
+  "astronomy": {
+    "date": "2025-10-29",
+    "current_time": "08:40:06.713",
+    "mid_night": "00:39",
+    "night_end": "05:51",
+    "morning": {
+      "astronomical_twilight_begin": "05:51",
+      "astronomical_twilight_end": "06:22",
+      "nautical_twilight_begin": "06:22",
+      "nautical_twilight_end": "06:55",
+      "civil_twilight_begin": "06:55",
+      "civil_twilight_end": "07:22",
+      "blue_hour_begin": "06:44",
+      "blue_hour_end": "07:05",
+      "golden_hour_begin": "07:05",
+      "golden_hour_end": "08:01"
+    },
+    "sunrise": "07:22",
+    "sunset": "17:56",
+    "evening": {
+      "golden_hour_begin": "17:17",
+      "golden_hour_end": "18:13",
+      "blue_hour_begin": "18:13",
+      "blue_hour_end": "18:34",
+      "civil_twilight_begin": "17:56",
+      "civil_twilight_end": "18:24",
+      "nautical_twilight_begin": "18:24",
+      "nautical_twilight_end": "18:56",
+      "astronomical_twilight_begin": "18:56",
+      "astronomical_twilight_end": "19:28"
+    },
+    "night_begin": "19:28",
+    "sun_status": "-",
+    "solar_noon": "12:39",
+    "day_length": "10:33",
+    "sun_altitude": 12.448136000966024,
+    "sun_distance": 148631813.8153374,
+    "sun_azimuth": 120.56184419712855,
+    "moon_phase": "FIRST_QUARTER",
+    "moonrise": "14:25",
+    "moonset": "-:-",
+    "moon_status": "-",
+    "moon_altitude": -61.30113457212749,
+    "moon_distance": 391764.6577677882,
+    "moon_azimuth": 58.61773005952898,
+    "moon_parallactic_angle": -44.458475700403795,
+    "moon_illumination_percentage": "48.42",
+    "moon_angle": 88.19322167018869
+  }
+}
 ```
 ### Lookup Astronomy API by IP Address
 ```python
@@ -1266,67 +1412,77 @@ with ipgeolocation.ApiClient(configuration) as client:
     pprint(response.to_dict())
 ```
 Sample Response:
-```text
-{'astronomy': {'current_time': '22:26:45.166',
-               'date': '2025-08-07',
-               'day_length': '13:51',
-               'evening': {'astronomical_twilight_begin': '21:12',
-                           'astronomical_twilight_end': '21:48',
-                           'blue_hour_begin': '20:26',
-                           'blue_hour_end': '20:49',
-                           'civil_twilight_begin': '20:09',
-                           'civil_twilight_end': '20:37',
-                           'golden_hour_begin': '19:33',
-                           'golden_hour_end': '20:26',
-                           'nautical_twilight_begin': '20:37',
-                           'nautical_twilight_end': '21:12'},
-               'mid_night': '01:14',
-               'moon_altitude': 23.499956846028425,
-               'moon_angle': 166.29082916314508,
-               'moon_azimuth': 151.12598145672808,
-               'moon_distance': 384870.3937982859,
-               'moon_illumination_percentage': '98.58',
-               'moon_parallactic_angle': -24.685745972238635,
-               'moon_phase': 'FULL_MOON',
-               'moon_status': '-',
-               'moonrise': '19:35',
-               'moonset': '04:15',
-               'morning': {'astronomical_twilight_begin': '04:38',
-                           'astronomical_twilight_end': '05:15',
-                           'blue_hour_begin': '05:38',
-                           'blue_hour_end': '06:00',
-                           'civil_twilight_begin': '05:49',
-                           'civil_twilight_end': '06:17',
-                           'golden_hour_begin': '06:00',
-                           'golden_hour_end': '06:54',
-                           'nautical_twilight_begin': '05:15',
-                           'nautical_twilight_end': '05:49'},
-               'night_begin': '21:48',
-               'night_end': '04:38',
-               'solar_noon': '13:14',
-               'sun_altitude': -23.622520216576035,
-               'sun_azimuth': 315.6208700434932,
-               'sun_distance': 151743546.31162292,
-               'sun_status': '-',
-               'sunrise': '06:17',
-               'sunset': '20:09'},
- 'ip': '8.8.8.8',
- 'location': {'city': 'Mountain View',
-              'continent_code': 'NA',
-              'continent_name': 'North America',
-              'country_code2': 'US',
-              'country_code3': 'USA',
-              'country_name': 'United States',
-              'country_name_official': 'United States of America',
-              'district': 'Santa Clara',
-              'elevation': '3',
-              'is_eu': False,
-              'latitude': '37.42240',
-              'locality': 'Charleston Terrace',
-              'longitude': '-122.08421',
-              'state_code': 'US-CA',
-              'state_prov': 'California',
-              'zipcode': '94043-1351'}}
+```json
+{
+  "ip": "8.8.8.8",
+  "location": {
+    "continent_code": "NA",
+    "continent_name": "North America",
+    "country_code2": "US",
+    "country_code3": "USA",
+    "country_name": "United States",
+    "country_name_official": "United States of America",
+    "is_eu": false,
+    "state_prov": "California",
+    "state_code": "US-CA",
+    "district": "Santa Clara",
+    "city": "Mountain View",
+    "locality": "Charleston Terrace",
+    "zipcode": "94043-1351",
+    "latitude": "37.42240",
+    "longitude": "-122.08421",
+    "elevation": "3"
+  },
+  "astronomy": {
+    "date": "2025-10-29",
+    "current_time": "05:40:54.149",
+    "mid_night": "00:52",
+    "night_end": "06:02",
+    "morning": {
+      "astronomical_twilight_begin": "06:02",
+      "astronomical_twilight_end": "06:32",
+      "nautical_twilight_begin": "06:32",
+      "nautical_twilight_end": "07:03",
+      "civil_twilight_begin": "07:03",
+      "civil_twilight_end": "07:30",
+      "blue_hour_begin": "06:53",
+      "blue_hour_end": "07:14",
+      "golden_hour_begin": "07:14",
+      "golden_hour_end": "08:07"
+    },
+    "sunrise": "07:30",
+    "sunset": "18:13",
+    "evening": {
+      "golden_hour_begin": "17:36",
+      "golden_hour_end": "18:29",
+      "blue_hour_begin": "18:29",
+      "blue_hour_end": "18:50",
+      "civil_twilight_begin": "18:13",
+      "civil_twilight_end": "18:40",
+      "nautical_twilight_begin": "18:40",
+      "nautical_twilight_end": "19:10",
+      "astronomical_twilight_begin": "19:10",
+      "astronomical_twilight_end": "19:41"
+    },
+    "night_begin": "19:41",
+    "sun_status": "-",
+    "solar_noon": "12:51",
+    "day_length": "10:43",
+    "sun_altitude": -22.275372119240597,
+    "sun_distance": 148631813.8153374,
+    "sun_azimuth": 90.42154204396991,
+    "moon_phase": "FIRST_QUARTER",
+    "moonrise": "14:33",
+    "moonset": "-:-",
+    "moon_status": "-",
+    "moon_altitude": -66.20124367819894,
+    "moon_distance": 391761.7015893756,
+    "moon_azimuth": 302.768681709635,
+    "moon_parallactic_angle": 46.284039629615826,
+    "moon_illumination_percentage": "48.43",
+    "moon_angle": 88.19958116083994
+  }
+}
 ```
 ### Lookup Astronomy API by Location String
 ```python
@@ -1336,58 +1492,68 @@ with ipgeolocation.ApiClient(configuration) as client:
     pprint(response.to_dict())
 ```
 Sample Response:
-```text
-{'astronomy': {'current_time': '07:27:27.944',
-               'date': '2025-08-08',
-               'day_length': '14:30',
-               'evening': {'astronomical_twilight_begin': '21:55',
-                           'astronomical_twilight_end': '22:42',
-                           'blue_hour_begin': '21:01',
-                           'blue_hour_end': '21:27',
-                           'civil_twilight_begin': '20:43',
-                           'civil_twilight_end': '21:14',
-                           'golden_hour_begin': '19:59',
-                           'golden_hour_end': '21:01',
-                           'nautical_twilight_begin': '21:14',
-                           'nautical_twilight_end': '21:55'},
-               'mid_night': '01:29',
-               'moon_altitude': -25.010715698704324,
-               'moon_angle': 166.29688189098198,
-               'moon_azimuth': 261.4389380532827,
-               'moon_distance': 384868.236228891,
-               'moon_illumination_percentage': '98.58',
-               'moon_parallactic_angle': 49.04972415962652,
-               'moon_phase': 'FULL_MOON',
-               'moon_status': '-',
-               'moonrise': '20:35',
-               'moonset': '04:46',
-               'morning': {'astronomical_twilight_begin': '04:14',
-                           'astronomical_twilight_end': '05:01',
-                           'blue_hour_begin': '05:29',
-                           'blue_hour_end': '05:55',
-                           'civil_twilight_begin': '05:42',
-                           'civil_twilight_end': '06:13',
-                           'golden_hour_begin': '05:55',
-                           'golden_hour_end': '06:57',
-                           'nautical_twilight_begin': '05:01',
-                           'nautical_twilight_end': '05:42'},
-               'night_begin': '22:42',
-               'night_end': '04:14',
-               'solar_noon': '13:28',
-               'sun_altitude': 11.11568551252996,
-               'sun_azimuth': 78.33676356672913,
-               'sun_distance': 151721123.1991657,
-               'sun_status': '-',
-               'sunrise': '06:13',
-               'sunset': '20:43'},
- 'location': {'city': 'Milan',
-              'country_name': 'Italy',
-              'elevation': '122',
-              'latitude': '45.46419',
-              'locality': '',
-              'location_string': 'Milan, Italy',
-              'longitude': '9.18963',
-              'state_prov': 'Lombardy'}}
+```json
+{
+  "location": {
+    "location_string": "Milan, Italy",
+    "country_name": "Italy",
+    "state_prov": "Lombardy",
+    "city": "Milan",
+    "locality": "",
+    "latitude": "45.46419",
+    "longitude": "9.18963",
+    "elevation": "122"
+  },
+  "astronomy": {
+    "date": "2025-10-29",
+    "current_time": "13:41:41.772",
+    "mid_night": "00:07",
+    "night_end": "05:18",
+    "morning": {
+      "astronomical_twilight_begin": "05:18",
+      "astronomical_twilight_end": "05:53",
+      "nautical_twilight_begin": "05:53",
+      "nautical_twilight_end": "06:28",
+      "civil_twilight_begin": "06:28",
+      "civil_twilight_end": "06:56",
+      "blue_hour_begin": "06:16",
+      "blue_hour_end": "06:39",
+      "golden_hour_begin": "06:39",
+      "golden_hour_end": "07:41"
+    },
+    "sunrise": "06:56",
+    "sunset": "17:16",
+    "evening": {
+      "golden_hour_begin": "16:32",
+      "golden_hour_end": "17:33",
+      "blue_hour_begin": "17:33",
+      "blue_hour_end": "17:57",
+      "civil_twilight_begin": "17:16",
+      "civil_twilight_end": "17:45",
+      "nautical_twilight_begin": "17:45",
+      "nautical_twilight_end": "18:20",
+      "astronomical_twilight_begin": "18:20",
+      "astronomical_twilight_end": "18:54"
+    },
+    "night_begin": "18:54",
+    "sun_status": "-",
+    "solar_noon": "12:06",
+    "day_length": "10:20",
+    "sun_altitude": 27.13769081211636,
+    "sun_distance": 148631813.8153374,
+    "sun_azimuth": 206.01750232947694,
+    "moon_phase": "FIRST_QUARTER",
+    "moonrise": "14:00",
+    "moonset": "23:11",
+    "moon_status": "-",
+    "moon_altitude": -2.9742526309771478,
+    "moon_distance": 391758.7335065162,
+    "moon_azimuth": 119.56024949439859,
+    "moon_parallactic_angle": -41.32141396017013,
+    "moon_illumination_percentage": "48.43",
+    "moon_angle": 88.20596582035996
+  }
+}
 ```
 ### Lookup Astronomy API for a Specific Date
 ```python
@@ -1397,89 +1563,106 @@ with ipgeolocation.ApiClient(configuration) as client:
     pprint(response.to_dict())
 ```
 Sample Response:
-```text
-{'astronomy': {'current_time': '15:37:36.338',
-               'date': '2025-01-01',
-               'day_length': '13:50',
-               'evening': {'astronomical_twilight_begin': '19:45',
-                           'astronomical_twilight_end': '20:18',
-                           'blue_hour_begin': '19:02',
-                           'blue_hour_end': '19:23',
-                           'civil_twilight_begin': '18:46',
-                           'civil_twilight_end': '19:13',
-                           'golden_hour_begin': '18:12',
-                           'golden_hour_end': '19:02',
-                           'nautical_twilight_begin': '19:13',
-                           'nautical_twilight_end': '19:45'},
-               'mid_night': '23:51',
-               'moon_altitude': 55.581857131320504,
-               'moon_angle': 16.006816957603085,
-               'moon_azimuth': 264.9032851876516,
-               'moon_distance': 381160.8743283583,
-               'moon_illumination_percentage': '1.94',
-               'moon_parallactic_angle': 102.49215878888498,
-               'moon_phase': 'NEW_MOON',
-               'moon_status': '-',
-               'moonrise': '05:42',
-               'moonset': '20:08',
-               'morning': {'astronomical_twilight_begin': '03:24',
-                           'astronomical_twilight_end': '03:57',
-                           'blue_hour_begin': '04:19',
-                           'blue_hour_end': '04:40',
-                           'civil_twilight_begin': '04:29',
-                           'civil_twilight_end': '04:56',
-                           'golden_hour_begin': '04:40',
-                           'golden_hour_end': '05:30',
-                           'nautical_twilight_begin': '03:57',
-                           'nautical_twilight_end': '04:29'},
-               'night_begin': '20:18',
-               'night_end': '03:24',
-               'solar_noon': '11:51',
-               'sun_altitude': 39.09727912525482,
-               'sun_azimuth': 261.6973481428636,
-               'sun_distance': 147102938.88036567,
-               'sun_status': '-',
-               'sunrise': '04:56',
-               'sunset': '18:46'},
- 'location': {'city': 'Brisbane',
-              'country_name': 'Australia',
-              'elevation': '',
-              'latitude': '-27.47000',
-              'locality': 'Brisbane',
-              'longitude': '153.02000',
-              'state_prov': 'Queensland'}}
+```json
+{
+  "location": {
+    "country_name": "Australia",
+    "state_prov": "Queensland",
+    "city": "Brisbane",
+    "locality": "Brisbane",
+    "latitude": "-27.47000",
+    "longitude": "153.02000",
+    "elevation": ""
+  },
+  "astronomy": {
+    "date": "2025-01-01",
+    "current_time": "22:43:02.846",
+    "mid_night": "23:51",
+    "night_end": "03:24",
+    "morning": {
+      "astronomical_twilight_begin": "03:24",
+      "astronomical_twilight_end": "03:57",
+      "nautical_twilight_begin": "03:57",
+      "nautical_twilight_end": "04:29",
+      "civil_twilight_begin": "04:29",
+      "civil_twilight_end": "04:56",
+      "blue_hour_begin": "04:19",
+      "blue_hour_end": "04:40",
+      "golden_hour_begin": "04:40",
+      "golden_hour_end": "05:30"
+    },
+    "sunrise": "04:56",
+    "sunset": "18:46",
+    "evening": {
+      "golden_hour_begin": "18:12",
+      "golden_hour_end": "19:02",
+      "blue_hour_begin": "19:02",
+      "blue_hour_end": "19:23",
+      "civil_twilight_begin": "18:46",
+      "civil_twilight_end": "19:13",
+      "nautical_twilight_begin": "19:13",
+      "nautical_twilight_end": "19:45",
+      "astronomical_twilight_begin": "19:45",
+      "astronomical_twilight_end": "20:18"
+    },
+    "night_begin": "20:18",
+    "sun_status": "-",
+    "solar_noon": "11:51",
+    "day_length": "13:50",
+    "sun_altitude": -36.92878445493417,
+    "sun_distance": 147102938.88036567,
+    "sun_azimuth": 199.8584254941809,
+    "moon_phase": "NEW_MOON",
+    "moonrise": "05:42",
+    "moonset": "20:08",
+    "moon_status": "-",
+    "moon_altitude": -26.06793971140284,
+    "moon_distance": 380199.6748065481,
+    "moon_azimuth": 219.86344344944166,
+    "moon_parallactic_angle": 141.4485711716647,
+    "moon_illumination_percentage": "2.93",
+    "moon_angle": 19.702790945717158
+  }
+}
 ```
 ### Lookup Location info in Different Language
 You can also get Astronomy Data in other languages as well. Only paid subscriptions can access this feature.
 ```python
 with ipgeolocation.ApiClient(configuration) as client:
     api_instance = ipgeolocation.AstronomyApi(client)
-    response = api_instance.get_astronomy_details(ip="1.1.1.1", lang="fr")
+    response = api_instance.get_astronomy_details(ip="1.1.1.1", lang="ru")
     pprint(response.to_dict())
 ```
 Sample Response:
-```text
-{'astronomy': {'current_time': '15:39:12.077',
-               ...
-               'sunrise': '06:24',
-               'sunset': '17:23'},
- 'ip': '1.1.1.1',
- 'location': {'city': 'Brisbane Sud',
-              'continent_code': 'OC',
-              'continent_name': 'Océanie',
-              'country_code2': 'AU',
-              'country_code3': 'AUS',
-              'country_name': 'Australie',
-              'country_name_official': '',
-              'district': 'Brisbane',
-              'elevation': '',
-              'is_eu': False,
-              'latitude': '-27.47306',
-              'locality': '',
-              'longitude': '153.01421',
-              'state_code': 'AU-QLD',
-              'state_prov': 'Queensland',
-              'zipcode': '4101'}}
+```json
+{
+  "ip": "1.1.1.1",
+  "location": {
+    "continent_code": "OC",
+    "continent_name": "Океания",
+    "country_code2": "AU",
+    "country_code3": "AUS",
+    "country_name": "Австралия",
+    "country_name_official": "",
+    "is_eu": false,
+    "state_prov": "Квинсленд",
+    "state_code": "AU-QLD",
+    "district": "Брисбен",
+    "city": "Юг Брисбен",
+    "locality": "",
+    "zipcode": "4101",
+    "latitude": "-27.47306",
+    "longitude": "153.01421",
+    "elevation": ""
+  },
+  "astronomy": {
+    "date": "2025-10-29",
+    "current_time": "22:50:12.521",
+    "mid_night": "23:31",
+    "...": "",
+    "moon_angle": 88.27444648710816
+  }
+}
 ```
 
 ## Documentation For Models
