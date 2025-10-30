@@ -159,8 +159,7 @@ from the respective class, over all plans are presented below.
 | *UserAgentApi*      | [**parse_user_agent_string**](docs/UserAgentApi.md#parse_user_agent_string)                    |  ✔   |    ✔     |    ✔     |    ✔    |
 | *UserAgentApi*      | [**parse_bulk_user_agent_strings**](docs/UserAgentApi.md#parse_bulk_user_agent_strings)        |  ✖   |    ✔     |    ✔     |    ✔    |
 
-> **Note:** The availability of fields in every API endpoint across all API plans is provided in the **_Reference Table_** within 
-each respective API Documentation. e.g., for IPGeolocationApi, please visit https://ipgeolocation.io/ip-location-api.html#fields-reference. 
+> **Note:** The availability of fields in every API endpoint across all API plans is provided in the **_Reference Table_** within each respective API Documentation. e.g., for IPGeolocationApi, please visit [https://ipgeolocation.io/ip-location-api.html#fields-reference](https://ipgeolocation.io/ip-location-api.html#fields-reference). 
 
 ## Authentication Setup
 To authenticate API requests, you need to get an API key from [ipgeolocation.io](https://ipgeolocation.io/).
@@ -487,13 +486,13 @@ Sample Response:
   }
 }
 ```
-**Note on Hostname Parameters**
-
-The IP Geolocation API supports hostname lookup for all paid subscriptions. However, this is not included by default. To enable hostname resolution, use the `include` parameter with one of the following options:
-
-- `hostname`: Performs a quick lookup using the internal hostname database. If no match is found, the IP is returned as-is. This is fast but may produce incomplete results.
-- `liveHostname`: Queries live sources for accurate hostname resolution. This may increase response time.
-- `hostnameFallbackLive`: Attempts the internal database first, and falls back to live sources if no result is found. This option provides a balance of speed and reliability.
+> **Note:** Hostname Parameters possible alternatives
+> 
+> The IP Geolocation API supports hostname lookup for all paid subscriptions. However, this is not included by default. To enable hostname resolution, use the `include` parameter with one of the following options:
+> 
+> - `hostname`: Performs a quick lookup using the internal hostname database. If no match is found, the IP is returned as-is. This is fast but may produce incomplete results.
+> - `liveHostname`: Queries live sources for accurate hostname resolution. This may increase response time.
+> - `hostnameFallbackLive`: Attempts the internal database first, and falls back to live sources if no result is found. This option provides a balance of speed and reliability.
 
 ### Advanced Plan Examples
 #### Include DMA, Abuse and Security
@@ -657,7 +656,7 @@ with ipgeolocation.ApiClient(configuration) as client:
     response = api_instance.get_ip_security_info(ip="2.56.188.34", include="location,network,currency,time_zone,user_agent,country_metadata,hostname")
     pprint(response.to_dict())
 ```
-> **Note**: You can get all the available fields in standard plan in combination with security data.
+> **Note:** You can get all the available fields in standard plan in combination with security data.
 
 ### Request with Field Filtering
 ```python
