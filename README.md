@@ -1,28 +1,18 @@
 # IP Geolocation API Client Library/SDK for Python
 
-The official **Python Client Library** for **[IPGeolocation.io](https://ipgeolocation.io)**'s set of APIs, provides a quick, developer friendly, way 
-to access IP Location, Security, Timezone, Astronomy, ASN, Abuse Contact, and useragent data. Lookup your own IP or provide any IPv4, 
-IPv6 or domain name to get structured results in Python, without the need for manual HTTP handling.
+## Overview
+The official **Python Client Library** for **[IPGeolocation.io](https://ipgeolocation.io)**'s set of APIs, provides a quick, developer friendly, way to access IP Location, Security, Timezone, Astronomy, ASN, Abuse Contact, and useragent data. Lookup your own IP or provide any IPv4, IPv6 or domain name to get structured results in Python, without the need for manual HTTP handling.
 
-- [IP Location API](https://ipgeolocation.io/ip-location-api.html): Get all-in-one unified solution for **location** (city, locality, state, country, etc.), **currency**, 
-  **network** (AS number, ASN name, organization, asn type, date of allocation, company/ISP name, company type, 
-  company domain), **timezone** , **useragent** string parsing, **security** (threat score, is_tor, is_bot, 
-  proxy_provider, cloud_provider), and **abuse contact** (route/CIDR network, country, address, email, phone numbers) information.
+- [IP Location API](https://ipgeolocation.io/ip-location-api.html): Get all-in-one unified solution for **location** (city, locality, state, country, etc.), **currency**, **network** (AS number, ASN name, organization, asn type, date of allocation, company/ISP name, company type, company domain), **timezone** , **useragent** string parsing, **security** (threat score, is_tor, is_bot, proxy_provider, cloud_provider), and **abuse contact** (route/CIDR network, country, address, email, phone numbers) information.
 - [IP Security API](https://ipgeolocation.io/ip-security-api.html): Get security, network, location, hostname, timezone and useragent parsing.
 - [ASN API](https://ipgeolocation.io/asn-api.html): Get ASN details along with peers, upstreams, downstreams, routes, and raw WHOIS.
 - [Abuse Contact API](https://ipgeolocation.io/ip-abuse-contact-api.html): Get abuse emails, phone numbers, kind, organization, route/CIDR network and country.
-- [Astronomy API](https://ipgeolocation.io/astronomy-api.html): Get sunrise, sunset, moonrise, moonset, moon phases with precise twilight period times in combination 
-  with location information.
-- [Timezone API](https://ipgeolocation.io/timezone-api.html): Get timezone name, multiple time formats, daylight saving status and its details along with 
-  location information.
-- [Timezone Convert API](https://ipgeolocation.io/timezone-api.html): Convert time between timezone names, geo coordinates, location addresses, IATA codes, 
-  ICAO codes, or UN/LOCODE.
+- [Astronomy API](https://ipgeolocation.io/astronomy-api.html): Get sunrise, sunset, moonrise, moonset, moon phases with precise twilight period times in combination with location information.
+- [Timezone API](https://ipgeolocation.io/timezone-api.html): Get timezone name, multiple time formats, daylight saving status and its details along with location information.
+- [Timezone Convert API](https://ipgeolocation.io/timezone-api.html): Convert time between timezone names, geo coordinates, location addresses, IATA codes, ICAO codes, or UN/LOCODE.
 - [User Agent API](https://ipgeolocation.io/user-agent-api.html): Get browser, Operating System, and device info from single or multiple Useragent string parsing.
 
-This library aims to empower developers to integrate threat intelligence, personalization, fraud prevention, 
-compliance, and analytics features directly into Python based applications. Whether you're enriching signup forms 
-with ip geolocation data, localizing content, embedding threat intelligence in back-end systems, or converting 
-time zones and currencies, the library ensures seamless, scalable integration with IPGeolocation.io’s global API infrastructure.
+This library aims to empower developers to integrate threat intelligence, personalization, fraud prevention, compliance, and analytics features directly into Python based applications. Whether you're enriching signup forms with ip geolocation data, localizing content, embedding threat intelligence in back-end systems, or converting time zones and currencies, the library ensures seamless, scalable integration with IPGeolocation.io’s global API infrastructure.
 
 Based on:
 - API version: 2.0.0
@@ -140,8 +130,7 @@ Class | Method | HTTP request | Description
 *UserAgentApi* | [**parse_bulk_user_agent_strings**](docs/UserAgentApi.md#parse_bulk_user_agent_strings) | **POST** /user-agent-bulk | Handle multiple user-agent string lookups
 
 ## Fields and Methods Availability
-IP Geolocation offers four plans from billing point of view: **Free, Standard, Security, Advance**. The availability of each method calling
-from the respective class, over all plans are presented below. 
+IP Geolocation offers four plans from billing point of view: **Free, Standard, Security, Advance**. The availability of each method calling from the respective class, over all plans are presented below. 
 
 | Class               | Method                                                                                         | Free | Standard | Security | Advance |
 |---------------------|------------------------------------------------------------------------------------------------|:----:|:--------:|:--------:|:-------:|
@@ -159,7 +148,8 @@ from the respective class, over all plans are presented below.
 | *UserAgentApi*      | [**parse_user_agent_string**](docs/UserAgentApi.md#parse_user_agent_string)                    |  ✔   |    ✔     |    ✔     |    ✔    |
 | *UserAgentApi*      | [**parse_bulk_user_agent_strings**](docs/UserAgentApi.md#parse_bulk_user_agent_strings)        |  ✖   |    ✔     |    ✔     |    ✔    |
 
-> **Note:** The availability of fields in every API endpoint across all API plans is provided in the **_Reference Table_** within each respective API Documentation. e.g., for IPGeolocationApi, please visit [https://ipgeolocation.io/ip-location-api.html#fields-reference](https://ipgeolocation.io/ip-location-api.html#fields-reference). 
+> [!TIP] 
+> The availability of fields in every API endpoint across all API plans is provided in the **_Reference Table_** within each respective API Documentation. e.g., for IPGeolocationApi, please visit [https://ipgeolocation.io/ip-location-api.html#fields-reference](https://ipgeolocation.io/ip-location-api.html#fields-reference). 
 
 ## Authentication Setup
 To authenticate API requests, you need to get an API key from [ipgeolocation.io](https://ipgeolocation.io/).
@@ -193,7 +183,8 @@ configuration = ipgeolocation.Configuration(
 configuration.api_key['ApiKeyAuth'] = os.getenv("API_KEY")
 ```
 
-> **Note:** Uncomment the `dotenv` part, if you placed the API_KEY in `.env` file. 
+> [!IMPORTANT] 
+> Uncomment the `dotenv` part, if you placed the API_KEY in `.env` file. 
 
 ## Tests
 
@@ -205,14 +196,11 @@ This section provides usage examples of the `get_ip_geolocation()` method from t
 
 **Parameters**
 
-- `fields`
-Use this parameter to include specific fields in the response.
+- `fields`: Use this parameter to include specific fields in the response.
 
-- `excludes`
-Use this parameter to omit specific fields from the response.
+- `excludes`: Use this parameter to omit specific fields from the response.
 
-- `include`
-  Use this parameter to add optional modules to the response, such as:
+- `include`: Use this parameter to add optional modules to the response, such as:
   - `security`
   - `user_agent`
   - `hostname`
@@ -486,7 +474,7 @@ Sample Response:
   }
 }
 ```
-> **Note:** Hostname Parameters possible alternatives
+> [!NOTE]
 > 
 > The IP Geolocation API supports hostname lookup for all paid subscriptions. However, this is not included by default. To enable hostname resolution, use the `include` parameter with one of the following options:
 > 
@@ -599,7 +587,8 @@ Sample Response:
 
 These examples demonstrate typical usage of the IP Geolocation API with different subscription tiers. Use `fields` to specify exactly which data to receive, `include` for optional data like security and user agent, and `excludes` to omit specific keys from the response.
 
-> **Note:** All features available in the Free plan are also included in the Standard and Advanced plans. Similarly, all features of the Standard plan are available in the Advanced plan.
+> [!NOTE] 
+> All features available in the Free plan are also included in the Standard and Advanced plans. Similarly, all features of the Standard plan are available in the Advanced plan.
 
 ### Bulk IP Geolocation Example
 The Package also supports bulk IP geolocation requests using the `get_bulk_ip_geolocation()` method. All parameters like `fields`, `include`, and `excludes` can also be used in bulk requests.
@@ -656,7 +645,8 @@ with ipgeolocation.ApiClient(configuration) as client:
     response = api_instance.get_ip_security_info(ip="2.56.188.34", include="location,network,currency,time_zone,user_agent,country_metadata,hostname")
     pprint(response.to_dict())
 ```
-> **Note:** You can get all the available fields in standard plan in combination with security data.
+> [!NOTE] 
+> You can get all the available fields in standard plan in combination with security data.
 
 ### Request with Field Filtering
 ```python
@@ -692,7 +682,8 @@ with ipgeolocation.ApiClient(configuration) as client:
 
 This section provides usage examples of the `get_asn_info()` method from the SDK. These methods allow developers to retrieve detailed ASN-level network data either by ASN number or by IP address.
 
-> **Note:** ASN API is only available in the Advanced Plan
+> [!NOTE] 
+> ASN API is only available in the Advanced Plan
 
 Refer to the [ASN API documentation](https://ipgeolocation.io/asn-api.html#documentation-overview) for a detailed list of supported fields and behaviors.
 
@@ -822,7 +813,8 @@ Sample Response:
 ```
 ## Abuse Contact API Examples
 This section demonstrates how to use the `get_abuse_contact_info()` method of the AbuseContact API. This API helps security teams, hosting providers, and compliance professionals quickly identify the correct abuse reporting contacts for any IPv4 or IPv6 address. You can retrieve data like the responsible organization, role, contact emails, phone numbers, and address to take appropriate mitigation action against abusive or malicious activity.
-> **Note:**: Abuse Contact API is only available in the Advanced Plan
+> [!NOTE] 
+> Abuse Contact API is only available in the Advanced Plan
 
 Refer to the official [Abuse Contact API documentation](https://ipgeolocation.io/ip-abuse-contact-api.html#documentation-overview) for details on all available fields.
 ### Lookup Abuse Contact by IP
