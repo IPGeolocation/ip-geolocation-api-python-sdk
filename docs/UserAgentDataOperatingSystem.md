@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**name** | **str** |  | [optional] 
+**name** | **str** | 	Name of the operating system (e.g., 'Windows', 'iOS', 'Android', 'Linux'). | [optional] 
 **type** | **str** |  | [optional] 
 **version** | **str** |  | [optional] 
 **version_major** | **str** |  | [optional] 
