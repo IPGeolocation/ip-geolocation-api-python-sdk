@@ -113,43 +113,43 @@ For a detailed comparison of what each plan offers, visit the [Pricing Page](htt
 
 All URIs are relative to *https://api.ipgeolocation.io/v2*
 
-Class | Method | HTTP request | Description
------------- | ------------- | ------------- | -------------
-*IPGeolocationApi* | [**get_ip_geolocation**](docs/IPGeolocationApi.md#get_ip_geolocation) | **GET** /ipgeo | Get geolocation data for a single IP address
-*IPGeolocationApi* | [**get_bulk_ip_geolocation**](docs/IPGeolocationApi.md#get_bulk_ip_geolocation) | **POST** /ipgeo-bulk | Get geolocation data for multiple IP addresses in a single API request
-*IPSecurityApi* | [**get_ip_security_info**](docs/IPSecurityApi.md#get_ip_security_info) | **GET** /security | Retrieve security information (VPN, TOR, proxy, etc.) for a single IP
-*IPSecurityApi* | [**get_bulk_ip_security_info**](docs/IPSecurityApi.md#get_bulk_ip_security_info) | **POST** /security-bulk | Retrieve security threat intelligence for multiple IPs
-*ASNLookupApi* | [**get_asn_info**](docs/ASNLookupApi.md#get_asn_info) | **GET** /asn | Get details of any ASN number or associated IP address
-*AbuseContactApi* | [**get_abuse_contact_info**](docs/AbuseContactApi.md#get_abuse_contact_info) | **GET** /abuse | Retrieve abuse reporting contact information for a given IP address
-*AstronomyApi* | [**get_astronomy_details**](docs/AstronomyApi.md#get_astronomy_details) | **GET** /astronomy | Get sunrise, sunset, moonrise, moonset, and related data for a location
-*AstronomyApi* | [**get_time_series_lookup**](docs/AstronomyApi.md#get_time_series_lookup) | **GET** /astronomy/timeSeries | Get astronomy information for given date range at once
-*TimezoneApi* | [**get_timezone_info**](docs/TimezoneApi.md#get_timezone_info) | **GET** /timezone | Timezone information details
-*TimeConversionApi* | [**convert_time_between_timezones**](docs/TimeConversionApi.md#convert_time_between_timezones) | **GET** /timezone/convert | Convert time between two specified timezones
-*UserAgentApi* | [**get_user_agent_details**](docs/UserAgentApi.md#get_user_agent_details) | **GET** /user-agent | Get details of user-agent
-*UserAgentApi* | [**parse_user_agent_string**](docs/UserAgentApi.md#parse_user_agent_string) | **POST** /user-agent | Handle single User-Agent string
-*UserAgentApi* | [**parse_bulk_user_agent_strings**](docs/UserAgentApi.md#parse_bulk_user_agent_strings) | **POST** /user-agent-bulk | Handle multiple user-agent string lookups
+| Class               | Method                                                                                                                                                                    | HTTP request                  | Description                                                             |
+|---------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------|-------------------------------------------------------------------------|
+| *IPGeolocationApi*  | [**get_ip_geolocation**](https://github.com/IPGeolocation/ip-geolocation-api-python-sdk/blob/master/docs/IPGeolocationApi.md#get_ip_geolocation)                          | **GET** /ipgeo                | Get geolocation data for a single IP address                            |
+| *IPGeolocationApi*  | [**get_bulk_ip_geolocation**](https://github.com/IPGeolocation/ip-geolocation-api-python-sdk/blob/master/docs/IPGeolocationApi.md#get_bulk_ip_geolocation)                | **POST** /ipgeo-bulk          | Get geolocation data for multiple IP addresses in a single API request  |
+| *IPSecurityApi*     | [**get_ip_security_info**](https://github.com/IPGeolocation/ip-geolocation-api-python-sdk/blob/master/docs/IPSecurityApi.md#get_ip_security_info)                         | **GET** /security             | Retrieve security information (VPN, TOR, proxy, etc.) for a single IP   |
+| *IPSecurityApi*     | [**get_bulk_ip_security_info**](https://github.com/IPGeolocation/ip-geolocation-api-python-sdk/blob/master/docs/IPSecurityApi.md#get_bulk_ip_security_info)               | **POST** /security-bulk       | Retrieve security threat intelligence for multiple IPs                  |
+| *ASNLookupApi*      | [**get_asn_info**](https://github.com/IPGeolocation/ip-geolocation-api-python-sdk/blob/master/docs/ASNLookupApi.md#get_asn_info)                                          | **GET** /asn                  | Get details of any ASN number or associated IP address                  |
+| *AbuseContactApi*   | [**get_abuse_contact_info**](https://github.com/IPGeolocation/ip-geolocation-api-python-sdk/blob/master/docs/AbuseContactApi.md#get_abuse_contact_info)                   | **GET** /abuse                | Retrieve abuse reporting contact information for a given IP address     |
+| *AstronomyApi*      | [**get_astronomy_details**](https://github.com/IPGeolocation/ip-geolocation-api-python-sdk/blob/master/docs/AstronomyApi.md#get_astronomy_details)                        | **GET** /astronomy            | Get sunrise, sunset, moonrise, moonset, and related data for a location |
+| *AstronomyApi*      | [**get_time_series_lookup**](https://github.com/IPGeolocation/ip-geolocation-api-python-sdk/blob/master/docs/AstronomyApi.md#get_time_series_lookup)                      | **GET** /astronomy/timeSeries | Get astronomy information for given date range at once                  |
+| *TimezoneApi*       | [**get_timezone_info**](https://github.com/IPGeolocation/ip-geolocation-api-python-sdk/blob/master/docs/TimezoneApi.md#get_timezone_info)                                 | **GET** /timezone             | Timezone information details                                            |
+| *TimeConversionApi* | [**convert_time_between_timezones**](https://github.com/IPGeolocation/ip-geolocation-api-python-sdk/blob/master/docs/TimeConversionApi.md#convert_time_between_timezones) | **GET** /timezone/convert     | Convert time between two specified timezones                            |
+| *UserAgentApi*      | [**get_user_agent_details**](https://github.com/IPGeolocation/ip-geolocation-api-python-sdk/blob/master/docs/UserAgentApi.md#get_user_agent_details)                      | **GET** /user-agent           | Get details of user-agent                                               |
+| *UserAgentApi*      | [**parse_user_agent_string**](https://github.com/IPGeolocation/ip-geolocation-api-python-sdk/blob/master/docs/UserAgentApi.md#parse_user_agent_string)                    | **POST** /user-agent          | Handle single User-Agent string                                         |
+| *UserAgentApi*      | [**parse_bulk_user_agent_strings**](https://github.com/IPGeolocation/ip-geolocation-api-python-sdk/blob/master/docs/UserAgentApi.md#parse_bulk_user_agent_strings)        | **POST** /user-agent-bulk     | Handle multiple user-agent string lookups                               |
 
 ## Fields and Methods Availability
 IP Geolocation offers four plans from billing point of view: **Free, Standard, Security, Advance**. The availability of each method calling from the respective class, over all plans are presented below. 
 
-| Class               | Method                                                                                         | Free | Standard | Security | Advance |
-|---------------------|------------------------------------------------------------------------------------------------|:----:|:--------:|:--------:|:-------:|
-| *IPGeolocationApi*  | [**get_ip_geolocation**](docs/IPGeolocationApi.md#get_ip_geolocation)                          |  ✔   |    ✔     |    ✖     |    ✔    |
-| *IPGeolocationApi*  | [**get_bulk_ip_geolocation**](docs/IPGeolocationApi.md#get_bulk_ip_geolocation)                |  ✖   |    ✔     |    ✖     |    ✔    |
-| *IPSecurityApi*     | [**get_ip_security_info**](docs/IPSecurityApi.md#get_ip_security_info)                         |  ✖   |    ✖     |    ✔     |    ✖    |
-| *IPSecurityApi*     | [**get_bulk_ip_security_info**](docs/IPSecurityApi.md#get_bulk_ip_security_info)               |  ✖   |    ✖     |    ✔     |    ✖    |
-| *ASNLookupApi*      | [**get_asn_info**](docs/ASNLookupApi.md#get_asn_info)                                          |  ✖   |    ✖     |    ✖     |    ✔    |
-| *AbuseContactApi*   | [**get_abuse_contact_info**](docs/AbuseContactApi.md#get_abuse_contact_info)                   |  ✖   |    ✖     |    ✖     |    ✔    |
-| *AstronomyApi*      | [**get_astronomy_details**](docs/AstronomyApi.md#get_astronomy_details)                        |  ✔   |    ✔     |    ✔     |    ✔    |
-| *AstronomyApi*      | [**get_time_series_lookup**](docs/AstronomyApi.md#get_time_series_lookup)                      |  ✔   |    ✔     |    ✔     |    ✔    |
-| *TimezoneApi*       | [**get_timezone_info**](docs/TimezoneApi.md#get_timezone_info)                                 |  ✔   |    ✔     |    ✔     |    ✔    |
-| *TimeConversionApi* | [**convert_time_between_timezones**](docs/TimeConversionApi.md#convert_time_between_timezones) |  ✔   |    ✔     |    ✔     |    ✔    |
-| *UserAgentApi*      | [**get_user_agent_details**](docs/UserAgentApi.md#get_user_agent_details)                      |  ✔   |    ✔     |    ✔     |    ✔    |
-| *UserAgentApi*      | [**parse_user_agent_string**](docs/UserAgentApi.md#parse_user_agent_string)                    |  ✔   |    ✔     |    ✔     |    ✔    |
-| *UserAgentApi*      | [**parse_bulk_user_agent_strings**](docs/UserAgentApi.md#parse_bulk_user_agent_strings)        |  ✖   |    ✔     |    ✔     |    ✔    |
+| Class               | Method                                                                                                                                                                   | Free | Standard | Security | Advance |
+|---------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:----:|:--------:|:--------:|:-------:|
+| *IPGeolocationApi*  | [**get_ip_geolocation**](https://github.com/IPGeolocation/ip-geolocation-api-python-sdk/blob/master/docs/IPGeolocationApi.md#get_ip_geolocation)                         |  ✔   |    ✔     |    ✖     |    ✔    |
+| *IPGeolocationApi*  | [**get_bulk_ip_geolocation**](https://github.com/IPGeolocation/ip-geolocation-api-python-sdk/blob/master/docs/IPGeolocationApi.md#get_bulk_ip_geolocation)               |  ✖   |    ✔     |    ✖     |    ✔    |
+| *IPSecurityApi*     | [**get_ip_security_info**](https://github.com/IPGeolocation/ip-geolocation-api-python-sdk/blob/master/docs/IPSecurityApi.md#get_ip_security_info)                        |  ✖   |    ✖     |    ✔     |    ✖    |
+| *IPSecurityApi*     | [**get_bulk_ip_security_info**](https://github.com/IPGeolocation/ip-geolocation-api-python-sdk/blob/master/docs/IPSecurityApi.md#get_bulk_ip_security_info)              |  ✖   |    ✖     |    ✔     |    ✖    |
+| *ASNLookupApi*      | [**get_asn_info**](https://github.com/IPGeolocation/ip-geolocation-api-python-sdk/blob/master/docs/ASNLookupApi.md#get_asn_info)                                         |  ✖   |    ✖     |    ✖     |    ✔    |
+| *AbuseContactApi*   | [**get_abuse_contact_info**](https://github.com/IPGeolocation/ip-geolocation-api-python-sdk/blob/master/docs/AbuseContactApi.md#get_abuse_contact_info)                  |  ✖   |    ✖     |    ✖     |    ✔    |
+| *AstronomyApi*      | [**get_astronomy_details**](https://github.com/IPGeolocation/ip-geolocation-api-python-sdk/blob/master/docs/AstronomyApi.md#get_astronomy_details)                       |  ✔   |    ✔     |    ✔     |    ✔    |
+| *AstronomyApi*      | [**get_time_series_lookup**](https://github.com/IPGeolocation/ip-geolocation-api-python-sdk/blob/master/docs/AstronomyApi.md#get_time_series_lookup)                     |  ✔   |    ✔     |    ✔     |    ✔    |
+| *TimezoneApi*       | [**get_timezone_info**](https://github.com/IPGeolocation/ip-geolocation-api-python-sdk/blob/master/docs/TimezoneApi.md#get_timezone_info)                                |  ✔   |    ✔     |    ✔     |    ✔    |
+| *TimeConversionApi* | [**convert_time_between_timezones**](https://github.com/IPGeolocation/ip-geolocation-api-python-sdk/blob/master/docs/TimeConversionApi.md#convert_time_between_timezones) |  ✔   |    ✔     |    ✔     |    ✔    |
+| *UserAgentApi*      | [**get_user_agent_details**](https://github.com/IPGeolocation/ip-geolocation-api-python-sdk/blob/master/docs/UserAgentApi.md#get_user_agent_details)                     |  ✔   |    ✔     |    ✔     |    ✔    |
+| *UserAgentApi*      | [**parse_user_agent_string**](https://github.com/IPGeolocation/ip-geolocation-api-python-sdk/blob/master/docs/UserAgentApi.md#parse_user_agent_string)                   |  ✔   |    ✔     |    ✔     |    ✔    |
+| *UserAgentApi*      | [**parse_bulk_user_agent_strings**](https://github.com/IPGeolocation/ip-geolocation-api-python-sdk/blob/master/docs/UserAgentApi.md#parse_bulk_user_agent_strings)       |  ✖   |    ✔     |    ✔     |    ✔    |
 
 > [!TIP] 
-> The availability of fields in every API endpoint across all API plans is provided in the **_Reference Table_** within each respective API Documentation. e.g., for IPGeolocationApi, please visit [https://ipgeolocation.io/ip-location-api.html#fields-reference](https://ipgeolocation.io/ip-location-api.html#fields-reference). 
+> The availability of fields in every API endpoint across all API plans is provided in the **_Reference Table_** within each respective API Documentation. e.g., for IPGeolocationApi, please visit [https://ipgeolocation.io/ip-location-api.html#reference-to-ipgeolocation-api-response](https://ipgeolocation.io/ip-location-api.html#reference-to-ipgeolocation-api-response). 
 
 ## Authentication Setup
 To authenticate API requests, you need to get an API key from [ipgeolocation.io](https://ipgeolocation.io/).
@@ -1242,7 +1242,7 @@ Sample Response:
 
 This section provides usage examples of the `convert_time_between_timezones()` method from the SDK. The Timezone Converter API allows you to convert a specific time from one timezone to another using timezone identifiers and optional date/time inputs.
 
-For more details, refer to official documentation: [Timezone Converter API](https://ipgeolocation.io/timezone-api.html#convert-time-bw-time-zones).
+For more details, refer to official documentation: [Timezone Converter API](https://ipgeolocation.io/timezone-api.html#convert-time-between-time-zones).
 
 ### Convert Current Time from One Timezone to Another
 ```python
