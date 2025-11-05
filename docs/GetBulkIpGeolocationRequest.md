@@ -3,9 +3,9 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**ips** | **List[str]** |  | [optional] 
+| Name     | Type          | Description                             | Notes      |
+|----------|---------------|-----------------------------------------|------------|
+| **ips**  | **List[str]** | List of IP addresses want to be queried | [optional] |
 
 ## Example
 

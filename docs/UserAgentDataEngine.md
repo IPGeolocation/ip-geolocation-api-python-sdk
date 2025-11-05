@@ -3,12 +3,12 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**name** | **str** |  | [optional] 
-**type** | **str** |  | [optional] 
-**version** | **str** |  | [optional] 
-**version_major** | **str** |  | [optional] 
+| Name              | Type         | Description                  | Notes      |
+|-------------------|--------------|------------------------------|------------|
+| **name**          | **str**      | Layout Engine Name.          | [optional] |
+| **type**          | **str**      | Layout Engine Class.         | [optional] |
+| **version**       | **str**      | Layout Engine Version.       | [optional] |
+| **version_major** | **str**      | Layout Engine Version Major. | [optional] |
 
 ## Example
 

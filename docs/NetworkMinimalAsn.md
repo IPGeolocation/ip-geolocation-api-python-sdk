@@ -3,11 +3,11 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**as_number** | **str** |  | [optional] 
-**organization** | **str** |  | [optional] 
-**country** | **str** |  | [optional] 
+| Name             | Type        | Description                                                                        | Notes      |
+|------------------|-------------|------------------------------------------------------------------------------------|------------|
+| **as_number**    | **str**     | Autonomous system number of the autonomous system, to which IP address belongs to. | [optional] |
+| **organization** | **str**     | Legal Full Name of AS organization holding the IP address.                         | [optional] |
+| **country**      | **str**     | Name of the country, ASN is residing.                                              | [optional] |
 
 ## Example
 

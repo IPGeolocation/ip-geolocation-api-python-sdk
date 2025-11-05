@@ -3,12 +3,12 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**original_time** | **str** |  | [optional] 
-**converted_time** | **str** |  | [optional] 
-**diff_hour** | **float** |  | [optional] 
-**diff_min** | **int** |  | [optional] 
+| Name               | Type      | Description                                                                                                                    | Notes      |
+|--------------------|-----------|--------------------------------------------------------------------------------------------------------------------------------|------------|
+| **original_time**  | **str**   | The original date and time before any conversion, presented in the format 'yyyy-MM-dd HH:mm:ss' (e.g., "2024-03-11 14:47:32"). | [optional] |
+| **converted_time** | **str**   | The date and time after conversion, in the format 'yyyy-MM-dd HH:mm:ss' (e.g., "2024-03-11 02:47:32").                         | [optional] |
+| **diff_hour**      | **float** | The difference in hours between the `original_time` and the `converted_time`.                                                  | [optional] |
+| **diff_min**       | **int**   | The difference in minutes between the `original_time` and the `converted_time`.                                                | [optional] |
 
 ## Example
 

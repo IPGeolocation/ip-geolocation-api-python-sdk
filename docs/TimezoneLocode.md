@@ -3,16 +3,16 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**lo_code** | **str** |  | [optional] 
-**city** | **str** |  | [optional] 
-**state_code** | **str** |  | [optional] 
-**country_code** | **str** |  | [optional] 
-**country_name** | **str** |  | [optional] 
-**location_type** | **str** |  | [optional] 
-**latitude** | **str** |  | [optional] 
-**longitude** | **str** |  | [optional] 
+| Name              | Type    | Description                                                                                                         | Notes      |
+|-------------------|---------|---------------------------------------------------------------------------------------------------------------------|------------|
+| **lo_code**       | **str** | A unique identifier for the location, often used in logistics and shipping (e.g., "USNYC").                         | [optional] | 
+| **city**          | **str** | The name of the city or location associated with the `lo_code`.                                                     | [optional] | 
+| **state_code**    | **str** | The code for the state, province or region.                                                                         | [optional] | 
+| **country_code**  | **str** | The ISO 3166-1 alpha-2 country code (e.g., "US").                                                                   | [optional] | 
+| **country_name**  | **str** | The name of the country in an administrative context.                                                               | [optional] | 
+| **location_type** | **str** | The type of the location as comma separated list of facilities (e.g., Port, Rail Terminal, Road Terminal, Airport). | [optional] | 
+| **latitude**      | **str** | The latitude coordinate of the location.                                                                            | [optional] | 
+| **longitude**     | **str** | The longitude coordinate of the location.                                                                           | [optional] | 
 
 ## Example
 

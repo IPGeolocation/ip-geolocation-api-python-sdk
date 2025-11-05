@@ -3,11 +3,11 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**code** | **str** |  | [optional] 
-**name** | **str** |  | [optional] 
-**symbol** | **str** |  | [optional] 
+| Name       | Type    | Description               | Notes      |
+|------------|---------|---------------------------|------------|
+| **code**   | **str** | Currency code (ISO 4217). | [optional] |
+| **name**   | **str** | Currency name (ISO 4217). | [optional] |
+| **symbol** | **str** | Currency symbol.          | [optional] |
 
 ## Example
 

@@ -3,11 +3,11 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**calling_code** | **str** |  | [optional] 
-**tld** | **str** |  | [optional] 
-**languages** | **List[str]** |  | [optional] 
+| Name             | Type          | Description                                                             | Notes        |
+|------------------|---------------|-------------------------------------------------------------------------|--------------|
+| **calling_code** | **str**       | Calling code/Dialing code of the country.                               | [optional]   |
+| **tld**          | **str**       | Top Level Domain Name (TLD) of the country, which is also called ccTLD. | [optional]   |
+| **languages**    | **List[str]** | List of the languages’ codes, spoken in the country.                    | [optional]   |
 
 ## Example
 

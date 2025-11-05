@@ -3,12 +3,12 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**name** | **str** |  | [optional] 
-**type** | **str** |  | [optional] 
-**brand** | **str** |  | [optional] 
-**cpu** | **str** |  | [optional] 
+| Name      | Type    | Description       | Notes      |
+|-----------|---------|-------------------|------------|
+| **name**  | **str** | Device Name.      | [optional] | 
+| **type**  | **str** | Device Type.      | [optional] |
+| **brand** | **str** | Device Brand.     | [optional] |
+| **cpu**   | **str** | Device CPU Model. | [optional] |
 
 ## Example
 

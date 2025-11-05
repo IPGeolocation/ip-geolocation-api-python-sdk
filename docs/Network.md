@@ -3,11 +3,11 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**asn** | [**NetworkAsn**](NetworkAsn.md) |  | [optional] 
-**connection_type** | **str** |  | [optional] 
-**company** | [**NetworkCompany**](NetworkCompany.md) |  | [optional] 
+| Name                | Type                                    | Description                                       | Notes      |
+|---------------------|-----------------------------------------|---------------------------------------------------|------------|
+| **asn**             | [**NetworkAsn**](NetworkAsn.md)         | ASN information containing object.                | [optional] | 
+| **connection_type** | **str**                                 | Type of the connection, consuming the IP address. | [optional] | 
+| **company**         | [**NetworkCompany**](NetworkCompany.md) | Company/ISP information containing object.        | [optional] | 
 
 ## Example
 

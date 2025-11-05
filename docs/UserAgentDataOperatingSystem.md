@@ -3,13 +3,13 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**name** | **str** | 	Name of the operating system (e.g., 'Windows', 'iOS', 'Android', 'Linux'). | [optional] 
-**type** | **str** |  | [optional] 
-**version** | **str** |  | [optional] 
-**version_major** | **str** |  | [optional] 
-**build** | **str** |  | [optional] 
+| Name              | Type      | Description                                                                | Notes      |
+|-------------------|-----------|----------------------------------------------------------------------------|------------|
+| **name**          | **str**   | Name of the operating system (e.g., 'Windows', 'iOS', 'Android', 'Linux'). | [optional] | 
+| **type**          | **str**   | Operating System Class.                                                    | [optional] |
+| **version**       | **str**   | Operating System Version.                                                  | [optional] |
+| **version_major** | **str**   | Operating System Version Major.                                            | [optional] |
+| **build**         | **str**   | Operating System Version Major.                                            | [optional] |
 
 ## Example
 

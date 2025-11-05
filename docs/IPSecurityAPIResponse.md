@@ -3,17 +3,17 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**ip** | **str** |  | [optional] 
-**hostname** | **str** |  | [optional] 
-**security** | [**Security**](Security.md) |  | [optional] 
-**location** | [**LocationMinimal**](LocationMinimal.md) |  | [optional] 
-**network** | [**NetworkMinimal**](NetworkMinimal.md) |  | [optional] 
-**time_zone** | [**TimeZone**](TimeZone.md) |  | [optional] 
-**user_agent** | [**UserAgentData**](UserAgentData.md) |  | [optional] 
-**country_metadata** | [**CountryMetadata**](CountryMetadata.md) |  | [optional] 
-**currency** | [**Currency**](Currency.md) |  | [optional] 
+| Name                 | Type                                      | Description                                                                  | Notes        |
+|----------------------|-------------------------------------------|------------------------------------------------------------------------------|--------------|
+| **ip**               | **str**                                   | IP address that is used to lookup security information.                      | [optional]   |
+| **hostname**         | **str**                                   | Hostname of the IP address used to query IP Security API.                    | [optional]   |
+| **security**         | [**Security**](Security.md)               | Security object containing security information.                             | [optional]   |
+| **location**         | [**LocationMinimal**](LocationMinimal.md) | Location object containing location information for the IP address provided. | [optional]   |
+| **network**          | [**NetworkMinimal**](NetworkMinimal.md)   | Network object containing company and ASN information.                       | [optional]   |
+| **time_zone**        | [**TimeZone**](TimeZone.md)               | Timezone details object.                                                     | [optional]   |
+| **user_agent**       | [**UserAgentData**](UserAgentData.md)     | User Agent details of the calling machine/Client IP.                         | [optional]   |
+| **country_metadata** | [**CountryMetadata**](CountryMetadata.md) | Country metadata object containing tld, calling code and country languages.  | [optional]   |
+| **currency**         | [**Currency**](Currency.md)               | Currency object containing currency related information.                     | [optional]   |
 
 ## Example
 

@@ -3,20 +3,20 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**type** | **str** |  | [optional] 
-**name** | **str** |  | [optional] 
-**latitude** | **str** |  | [optional] 
-**longitude** | **str** |  | [optional] 
-**elevation_ft** | **int** |  | [optional] 
-**continent_code** | **str** |  | [optional] 
-**country_code** | **str** |  | [optional] 
-**state_code** | **str** |  | [optional] 
-**city** | **str** |  | [optional] 
-**iata_code** | **str** |  | [optional] 
-**icao_code** | **str** |  | [optional] 
-**faa_code** | **str** |  | [optional] 
+| Name               | Type    | Description                                                                                       | Notes      |
+|--------------------|---------|---------------------------------------------------------------------------------------------------|------------|
+| **type**           | **str** | Classification of the airport based on size and traffic.                                          | [optional] | 
+| **name**           | **str** | The full name of the airport.                                                                     | [optional] | 
+| **latitude**       | **str** | The latitude coordinate of the airport.                                                           | [optional] | 
+| **longitude**      | **str** | The longitude coordinate of the airport.                                                          | [optional] | 
+| **elevation_ft**   | **int** | The elevation of the airport above sea level, measured in feet.                                   | [optional] | 
+| **continent_code** | **str** | The two-letter code of the continent.                                                             | [optional] | 
+| **country_code**   | **str** | The ISO 3166-1 alpha-2 code for the country where the airport is located.                         | [optional] | 
+| **state_code**     | **str** | Code of the state/province/region where the airport is located.                                   | [optional] | 
+| **city**           | **str** | The city or administrative region that the airport serves.                                        | [optional] | 
+| **iata_code**      | **str** | The three-letter IATA airport code (e.g., "LHR").                                                 | [optional] | 
+| **icao_code**      | **str** | The four-letter ICAO airport code (e.g., "EGLL").                                                 | [optional] | 
+| **faa_code**       | **str** | The FAA location identifier, used primarily in the United States. May be empty if not applicable. | [optional] | 
 
 ## Example
 

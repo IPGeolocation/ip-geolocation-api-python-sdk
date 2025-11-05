@@ -3,9 +3,9 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**name** | **str** |  | [optional] 
+| Name     | Type    | Description                                     | Notes      |
+|----------|---------|-------------------------------------------------|------------|
+| **name** | **str** | Name of the company/ISP holding the IP address. | [optional] |
 
 ## Example
 

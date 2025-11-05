@@ -3,19 +3,19 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**as_number** | **str** |  | [optional] 
-**organization** | **str** |  | [optional] 
-**country** | **str** |  | [optional] 
-**asn_name** | **str** |  | [optional] 
-**type** | **str** |  | [optional] 
-**domain** | **str** |  | [optional] 
-**date_allocated** | **str** |  | [optional] 
-**allocation_status** | **str** |  | [optional] 
-**num_of_ipv4_routes** | **str** |  | [optional] 
-**num_of_ipv6_routes** | **str** |  | [optional] 
-**rir** | **str** |  | [optional] 
+| Name                   | Type    | Description                                                                                 | Notes      |
+|------------------------|---------|---------------------------------------------------------------------------------------------|------------|
+| **as_number**          | **str** | Autonomous system number of the autonomous system, to which IP address belongs to.          | [optional] |
+| **organization**       | **str** | Legal Full Name of AS organization holding the IP address.                                  | [optional] |
+| **country**            | **str** | Name of the country, ASN is residing.                                                       | [optional] |
+| **asn_name**           | **str** | Name associated with the Autonomous System, usually representing organization.              | [optional] |
+| **type**               | **str** | Type of the ASN, whether ISP, Business, etc.                                                | [optional] |
+| **domain**             | **str** | Domain name associated with the ASN holding the IP address.                                 | [optional] |
+| **date_allocated**     | **str** | Last date, when the IP address assigned to the ASN. e.g., in format `1st June 2001`         | [optional] |
+| **allocation_status**  | **str** | Whether the IP address is currently assigned to the ASN or not.                             | [optional] |
+| **num_of_ipv4_routes** | **str** | Total number of IPv4 routes, held by the ASN. These Routes can be queried from our ASN API. | [optional] |
+| **num_of_ipv6_routes** | **str** | Total number of IPv6 routes, held by the ASN. These Routes can be queried from our ASN API. | [optional] |
+| **rir**                | **str** | Name of the Regional Internet Registry (RIR) that allocated the AS number.                  | [optional] |
 
 ## Example
 

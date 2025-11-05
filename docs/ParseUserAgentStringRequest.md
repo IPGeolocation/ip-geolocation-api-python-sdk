@@ -3,9 +3,9 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**ua_string** | **str** |  | [optional] 
+Name | Type | Description                 | Notes
+------------ | ------------- |-----------------------------| -------------
+**ua_string** | **str** | User Agent string to parse. | [optional] 
 
 ## Example
 

@@ -3,10 +3,10 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**ip** | **str** |  | [optional] 
-**abuse** | [**Abuse**](Abuse.md) |  | [optional] 
+| Name      | Type                  | Description                                                  | Notes         |
+|-----------|-----------------------|--------------------------------------------------------------|---------------|
+| **ip**    | **str**               | The IP address for which abuse contact details are returned. | [optional]    |
+| **abuse** | [**Abuse**](Abuse.md) | Abuse contact information object.                            | [optional]    |
 
 ## Example
 

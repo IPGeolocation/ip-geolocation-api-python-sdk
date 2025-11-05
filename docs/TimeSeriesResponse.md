@@ -3,11 +3,11 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**ip** | **str** |  | [optional] 
-**location** | [**AstronomyLocation**](AstronomyLocation.md) |  | [optional] 
-**astronomy** | [**List[TimeSeries]**](TimeSeries.md) |  | [optional] 
+| Name          | Type                                          | Description                                         | Notes      |
+|---------------|-----------------------------------------------|-----------------------------------------------------|------------|
+| **ip**        | **str**                                       | Queried IP address or the machine/client IP address | [optional] |
+| **location**  | [**AstronomyLocation**](AstronomyLocation.md) | Location information for the queried method         | [optional] |
+| **astronomy** | [**List[TimeSeries]**](TimeSeries.md)         | List of astronomy information objects               | [optional] |
 
 ## Example
 

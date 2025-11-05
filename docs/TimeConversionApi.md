@@ -2,9 +2,9 @@
 
 All URIs are relative to *https://api.ipgeolocation.io/v2*
 
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**convert_time_between_timezones**](TimeConversionApi.md#convert_time_between_timezones) | **GET** /timezone/convert | 
+| Method                                                                                    | HTTP request              | Description                               |
+|-------------------------------------------------------------------------------------------|---------------------------|-------------------------------------------|
+| [**convert_time_between_timezones**](TimeConversionApi.md#convert_time_between_timezones) | **GET** /timezone/convert | Convert time between different parameters |
 
 
 # **convert_time_between_timezones**
