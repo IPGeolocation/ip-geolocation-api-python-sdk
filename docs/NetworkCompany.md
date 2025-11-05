@@ -3,11 +3,11 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**name** | **str** |  | [optional] 
-**type** | **str** |  | [optional] 
-**domain** | **str** |  | [optional] 
+| Name       | Type    | Description                                                                  | Notes      |
+|------------|---------|------------------------------------------------------------------------------|------------|
+| **name**   | **str** | Name of the company/ISP holding the IP address.                              | [optional] |
+| **type**   | **str** | Type of the company whether it is an ISP, hosting provider or business, etc. | [optional] |
+| **domain** | **str** | Official domain name used by the company.                                    | [optional] |
 
 ## Example
 

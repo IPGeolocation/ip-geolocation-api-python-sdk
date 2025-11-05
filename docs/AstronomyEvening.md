@@ -3,18 +3,18 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**golden_hour_begin** | **str** |  | [optional] 
-**golden_hour_end** | **str** |  | [optional] 
-**blue_hour_begin** | **str** |  | [optional] 
-**blue_hour_end** | **str** |  | [optional] 
-**civil_twilight_begin** | **str** |  | [optional] 
-**civil_twilight_end** | **str** |  | [optional] 
-**nautical_twilight_begin** | **str** |  | [optional] 
-**nautical_twilight_end** | **str** |  | [optional] 
-**astronomical_twilight_begin** | **str** |  | [optional] 
-**astronomical_twilight_end** | **str** |  | [optional] 
+| Name                            | Type          | Description                                                                   | Notes        |
+|---------------------------------|---------------|-------------------------------------------------------------------------------|--------------|
+| **golden_hour_begin**           | **str**       | Start of golden hour (warm, low‑angle light) after sunset.                    | [optional]   |
+| **golden_hour_end**             | **str**       | End of golden hour after sunset.                                              | [optional]   |
+| **blue_hour_begin**             | **str**       | Start of blue hour (soft, diffused light) after sunset.                       | [optional]   |
+| **blue_hour_end**               | **str**       | End of blue hour after sunset.                                                | [optional]   |
+| **civil_twilight_begin**        | **str**       | Start of civil twilight (enough light for outdoor activities) in the evening. | [optional]   |
+| **civil_twilight_end**          | **str**       | End of civil twilight in the evening.                                         | [optional]   |
+| **nautical_twilight_begin**     | **str**       | Start of nautical twilight (horizon still visible) in the evening.            | [optional]   |
+| **nautical_twilight_end**       | **str**       | End of nautical twilight in the evening.                                      | [optional]   |
+| **astronomical_twilight_begin** | **str**       | Start of astronomical twilight (night sky begins) in the evening.             | [optional]   |
+| **astronomical_twilight_end**   | **str**       | End of astronomical twilight in the evening.                                  | [optional]   |
 
 ## Example
 

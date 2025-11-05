@@ -66,9 +66,9 @@ with ipgeolocation.ApiClient(configuration) as api_client:
 ### Parameters
 
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **user_agent** | **str**|  | [optional] 
+Name | Type | Description                          | Notes
+------------- | ------------- |--------------------------------------| -------------
+ **user_agent** | **str**| User Agent String to parse.          | [optional] 
  **output** | **str**| Desired output format (json or xml). | [optional] 
 
 ### Return type
@@ -154,10 +154,10 @@ with ipgeolocation.ApiClient(configuration) as api_client:
 ### Parameters
 
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **output** | **str**| Desired output format (json or xml). | [optional] 
- **parse_bulk_user_agent_strings_request** | [**ParseBulkUserAgentStringsRequest**](ParseBulkUserAgentStringsRequest.md)|  | [optional] 
+Name | Type | Description                               | Notes
+------------- | ------------- |-------------------------------------------| -------------
+ **output** | **str**| Desired output format (json or xml).      | [optional] 
+ **parse_bulk_user_agent_strings_request** | [**ParseBulkUserAgentStringsRequest**](ParseBulkUserAgentStringsRequest.md)| User Agent String request object to pass. | [optional] 
 
 ### Return type
 
@@ -242,10 +242,10 @@ with ipgeolocation.ApiClient(configuration) as api_client:
 ### Parameters
 
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **output** | **str**| Desired output format (json or xml). | [optional] 
- **parse_user_agent_string_request** | [**ParseUserAgentStringRequest**](ParseUserAgentStringRequest.md)|  | [optional] 
+Name | Type | Description                                    | Notes
+------------- | ------------- |------------------------------------------------| -------------
+ **output** | **str**| Desired output format (json or xml).           | [optional] 
+ **parse_user_agent_string_request** | [**ParseUserAgentStringRequest**](ParseUserAgentStringRequest.md)| User Agent String object to pass as parameter. | [optional] 
 
 ### Return type
 

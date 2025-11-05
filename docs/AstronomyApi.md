@@ -2,10 +2,10 @@
 
 All URIs are relative to *https://api.ipgeolocation.io/v2*
 
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**get_astronomy_details**](AstronomyApi.md#get_astronomy_details) | **GET** /astronomy | 
-[**get_time_series_lookup**](AstronomyApi.md#get_time_series_lookup) | **GET** /astronomy/timeSeries |
+| Method                                                               | HTTP request                  | Description                                                                                              |
+|----------------------------------------------------------------------|-------------------------------|----------------------------------------------------------------------------------------------------------|
+| [**get_astronomy_details**](AstronomyApi.md#get_astronomy_details)   | **GET** /astronomy            | Get sun and moon related data based upon location address, Coordinates or any IP address                 |
+| [**get_time_series_lookup**](AstronomyApi.md#get_time_series_lookup) | **GET** /astronomy/timeSeries | Get astronomy information for given date range at once                                                   |
 
 
 # **get_astronomy_details**
@@ -68,17 +68,17 @@ with ipgeolocation.ApiClient(configuration) as api_client:
 ### Parameters
 
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **ip** | **str**| query paramter &#39;ip&#39;. If not provided, will be your network IP | [optional] 
- **location** | **str**| query paramter &#39;location&#39;. If not provided, will be your ip location | [optional] 
- **lat** | **str**| query paramter &#39;lat&#39;. | [optional] 
- **long** | **str**| query paramter &#39;long&#39;. | [optional] 
- **time_zone** | **str**|  | [optional] 
- **date** | **str**| The date (YYYY-MM-DD) to lookup for. default will be the current date | [optional] 
- **elevation** | **float**| query parameter &#39;elevation&#39; | [optional] 
- **output** | **str**| Desired output format. | [optional] 
- **lang** | **str**| By default, the API responds in English. You can change the response language by passing the language code as a query parameter &#x60;lang&#x60;. Multi language feature is available only for &#x60;paid users&#x60;. | [optional] 
+| Name          | Type          | Description                                                                                                                                                                                                            | Notes      |
+|---------------|---------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------|
+| **ip**        | **str**       | query paramter &#39;ip&#39;. If not provided, will be your network IP                                                                                                                                                  | [optional] |
+| **location**  | **str**       | query paramter &#39;location&#39;. If not provided, will be your ip location                                                                                                                                           | [optional] |
+| **lat**       | **str**       | query paramter &#39;lat&#39;.                                                                                                                                                                                          | [optional] |
+| **long**      | **str**       | query paramter &#39;long&#39;.                                                                                                                                                                                         | [optional] |
+| **time_zone** | **str**       | query parameter &#39;time_zone&#39; if you want to get the astronomy information w.r.t to a different timezone                                                                                                         | [optional] |
+| **date**      | **str**       | The date (YYYY-MM-DD) to lookup for. default will be the current date                                                                                                                                                  | [optional] |
+| **elevation** | **float**     | query parameter &#39;elevation&#39;                                                                                                                                                                                    | [optional] |
+| **output**    | **str**       | Desired output format.                                                                                                                                                                                                 | [optional] |
+| **lang**      | **str**       | By default, the API responds in English. You can change the response language by passing the language code as a query parameter &#x60;lang&#x60;. Multi language feature is available only for &#x60;paid users&#x60;. | [optional] |
 
 ### Return type
 

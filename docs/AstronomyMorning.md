@@ -3,18 +3,18 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**astronomical_twilight_begin** | **str** |  | [optional] 
-**astronomical_twilight_end** | **str** |  | [optional] 
-**nautical_twilight_begin** | **str** |  | [optional] 
-**nautical_twilight_end** | **str** |  | [optional] 
-**civil_twilight_begin** | **str** |  | [optional] 
-**civil_twilight_end** | **str** |  | [optional] 
-**blue_hour_begin** | **str** |  | [optional] 
-**blue_hour_end** | **str** |  | [optional] 
-**golden_hour_begin** | **str** |  | [optional] 
-**golden_hour_end** | **str** |  | [optional] 
+| Name                            | Type          | Description                                                                         | Notes        |
+|---------------------------------|---------------|-------------------------------------------------------------------------------------|--------------|
+| **astronomical_twilight_begin** | **str**       | Start of astronomical twilight (pre‑dawn) in the morning.                           | [optional]   |
+| **astronomical_twilight_end**   | **str**       | End of astronomical twilight in the morning.                                        | [optional]   |
+| **nautical_twilight_begin**     | **str**       | Start of nautical twilight (when the horizon first becomes visible) in the morning. | [optional]   |
+| **nautical_twilight_end**       | **str**       | End of nautical twilight in the morning.                                            | [optional]   |
+| **civil_twilight_begin**        | **str**       | Start of civil twilight (enough light for outdoor activities) in the morning.       | [optional]   |
+| **civil_twilight_end**          | **str**       | End of civil twilight in the morning.                                               | [optional]   |
+| **blue_hour_begin**             | **str**       | Start of blue hour (soft, diffused light) before sunrise.                           | [optional]   |
+| **blue_hour_end**               | **str**       | End of blue hour before sunrise.                                                    | [optional]   |
+| **golden_hour_begin**           | **str**       | Start of golden hour (warm, low‑angle light) before sunrise.                        | [optional]   |
+| **golden_hour_end**             | **str**       | End of golden hour before sunrise.                                                  | [optional]   |
 
 ## Example
 

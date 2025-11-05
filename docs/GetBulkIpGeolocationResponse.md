@@ -3,20 +3,20 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**message** | **str** |  | [optional] 
-**ip** | **str** |  | [optional] 
-**hostname** | **str** |  | [optional] 
-**domain** | **str** |  | [optional] 
-**location** | [**Location**](Location.md) |  | [optional] 
-**country_metadata** | [**CountryMetadata**](CountryMetadata.md) |  | [optional] 
-**network** | [**Network**](Network.md) |  | [optional] 
-**currency** | [**Currency**](Currency.md) |  | [optional] 
-**security** | [**Security**](Security.md) |  | [optional] 
-**abuse** | [**Abuse**](Abuse.md) |  | [optional] 
-**time_zone** | [**TimeZone**](TimeZone.md) |  | [optional] 
-**user_agent** | [**UserAgentData**](UserAgentData.md) |  | [optional] 
+| Name                 | Type                                      | Description                                                                                                                          | Notes      |
+|----------------------|-------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------|------------|
+| **message**          | **str**                                   | Error message related to the IP address, if it is wrong.                                                                             | [optional] |
+| **ip**               | **str**                                   | IP address which is provided in the request list.                                                                                    | [optional] |
+| **hostname**         | **str**                                   | Hostname of the IP address used to query IP Geolocation API.                                                                         | [optional] |
+| **domain**           | **str**                                   | Domain name that is used to lookup geolocation information. It is not returned if an IP address is used to query IP Geolocation API. | [optional] | 
+| **location**         | [**Location**](Location.md)               | Location information object.                                                                                                         | [optional] | 
+| **country_metadata** | [**CountryMetadata**](CountryMetadata.md) | Country metadata object containing tld, calling code and country languages.                                                          | [optional] | 
+| **network**          | [**Network**](Network.md)                 | Network object containing ISP and asn related information.                                                                           | [optional] | 
+| **currency**         | [**Currency**](Currency.md)               | Currency object containing currency related information.                                                                             | [optional] | 
+| **security**         | [**Security**](Security.md)               | Security information object.                                                                                                         | [optional] | 
+| **abuse**            | [**Abuse**](Abuse.md)                     | IP Abuse contact information object.                                                                                                 | [optional] | 
+| **time_zone**        | [**TimeZone**](TimeZone.md)               | Timezone details object.                                                                                                             | [optional] | 
+| **user_agent**       | [**UserAgentData**](UserAgentData.md)     | User Agent details of the calling machine/Client IP.                                                                                 | [optional] | 
 
 ## Example
 

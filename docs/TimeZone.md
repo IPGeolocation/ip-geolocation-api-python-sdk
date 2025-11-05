@@ -3,18 +3,18 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**name** | **str** |  | [optional] 
-**offset** | **int** |  | [optional] 
-**offset_with_dst** | **int** |  | [optional] 
-**current_time** | **str** |  | [optional] 
-**current_time_unix** | **float** |  | [optional] 
-**is_dst** | **bool** |  | [optional] 
-**dst_savings** | **int** |  | [optional] 
-**dst_exists** | **bool** |  | [optional] 
-**dst_start** | [**TimeZoneDstStart**](TimeZoneDstStart.md) |  | [optional] 
-**dst_end** | [**TimeZoneDstEnd**](TimeZoneDstEnd.md) |  | [optional] 
+| Name                  | Type                                        | Description                                                                                                                                                                | Notes      |
+|-----------------------|---------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------|
+| **name**              | **str**                                     | Name (ISO 8601) of the time zone.                                                                                                                                          | [optional] |
+| **offset**            | **int**                                     | Time zone offset from UTC.                                                                                                                                                 | [optional] |
+| **offset_with_dst**   | **int**                                     | Time zone with DST offset from UTC.                                                                                                                                        | [optional] |
+| **current_time**      | **str**                                     | Current time in `yyyy-MM-dd HH:mm:ss.SSS±ZZZ` format.                                                                                                                      | [optional] |
+| **current_time_unix** | **float**                                   | Current time in seconds since 1970.                                                                                                                                        | [optional] |
+| **is_dst**            | **bool**                                    | Is the time zone in daylight savings?                                                                                                                                      | [optional] |
+| **dst_savings**       | **int**                                     | Total daylight savings.                                                                                                                                                    | [optional] |
+| **dst_exists**        | **bool**                                    | Indicates whether Daylight Saving Time (DST) is observed in the region. If `true`, the `dst_start` and `dst_end` objects will include detailed DST transition information. | [optional] |
+| **dst_start**         | [**TimeZoneDstStart**](TimeZoneDstStart.md) | DST start detailed information.                                                                                                                                            | [optional] | 
+| **dst_end**           | [**TimeZoneDstEnd**](TimeZoneDstEnd.md)     | DST end detailed information.                                                                                                                                              | [optional] |
 
 ## Example
 

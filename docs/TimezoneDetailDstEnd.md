@@ -3,14 +3,14 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**utc_time** | **str** |  | [optional] 
-**duration** | **str** |  | [optional] 
-**gap** | **bool** |  | [optional] 
-**date_time_after** | **str** |  | [optional] 
-**date_time_before** | **str** |  | [optional] 
-**overlap** | **bool** |  | [optional] 
+| Name                 | Type     | Description                                                                     | Notes      |
+|----------------------|----------|---------------------------------------------------------------------------------|------------|
+| **utc_time**         | **str**  | The date and time in UTC when DST ends.                                         | [optional] | 
+| **duration**         | **str**  | The time change that occurs when DST ends.                                      | [optional] | 
+| **gap**              | **bool** | Is there is no gap (DST backward transition)?                                   | [optional] | 
+| **date_time_after**  | **str**  | The local date and time that immediately follows the ends of DST.               | [optional] | 
+| **date_time_before** | **str**  | The local date and time immediately before DST ends.                            | [optional] | 
+| **overlap**          | **bool** | Whether there is an overlap of time due to clocks being set back when DST ends. | [optional] | 
 
 ## Example
 

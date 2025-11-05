@@ -3,16 +3,16 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**user_agent_string** | **str** |  | [optional] 
-**name** | **str** |  | [optional] 
-**type** | **str** |  | [optional] 
-**version** | **str** |  | [optional] 
-**version_major** | **str** |  | [optional] 
-**device** | [**UserAgentDataDevice**](UserAgentDataDevice.md) |  | [optional] 
-**engine** | [**UserAgentDataEngine**](UserAgentDataEngine.md) |  | [optional] 
-**operating_system** | [**UserAgentDataOperatingSystem**](UserAgentDataOperatingSystem.md) |  | [optional] 
+| Name                  | Type                                                                | Description                                                                 | Notes      |
+|-----------------------|---------------------------------------------------------------------|-----------------------------------------------------------------------------|------------|
+| **user_agent_string** | **str**                                                             | User-Agent string passed along with the query in the '`User-Agent`' header. | [optional] |
+| **name**              | **str**                                                             | User-Agent Name.                                                            | [optional] |
+| **type**              | **str**                                                             | User-Agent Class.                                                           | [optional] |
+| **version**           | **str**                                                             | User-Agent Version.                                                         | [optional] |
+| **version_major**     | **str**                                                             | User-Agent Version Major.                                                   | [optional] |
+| **device**            | [**UserAgentDataDevice**](UserAgentDataDevice.md)                   | Device object containing detailed device information.                       | [optional] | 
+| **engine**            | [**UserAgentDataEngine**](UserAgentDataEngine.md)                   | User Agent engine/platform details.                                         | [optional] |
+| **operating_system**  | [**UserAgentDataOperatingSystem**](UserAgentDataOperatingSystem.md) | Operating System name and version detail.                                   | [optional] | 
 
 ## Example
 

@@ -3,13 +3,13 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**ip** | **str** |  | [optional] 
-**airport_details** | [**TimezoneAirport**](TimezoneAirport.md) |  | [optional] 
-**lo_code_details** | [**TimezoneLocode**](TimezoneLocode.md) |  | [optional] 
-**location** | [**TimezoneLocation**](TimezoneLocation.md) |  | [optional] 
-**time_zone** | [**TimezoneDetail**](TimezoneDetail.md) |  | [optional] 
+| Name                | Type                                        | Description                                                                                                         | Notes      |
+|---------------------|---------------------------------------------|---------------------------------------------------------------------------------------------------------------------|------------|
+| **ip**              | **str**                                     | The IP address used for the timezone lookup. Returned when queried using the `ip=` parameter or with no parameters. | [optional] | 
+| **airport_details** | [**TimezoneAirport**](TimezoneAirport.md)   | Airport details object.                                                                                             | [optional] | 
+| **lo_code_details** | [**TimezoneLocode**](TimezoneLocode.md)     | UN/LOCODE details object.                                                                                           | [optional] | 
+| **location**        | [**TimezoneLocation**](TimezoneLocation.md) | Location object.                                                                                                    | [optional] | 
+| **time_zone**       | [**TimezoneDetail**](TimezoneDetail.md)     | Timezone object.                                                                                                    | [optional] | 
 
 ## Example
 

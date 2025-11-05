@@ -3,10 +3,10 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**asn** | [**NetworkMinimalAsn**](NetworkMinimalAsn.md) |  | [optional] 
-**company** | [**NetworkMinimalCompany**](NetworkMinimalCompany.md) |  | [optional] 
+| Name        | Type                                                  | Description                                                            | Notes       |
+|-------------|-------------------------------------------------------|------------------------------------------------------------------------|-------------|
+| **asn**     | [**NetworkMinimalAsn**](NetworkMinimalAsn.md)         | ASN object containing AS number, organization, and country of the ASN. | [optional]  |
+| **company** | [**NetworkMinimalCompany**](NetworkMinimalCompany.md) | Company object containing company information.                         | [optional]  |
 
 ## Example
 

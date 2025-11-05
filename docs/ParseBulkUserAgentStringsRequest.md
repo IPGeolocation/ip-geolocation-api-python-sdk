@@ -3,9 +3,9 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**ua_strings** | **List[str]** |  | [optional] 
+| Name           | Type          | Description                          | Notes      |
+|----------------|---------------|--------------------------------------|------------|
+| **ua_strings** | **List[str]** | List of User Agent strings to parse. | [optional] |
 
 ## Example
 

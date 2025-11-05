@@ -3,19 +3,19 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**threat_score** | **int** |  | [optional] 
-**is_tor** | **bool** |  | [optional] 
-**is_proxy** | **bool** |  | [optional] 
-**proxy_type** | **str** |  | [optional] 
-**proxy_provider** | **str** |  | [optional] 
-**is_anonymous** | **bool** |  | [optional] 
-**is_known_attacker** | **bool** |  | [optional] 
-**is_spam** | **bool** |  | [optional] 
-**is_bot** | **bool** |  | [optional] 
-**is_cloud_provider** | **bool** |  | [optional] 
-**cloud_provider** | **str** |  | [optional] 
+| Name                  | Type          | Description                                                                                                         | Notes       |
+|-----------------------|---------------|---------------------------------------------------------------------------------------------------------------------|-------------|
+| **threat_score**      | **int**       | IP address’ threat score. It ranges from 0 to 100. **100 indicates highest threat** and vice versa for lower score. | [optional]  |
+| **is_tor**            | **bool**      | Indicates if the IP address is being consumed on a Tor endpoint.                                                    | [optional]  |
+| **is_proxy**          | **bool**      | Indicates whether the IP address is associated with any anonymization network --- VPN, PROXY, or RELAY.             | [optional]  |
+| **proxy_type**        | **str**       | Specifies which of the three types (VPN, PROXY, or RELAY) applies when `is_proxy` is true; otherwise remains empty. | [optional]  |
+| **proxy_provider**    | **str**       | Name of the proxy provider, if the IP address belongs to a proxy network.                                           | [optional]  |
+| **is_anonymous**      | **bool**      | Indicates if the IP address is being used anonymously.                                                              | [optional]  |
+| **is_known_attacker** | **bool**      | Indicates if the IP address is enlisted as an attacking IP address.                                                 | [optional]  |
+| **is_spam**           | **bool**      | Indicates if the IP address is enlisted as a spam IP address.                                                       | [optional]  |
+| **is_bot**            | **bool**      | Indicates if the IP address is enlisted as a bot IP address.                                                        | [optional]  |
+| **is_cloud_provider** | **bool**      | Indicates if the IP address belongs to a cloud provider (computing infrastructure providers).                       | [optional]  |
+| **cloud_provider**    | **str**       | Name of the Cloud Provider, if the IP address belongs to a cloud provider.                                          | [optional]  |
 
 ## Example
 

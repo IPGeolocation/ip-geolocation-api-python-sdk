@@ -3,11 +3,11 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**as_number** | **str** |  | [optional] 
-**description** | **str** |  | [optional] 
-**country** | **str** |  | [optional] 
+| Name            | Type          | Description                                           | Notes      |
+|-----------------|---------------|-------------------------------------------------------|------------|
+| **as_number**   | **str**       | Autonomous System Number                              | [optional] |
+| **description** | **str**       | The name of the organization                          | [optional] |
+|  **country**    | **str**       | Two letter country code, in which the ASN is assigned | [optional] |
 
 ## Example
 

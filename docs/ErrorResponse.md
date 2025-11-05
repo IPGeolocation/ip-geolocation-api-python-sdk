@@ -3,9 +3,9 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**message** | **str** |  | [optional] 
+| Name        | Type    | Description                        | Notes      |
+|-------------|---------|------------------------------------|------------|
+| **message** | **str** | Description of the error occurred. | [optional] |
 
 ## Example
 

@@ -3,14 +3,14 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**utc_time** | **str** |  | [optional] 
-**duration** | **str** |  | [optional] 
-**gap** | **bool** |  | [optional] 
-**date_time_after** | **str** |  | [optional] 
-**date_time_before** | **str** |  | [optional] 
-**overlap** | **bool** |  | [optional] 
+| Name                 | Type       | Description                                                                       | Notes      |
+|----------------------|------------|-----------------------------------------------------------------------------------|------------|
+| **utc_time**         | **str**    | The date and time in UTC when DST begins.                                         | [optional] |
+| **duration**         | **str**    | The time change that occurs when DST starts.                                      | [optional] |
+| **gap**              | **bool**   | Is there is a missing hour (DST forward transition)?                              | [optional] |
+| **date_time_after**  | **str**    | The local date and time that immediately follows the start of DST.                | [optional] |
+| **date_time_before** | **str**    | The local date and time immediately before DST begins.                            | [optional] |
+| **overlap**          | **bool**   | Whether there is an overlap of time due to clocks being set back when DST starts. | [optional] |
 
 ## Example
 
