@@ -81,14 +81,14 @@ Based on:
 
 You can install package directly from [![PyPI](https://badge.fury.io/py/ipgeolocationio.svg)](https://pypi.org/project/ipgeolocationio/) using:
 
-```sh
+```bash
 pip install ipgeolocationio
 ```
 (you may need to run `pip` with root permission: `sudo pip install ipgeolocationio`)
 
 ### From GitHub
 
-```sh
+```bash
 python -m pip install git+https://github.com/IPGeolocation/ip-geolocation-api-python-sdk.git
 ```
 (or append `sudo` in the start to install the package for all users)
