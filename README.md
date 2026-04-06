@@ -7,7 +7,7 @@ Typed Python SDK for the [IPGeolocation.io](https://ipgeolocation.io/) IP Locati
 - Typed response models plus raw JSON/XML methods
 - Python 3.8+
 
-## Contents
+## Table of Contents
 
 - [Install](#install)
 - [Quick Start](#quick-start)
