@@ -1,0 +1,107 @@
+[build-system]
+requires = ["setuptools>=69", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ipgeolocationio"
+version = "3.0.0"
+description = "Typed Python SDK for the IPGeolocation.io IP location API, with sync and async clients."
+readme = "README.md"
+license = "MIT"
+license-files = ["LICENSE"]
+requires-python = ">=3.8"
+authors = [
+  { name = "IPGeolocation Team", email = "support@ipgeolocation.io" }
+]
+keywords = [
+  "ipgeolocation",
+  "geolocation",
+  "vpn-detection",
+  "proxy-detection",
+  "threat-intelligence",
+  "asn",
+  "timezone",
+]
+classifiers = [
+  "Development Status :: 5 - Production/Stable",
+  "Intended Audience :: Developers",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3 :: Only",
+  "Programming Language :: Python :: 3.8",
+  "Programming Language :: Python :: 3.9",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
+  "Typing :: Typed",
+  "Topic :: Internet",
+  "Topic :: Software Development :: Libraries :: Python Modules",
+]
+dependencies = [
+  "httpx>=0.28,<1",
+  "requests>=2.32.4,<3",
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=8.0.0,<9",
+  "pytest-cov>=7.0.0,<8",
+  "pyright>=1.1.408,<2",
+  "ruff>=0.15.6,<0.16",
+  "mypy>=1.19.1,<2",
+  "types-requests>=2.32.4,<3",
+]
+
+[project.urls]
+Homepage = "https://ipgeolocation.io/"
+Documentation = "https://ipgeolocation.io/documentation/ip-geolocation-api-python-sdk.html"
+Repository = "https://github.com/IPGeolocation/ip-geolocation-api-python-sdk"
+Issues = "https://github.com/IPGeolocation/ip-geolocation-api-python-sdk/issues"
+
+[tool.setuptools]
+package-dir = { "" = "src" }
+
+[tool.setuptools.package-data]
+ipgeolocation = ["py.typed"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
+addopts = ["-p", "no:cacheprovider"]
+
+[tool.coverage.run]
+branch = true
+source = ["src/ipgeolocation"]
+
+[tool.coverage.report]
+fail_under = 90
+show_missing = true
+skip_covered = false
+
+[tool.ruff]
+target-version = "py38"
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E", "F", "I"]
+
+[tool.mypy]
+# mypy 1.19+ no longer supports targeting Python 3.8 directly.
+# Pyright covers the real Python 3.8 compatibility check for this SDK.
+python_version = "3.9"
+files = ["src"]
+check_untyped_defs = true
+warn_unused_ignores = true
+warn_redundant_casts = true
+warn_return_any = true
+no_implicit_optional = true
+
+[tool.pyright]
+include = ["src"]
+pythonVersion = "3.8"
+typeCheckingMode = "standard"
+venvPath = "."
+venv = ".venv"
