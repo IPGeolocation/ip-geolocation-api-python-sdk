@@ -1,6 +1,6 @@
 # Changelog
 
-## 3.0.0
+## 2.0.0
 
 - Added the Python SDK for the IPGeolocation API unified endpoints.
 - Supports typed and raw responses for single and bulk IP lookups.

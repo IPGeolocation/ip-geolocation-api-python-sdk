@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "ipgeolocationio"
-version = "3.0.0"
+version = "2.0.0"
 description = "Typed Python SDK for the IPGeolocation.io IP location API, with sync and async clients."
 readme = "README.md"
 license = "MIT"
