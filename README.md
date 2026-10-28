@@ -89,7 +89,7 @@ The async client exposes the same methods as coroutines. Use `async with` for cl
 
 ## Authentication
 
-**API key**: Works on all plans for single lookup and bulk lookup.
+**API key**: API-key authentication supports single lookups on all plans. Bulk lookup requires a paid plan.
 
 ```python
 config = IpGeolocationClientConfig(api_key="YOUR_API_KEY")
