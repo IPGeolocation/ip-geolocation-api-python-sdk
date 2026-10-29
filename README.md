@@ -1,6 +1,6 @@
 # IPGeolocation Python SDK
 
-Typed Python SDK for the [IPGeolocation.io](https://ipgeolocation.io/) IP Location API.
+Typed Python SDK for the [IPGeolocation.io](https://ipgeolocation.io/) IP Geolocation API.
 
 - Single lookup (`/v3/ipgeo`) and bulk lookup (`/v3/ipgeo-bulk`)
 - Sync client built on `requests` and async client built on `httpx`
