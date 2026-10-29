@@ -40,8 +40,16 @@ pyright
 ## Dependency and Build Checks
 
 ```bash
-pip-audit
 python -m build
+```
+
+Dependency audits use Python 3.11+ for the scanner and inspect the SDK's test environment:
+
+```bash
+python3.11 -m venv .venv-audit
+.venv-audit/bin/python -m pip install -e '.[audit]'
+.venv-audit/bin/pip-audit --skip-editable \
+  --path "$(.venv/bin/python -c 'import sysconfig; print(sysconfig.get_paths()["purelib"])')"
 ```
 
 ## Live Tests
