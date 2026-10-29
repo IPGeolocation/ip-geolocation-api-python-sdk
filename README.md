@@ -1,4 +1,4 @@
-# IPGeolocation Python SDK
+# IPGeolocation.io Python SDK
 
 Typed Python SDK for the [IPGeolocation.io](https://ipgeolocation.io/) IP Geolocation API.
 
@@ -95,7 +95,7 @@ The async client exposes the same methods as coroutines. Use `async with` for cl
 config = IpGeolocationClientConfig(api_key="YOUR_API_KEY")
 ```
 
-**Request-origin auth**: Paid plans only, and only for single lookup. If your origin is allowlisted in the [IPGeolocation dashboard](https://ipgeolocation.io/), the SDK sends it in the `Origin` header.
+**Request-origin auth**: Paid plans only, and only for single lookup. If your origin is allowlisted in the [IPGeolocation.io dashboard](https://ipgeolocation.io/), the SDK sends it in the `Origin` header.
 
 ```python
 config = IpGeolocationClientConfig(request_origin="https://app.example.com")
