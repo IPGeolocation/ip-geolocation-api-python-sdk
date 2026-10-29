@@ -2,8 +2,9 @@
 
 ## Requirements
 
-- Python 3.8+
+- Python 3.10+
 - `pip`
+- Node.js 24 and Postman CLI 1.73.0 for local HTTP integration tests
 
 ## Setup
 
@@ -11,6 +12,7 @@
 python3 -m venv .venv
 source .venv/bin/activate
 pip install -e .[dev]
+npm install --global postman-cli@1.73.0
 ```
 
 ## Run Tests
@@ -18,6 +20,8 @@ pip install -e .[dev]
 ```bash
 pytest
 ```
+
+HTTP integration tests run both clients against a local Postman simulation.
 
 ## Coverage Check
 
@@ -31,6 +35,13 @@ pytest --cov=src/ipgeolocation --cov-report=term-missing --cov-fail-under=90
 ruff check src tests
 mypy src
 pyright
+```
+
+## Dependency and Build Checks
+
+```bash
+pip-audit
+python -m build
 ```
 
 ## Live Tests

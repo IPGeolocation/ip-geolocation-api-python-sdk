@@ -1,0 +1,23 @@
+purpose:
+  stands_in_for: The IPGeolocation single and bulk endpoints used by the Python SDK.
+  unblocks: HTTP transport, encoding, authentication, parsing, timeout and response-size regression tests.
+assumptions:
+  - id: transport-compatibility
+    status: supported
+    claim: Both clients preserve request and response behavior with the updated dependencies.
+    reason: Both clients passed the same real HTTP cases using current and minimum dependency versions; the fixture echoes requests for comparison.
+    verification: On 2026-10-29, 26 HTTP cases passed with both dependency sets. They cover single and bulk lookups, raw responses, query encoding, headers, metadata, errors, malformed JSON, unknown encoding, timeouts and streamed response limits. Simulation request events confirm that the real transports reached the stand-in.
+    source: tests/test_http_integration.py; src/ipgeolocation/_transport.py
+    updated_at: '2026-10-29'
+  - id: live-provider-behavior
+    status: unknown
+    claim: The simulation establishes live API behavior and account permissions.
+    reason: The official API Hub workspace listed no published code mock, and Orbit discovery returned HTTP 403. The fixture models the existing SDK tests and client request builders.
+    verification: No live provider request or API credential is used.
+    source: src/ipgeolocation/client.py; src/ipgeolocation/async_client.py; postman/mocks/ipgeolocation/default.js
+    updated_at: '2026-10-29'
+fingerprints:
+  - id: python-sdk-security-update
+    date: '2026-10-29'
+    commit: 65d06151e88d23f1018b6a509cb24cc4302b8342 plus dependency and integration-test changes.
+    cli: Postman CLI 1.73.0.
