@@ -1,5 +1,11 @@
 # Changelog
 
+## 3.0.0
+
+- Requires Python 3.10 or newer.
+- Updated HTTP, certificate, test and build dependency minimums.
+- Added dependency auditing and checks across supported Python versions.
+
 ## 2.0.0
 
 - Added the Python SDK for the IPGeolocation API unified endpoints.

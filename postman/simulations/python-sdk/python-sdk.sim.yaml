@@ -1,0 +1,8 @@
+simulation: python-sdk
+routing: path
+mocks:
+  - name: ipgeolocation
+    routeKey: ipgeolocation
+    origin:
+      - api.ipgeolocation.io
+    path: ../../mocks/ipgeolocation/config.yaml

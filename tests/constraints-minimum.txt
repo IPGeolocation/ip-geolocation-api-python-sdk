@@ -1,0 +1,7 @@
+requests==2.33.0
+httpx==0.28.1
+urllib3==2.8.0
+anyio==4.14.2
+certifi==2026.10.23
+pytest==9.0.3
+setuptools==84.1.0

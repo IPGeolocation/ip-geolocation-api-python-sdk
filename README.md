@@ -5,7 +5,7 @@ Typed Python SDK for the [IPGeolocation.io](https://ipgeolocation.io/) IP Geoloc
 - Single lookup (`/v3/ipgeo`) and bulk lookup (`/v3/ipgeo-bulk`)
 - Sync client built on `requests` and async client built on `httpx`
 - Typed response models plus raw JSON/XML methods
-- Python 3.8+
+- Python 3.10+
 
 ## Table of Contents
 
