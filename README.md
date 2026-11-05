@@ -95,21 +95,12 @@ The async client exposes the same methods as coroutines. Use `async with` for cl
 config = IpGeolocationClientConfig(api_key="YOUR_API_KEY")
 ```
 
-**Request-origin auth**: Paid plans only, and only for single lookup. If your origin is allowlisted in the [IPGeolocation.io dashboard](https://ipgeolocation.io/), the SDK sends it in the `Origin` header.
-
-```python
-config = IpGeolocationClientConfig(request_origin="https://app.example.com")
-```
-
-`request_origin` must be an absolute `http` or `https` URL with no path, query string, or fragment. Bulk lookups always require `api_key`, even if `request_origin` is set. You can set both on the same config. Single lookups require at least one of them.
-
 ### Client Config
 
 | Field | Use |
 |---|---|
 | `api_key` | API key auth for single lookup and bulk lookup |
-| `request_origin` | Paid request-origin auth for single lookup |
-| `base_url` | Override the API base URL |
+| `base_url` | Use the final address of your API or proxy. The standard client follows redirects only if the protocol, host and port stay the same. The async client stops at redirects by default. |
 | `connect_timeout` | Time to wait for the connection in seconds |
 | `read_timeout` | Time to wait for the response body in seconds |
 
@@ -134,7 +125,6 @@ Responses vary by plan.
 | Domain lookup | No | Yes |
 | Bulk lookup (`/v3/ipgeo-bulk`) | No | Yes |
 | Non-English `lang` | No | Yes |
-| Request-origin auth | No | Yes |
 | Optional modules via `include` | No | Yes |
 | `include=["*"]` | Base response only | All plan-available modules |
 
@@ -303,7 +293,7 @@ Bulk lookup accepts the same fields as single lookup, plus:
 |---|---|---|
 | `ips` | sequence of strings | Required. Up to 50,000 IPs or domains. |
 
-Differences from single lookup: `Content-Type: application/json` is always set by the SDK. Bulk lookup always requires `api_key` in the config, even if `request_origin` is also set.
+Set `api_key` in your client settings for bulk lookups. The SDK sets `Content-Type: application/json` for you.
 
 ### `include` Values
 
@@ -326,7 +316,7 @@ Supported `lang` values: `en`, `de`, `ru`, `ja`, `fr`, `cn`, `es`, `cs`, `it`, `
 Every SDK method returns `ApiResponse(data=..., metadata=...)`.
 
 - Typed single lookup returns `IpGeolocationResponse`
-- Typed bulk lookup returns a list of `BulkLookupResult`
+- A typed bulk lookup returns one `BulkLookupResult` per input. If the API sends too few or too many results, the SDK raises `SerializationException`.
 - Raw methods return the response body as a string
 
 | Field | Type | Description |

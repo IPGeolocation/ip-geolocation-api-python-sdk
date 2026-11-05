@@ -1,5 +1,14 @@
 # Changelog
 
+## 3.0.1
+
+- Hide the configured API key in printed settings, SDK request logs and error messages, including errors in typed bulk results.
+- Keep lookup data and custom headers from being sent to a different server on a redirect.
+- Read compressed responses in small chunks. Keep the HTTP status if an error response is too large or cut short.
+- Check that typed bulk lookups return one result per input.
+- Add Arabic (`ar`) for single and bulk lookups.
+- Include CDN, proxy, bot and corporate gateway details in typed results.
+
 ## 3.0.0
 
 - Requires Python 3.10 or newer.
