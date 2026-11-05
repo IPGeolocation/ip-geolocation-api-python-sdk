@@ -16,6 +16,7 @@ from ._client_shared import (
     to_metadata,
     validate_json_output,
 )
+from ._redaction import protect_api_key
 from ._transport import HttpRequestData, HttpTransport, RequestsHttpTransport
 from ._version import get_version
 from .config import IpGeolocationClientConfig
@@ -59,13 +60,14 @@ class IpGeolocationClient:
         typed_request = cast(LookupIpGeolocationRequest, request)
         validate_json_output(cast(Optional[ResponseFormat], typed_request.output))
         http_request = self._build_lookup_http_request(typed_request)
-        response, duration_ms = self._execute_with_metrics(http_request)
-        if response.status_code // 100 != 2:
-            raise to_api_exception(response.status_code, response.body)
-        return ApiResponse(
-            data=parse_single_lookup(response.body),
-            metadata=to_metadata(response.status_code, duration_ms, response.headers),
-        )
+        with protect_api_key(self._config.api_key):
+            response, duration_ms = self._execute_with_metrics(http_request)
+            if response.status_code // 100 != 2:
+                raise to_api_exception(response.status_code, response.body, self._config.api_key)
+            return ApiResponse(
+                data=parse_single_lookup(response.body),
+                metadata=to_metadata(response.status_code, duration_ms, response.headers),
+            )
 
     def lookup_ip_geolocation_raw(
         self,
@@ -76,13 +78,14 @@ class IpGeolocationClient:
         self._validate_lookup_request_base(request)
         typed_request = cast(LookupIpGeolocationRequest, request)
         http_request = self._build_lookup_http_request(typed_request)
-        response, duration_ms = self._execute_with_metrics(http_request)
-        if response.status_code // 100 != 2:
-            raise to_api_exception(response.status_code, response.body)
-        return ApiResponse(
-            data=response.body,
-            metadata=to_metadata(response.status_code, duration_ms, response.headers),
-        )
+        with protect_api_key(self._config.api_key):
+            response, duration_ms = self._execute_with_metrics(http_request)
+            if response.status_code // 100 != 2:
+                raise to_api_exception(response.status_code, response.body, self._config.api_key)
+            return ApiResponse(
+                data=response.body,
+                metadata=to_metadata(response.status_code, duration_ms, response.headers),
+            )
 
     def bulk_lookup_ip_geolocation(
         self,
@@ -94,13 +97,14 @@ class IpGeolocationClient:
         typed_request = cast(BulkLookupIpGeolocationRequest, request)
         validate_json_output(cast(Optional[ResponseFormat], typed_request.output))
         http_request = self._build_bulk_http_request(typed_request)
-        response, duration_ms = self._execute_with_metrics(http_request)
-        if response.status_code // 100 != 2:
-            raise to_api_exception(response.status_code, response.body)
-        return ApiResponse(
-            data=parse_bulk_lookup(response.body),
-            metadata=to_metadata(response.status_code, duration_ms, response.headers),
-        )
+        with protect_api_key(self._config.api_key):
+            response, duration_ms = self._execute_with_metrics(http_request)
+            if response.status_code // 100 != 2:
+                raise to_api_exception(response.status_code, response.body, self._config.api_key)
+            return ApiResponse(
+                data=parse_bulk_lookup(response.body, len(typed_request.ips), self._config.api_key),
+                metadata=to_metadata(response.status_code, duration_ms, response.headers),
+            )
 
     def bulk_lookup_ip_geolocation_raw(
         self,
@@ -111,13 +115,14 @@ class IpGeolocationClient:
         self._validate_bulk_request_base(request)
         typed_request = cast(BulkLookupIpGeolocationRequest, request)
         http_request = self._build_bulk_http_request(typed_request)
-        response, duration_ms = self._execute_with_metrics(http_request)
-        if response.status_code // 100 != 2:
-            raise to_api_exception(response.status_code, response.body)
-        return ApiResponse(
-            data=response.body,
-            metadata=to_metadata(response.status_code, duration_ms, response.headers),
-        )
+        with protect_api_key(self._config.api_key):
+            response, duration_ms = self._execute_with_metrics(http_request)
+            if response.status_code // 100 != 2:
+                raise to_api_exception(response.status_code, response.body, self._config.api_key)
+            return ApiResponse(
+                data=response.body,
+                metadata=to_metadata(response.status_code, duration_ms, response.headers),
+            )
 
     def close(self) -> None:
         """Close the underlying HTTP transport when this client created it."""

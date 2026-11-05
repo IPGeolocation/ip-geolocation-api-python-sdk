@@ -26,6 +26,7 @@ from typing import (
     get_type_hints,
 )
 
+from .config import IpGeolocationClientConfig
 from .enums import JsonOutputMode
 
 T = TypeVar("T")
@@ -180,6 +181,9 @@ def to_plain_data(value: Any, mode: JsonOutputMode = JsonOutputMode.COMPACT) -> 
 
     if isinstance(value, Enum):
         return value.value
+
+    if isinstance(value, IpGeolocationClientConfig):
+        return to_plain_data(value._for_output(), mode)
 
     if is_dataclass(value):
         result = {}

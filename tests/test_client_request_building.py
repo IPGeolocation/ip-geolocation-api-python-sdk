@@ -56,7 +56,7 @@ def test_lookup_builds_expected_query_and_headers() -> None:
 
 def test_bulk_lookup_builds_payload_and_path() -> None:
     transport = TestTransport()
-    transport.enqueue_response(200, '[{"ip":"8.8.8.8"}]')
+    transport.enqueue_response(200, '[{"ip":"8.8.8.8"},{"ip":"1.1.1.1"}]')
 
     client = IpGeolocationClient(IpGeolocationClientConfig(api_key="bulk-key"), transport=transport)
     client.bulk_lookup_ip_geolocation(BulkLookupIpGeolocationRequest(ips=["8.8.8.8", "1.1.1.1"]))

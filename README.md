@@ -319,7 +319,7 @@ Differences from single lookup: `Content-Type: application/json` is always set b
 | `dma_code` | `location.dma_code` |
 | `*` | All optional modules available on your plan |
 
-Supported `lang` values: `en`, `de`, `ru`, `ja`, `fr`, `cn`, `es`, `cs`, `it`, `ko`, `fa`, `pt`
+Supported `lang` values: `en`, `de`, `ru`, `ja`, `fr`, `cn`, `es`, `cs`, `it`, `ko`, `fa`, `pt`, `ar` (Arabic)
 
 ## Response Metadata
 
@@ -346,7 +346,7 @@ metadata.first_header_value("Header-Name")   # first value or None
 
 ### JSON Serialization
 
-Use `to_json()` or `to_pretty_json()` to serialize SDK objects:
+Use `to_json()` or `to_pretty_json()` to print SDK objects as JSON. When you print your client settings, the SDK hides your API key.
 
 ```python
 from ipgeolocation import JsonOutputMode, to_pretty_json
@@ -387,7 +387,7 @@ All exceptions inherit from `IpGeolocationException`. The SDK does not retry fai
 | `ServerErrorException` | 5xx |
 | `ApiException` | Any other non-2xx |
 
-All API exceptions have `.status_code` and `.api_message` attributes.
+All API exceptions have `.status_code` and `.api_message` attributes. If the error body is too large or the connection closes early, you still get the HTTP status. The SDK hides your API key in error messages, including errors for individual IPs in a typed bulk lookup.
 
 ## Links
 

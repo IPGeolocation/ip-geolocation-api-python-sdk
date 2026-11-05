@@ -166,6 +166,8 @@ class Network:
     connection_type: Optional[str] = None
     route: Optional[str] = None
     is_anycast: Optional[bool] = None
+    is_cdn: Optional[bool] = None
+    cdn_provider_name: Optional[str] = None
 
 
 @dataclass(frozen=True)
@@ -191,6 +193,17 @@ class Security:
     is_spam: Optional[bool] = None
     is_cloud_provider: Optional[bool] = None
     cloud_provider_name: Optional[str] = None
+    is_known_good_bot: Optional[bool] = None
+    is_corporate_gateway: Optional[bool] = None
+    proxy_days_seen_30d: Optional[int] = None
+    proxy_days_seen_7d: Optional[int] = None
+    proxy_provider_count_30d: Optional[int] = None
+    bot_confidence_score: Optional[float] = None
+    bot_operator_name: Optional[str] = None
+    bot_type: Optional[str] = None
+    bot_last_seen: Optional[str] = None
+    corporate_gateway_type: Optional[str] = None
+    corporate_gateway_provider_name: Optional[str] = None
 
 
 @dataclass(frozen=True)

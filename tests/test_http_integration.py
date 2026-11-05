@@ -185,7 +185,7 @@ def test_http_errors(client_type, api_url, key, exception, status):
             api_key=key,
         )
     assert error.value.status_code == status
-    assert error.value.api_message == f"Test failure for {key}"
+    assert error.value.api_message == "Test failure for [REDACTED]"
 
 
 def test_http_invalid_json(client_type, api_url):

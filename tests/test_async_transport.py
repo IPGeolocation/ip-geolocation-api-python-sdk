@@ -26,6 +26,9 @@ class StubAsyncHeaders:
 
 
 class StubAsyncResponse:
+    is_stream_consumed = True
+    encoding = "utf-8"
+
     def __init__(
         self,
         status_code: int = 200,
@@ -38,11 +41,11 @@ class StubAsyncResponse:
         self.headers = StubAsyncHeaders(headers or {})
         self.iter_exception = iter_exception
 
-    async def aiter_text(self):
+    async def aiter_bytes(self, chunk_size):
         if self.iter_exception is not None:
             raise self.iter_exception
         for chunk in self._chunks:
-            yield chunk
+            yield chunk.encode("utf-8")
 
 
 class StubAsyncStream:
@@ -75,6 +78,9 @@ class StubAsyncClient:
 
 class FakeHttpxModule:
     class HTTPError(Exception):
+        pass
+
+    class InvalidURL(Exception):
         pass
 
     class TimeoutException(HTTPError):

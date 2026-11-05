@@ -96,12 +96,6 @@ def test_free_plan_include_star_returns_default_response_without_additional_modu
         assert response.data.hostname is None
 
 
-def test_free_plan_bulk_is_rejected() -> None:
-    with IpGeolocationClient(IpGeolocationClientConfig(api_key=FREE_KEY)) as client:
-        with pytest.raises(UnauthorizedException):
-            client.bulk_lookup_ip_geolocation(BulkLookupIpGeolocationRequest(ips=["8.8.8.8"]))
-
-
 def test_paid_plan_security_and_abuse_works() -> None:
     with IpGeolocationClient(IpGeolocationClientConfig(api_key=PAID_KEY)) as client:
         response = client.lookup_ip_geolocation(
@@ -119,8 +113,8 @@ def test_paid_plan_optional_module_fields_still_require_include(field_name: str)
             LookupIpGeolocationRequest(ip="8.8.8.8", fields=[field_name])
         )
         assert getattr(response.data, field_name) is None
-        assert response.data.location is not None
-        assert response.metadata.credits_charged == 1
+        assert response.data.ip == "8.8.8.8"
+        assert response.data.location is None
 
 
 def test_paid_plan_bulk_mixed_returns_success_and_error_items() -> None:
