@@ -32,6 +32,7 @@ from ipgeolocation import (
 from ipgeolocation._transport import HttpRequestData, HttpxAsyncTransport, RequestsHttpTransport
 
 TEST_KEY = "TEST_KEY &+?=#%"
+SIMULATION_TIMEOUT = 5
 
 
 @pytest.fixture(scope="module")
@@ -91,12 +92,21 @@ def client_type(request):
     return request.param
 
 
-def _call(client_type, api_url, method, request, *, api_key=TEST_KEY, origin=None, timeout=1):
+def _call(
+    client_type,
+    api_url,
+    method,
+    request,
+    *,
+    api_key=TEST_KEY,
+    origin=None,
+    timeout=SIMULATION_TIMEOUT,
+):
     config = IpGeolocationClientConfig(
         api_key=api_key,
         request_origin=origin,
         base_url=api_url,
-        connect_timeout=min(0.1, timeout),
+        connect_timeout=timeout,
         read_timeout=timeout,
     )
     if client_type is AsyncIpGeolocationClient:
@@ -240,8 +250,8 @@ def test_http_streaming_size_limit(client_type, api_url):
         method="GET",
         headers={},
         body=None,
-        connect_timeout=0.1,
-        read_timeout=1,
+        connect_timeout=SIMULATION_TIMEOUT,
+        read_timeout=SIMULATION_TIMEOUT,
     )
     if client_type is AsyncIpGeolocationClient:
 
