@@ -446,3 +446,16 @@ def test_async_setup_errors_hide_secrets():
     token = secrets.token_hex(10)
     asyncio.run(run(token, "http://example.test:" + token, {}))
     asyncio.run(run("ä" + token, "http://example.test", {"X-Test": "ä" + token}))
+
+
+def test_import_does_not_change_other_http_clients_logging():
+    import subprocess
+    import sys
+
+    code = (
+        "import logging; from hpack import Decoder, Encoder; import ipgeolocation; "
+        "logging.basicConfig(level=logging.DEBUG); "
+        "Decoder().decode(Encoder().encode([(b'x-trace', b'ordinary')]))"
+    )
+    result = subprocess.run([sys.executable, "-c", code], check=True, capture_output=True)
+    assert b"Decoded (b'x-trace', b'ordinary')" in result.stderr

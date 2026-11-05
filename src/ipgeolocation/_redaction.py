@@ -5,6 +5,7 @@ import logging
 import re
 from contextlib import contextmanager
 from contextvars import ContextVar
+from functools import lru_cache
 from typing import Iterator, Optional
 from urllib.parse import quote, quote_plus
 
@@ -63,20 +64,24 @@ class _RequestLogFilter(logging.Filter):
 
 
 _log_filter = _RequestLogFilter()
-for _name in (
-    "hpack.hpack",
-    "hpack.table",
-    "httpx",
-    "httpcore.connection",
-    "httpcore.proxy",
-    "httpcore.socks",
-    "httpcore.http11",
-    "httpcore.http2",
-    "urllib3.connectionpool",
-    "urllib3.util.retry",
-    "urllib3.connection",
-):
-    logging.getLogger(_name).addFilter(_log_filter)
+
+
+@lru_cache(maxsize=1)
+def _install_log_filter() -> None:
+    for name in (
+        "hpack.hpack",
+        "hpack.table",
+        "httpx",
+        "httpcore.connection",
+        "httpcore.proxy",
+        "httpcore.socks",
+        "httpcore.http11",
+        "httpcore.http2",
+        "urllib3.connectionpool",
+        "urllib3.util.retry",
+        "urllib3.connection",
+    ):
+        logging.getLogger(name).addFilter(_log_filter)
 
 
 @contextmanager
@@ -84,6 +89,7 @@ def protect_api_key(key: Optional[str]) -> Iterator[None]:
     if key is None:
         yield
         return
+    _install_log_filter()
     token = _active_key.set(key)
     try:
         yield
