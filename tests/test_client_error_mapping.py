@@ -53,7 +53,7 @@ def test_preserves_api_error_details() -> None:
     transport = TestTransport()
     transport.enqueue_response(401, '{"message":"invalid key"}')
 
-    client = IpGeolocationClient(IpGeolocationClientConfig(api_key="k"), transport=transport)
+    client = IpGeolocationClient(IpGeolocationClientConfig(api_key="demo"), transport=transport)
     with pytest.raises(ApiException) as exc:
         client.lookup_ip_geolocation(LookupIpGeolocationRequest())
 
@@ -65,7 +65,7 @@ def test_preserves_nested_api_error_details() -> None:
     transport = TestTransport()
     transport.enqueue_response(401, '{"error":{"message":"invalid key"}}')
 
-    client = IpGeolocationClient(IpGeolocationClientConfig(api_key="k"), transport=transport)
+    client = IpGeolocationClient(IpGeolocationClientConfig(api_key="demo"), transport=transport)
     with pytest.raises(ApiException) as exc:
         client.lookup_ip_geolocation(LookupIpGeolocationRequest())
 

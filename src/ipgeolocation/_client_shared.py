@@ -6,6 +6,7 @@ import json
 from typing import Any, Dict, List, Mapping, Optional, Sequence, cast
 from urllib.parse import quote
 
+from ._redaction import redact
 from ._serde import from_mapping
 from .enums import ResponseFormat
 from .exceptions import (
@@ -83,42 +84,47 @@ def resolve_user_agent_header(
 def parse_single_lookup(body: str) -> IpGeolocationResponse:
     try:
         payload = json.loads(body)
-    except json.JSONDecodeError as exc:
+    except (ValueError, RecursionError) as exc:
         raise SerializationException("Failed to deserialize API response") from exc
     if not isinstance(payload, dict):
         raise SerializationException("Failed to deserialize API response")
     try:
         parsed = from_mapping(IpGeolocationResponse, cast(Mapping[str, Any], payload))
-    except (TypeError, ValueError) as exc:
+    except (TypeError, ValueError, OverflowError) as exc:
         raise SerializationException("Failed to deserialize API response") from exc
     if parsed is None:  # pragma: no cover - defensive
         raise SerializationException("Failed to deserialize API response")
     return parsed
 
 
-def parse_bulk_lookup(body: str) -> List[BulkLookupResult]:
+def parse_bulk_lookup(
+    body: str, expected_count: int, api_key: Optional[str]
+) -> List[BulkLookupResult]:
     try:
         payload = json.loads(body)
-    except json.JSONDecodeError as exc:
+    except (ValueError, RecursionError) as exc:
         raise SerializationException("Failed to deserialize bulk lookup response") from exc
     if not isinstance(payload, list):
         raise SerializationException(
             "Failed to deserialize bulk response: expected an array payload"
         )
+    if len(payload) != expected_count:
+        raise SerializationException(
+            f"Expected {expected_count} bulk results, received {len(payload)}"
+        )
     results: List[BulkLookupResult] = []
     for item in payload:
         if isinstance(item, dict) and "message" in item and "ip" not in item:
-            results.append(
-                BulkLookupError(
-                    error=BulkLookupErrorDetails(message=_string_or_none(item.get("message")))
-                )
-            )
+            message = _string_or_none(item.get("message"))
+            if message is not None:
+                message = redact(message, api_key)
+            results.append(BulkLookupError(error=BulkLookupErrorDetails(message=message)))
         else:
             if not isinstance(item, Mapping):
                 raise SerializationException("Failed to deserialize API response")
             try:
                 parsed_item = from_mapping(IpGeolocationResponse, cast(Mapping[str, Any], item))
-            except (TypeError, ValueError) as exc:
+            except (TypeError, ValueError, OverflowError) as exc:
                 raise SerializationException("Failed to deserialize API response") from exc
             if parsed_item is None:  # pragma: no cover - defensive
                 raise SerializationException("Failed to deserialize API response")
@@ -126,8 +132,8 @@ def parse_bulk_lookup(body: str) -> List[BulkLookupResult]:
     return results
 
 
-def to_api_exception(status_code: int, body: str) -> ApiException:
-    api_message = extract_api_message(body)
+def to_api_exception(status_code: int, body: str, api_key: Optional[str] = None) -> ApiException:
+    api_message = extract_api_message(body, api_key)
     if api_message:
         message = f"API request failed with HTTP status {status_code}: {api_message}"
     else:
@@ -152,27 +158,33 @@ def to_api_exception(status_code: int, body: str) -> ApiException:
     return exception_type(message, status_code, api_message)
 
 
-def extract_api_message(body: Optional[str]) -> Optional[str]:
+def extract_api_message(body: Optional[str], api_key: Optional[str] = None) -> Optional[str]:
     if body is None or not str(body).strip():
         return None
     try:
         payload = json.loads(body)
     except json.JSONDecodeError:
-        return body[:512]
+        return redact(body, api_key)[:512]
+    except (ValueError, RecursionError):
+        return None
     if isinstance(payload, Mapping):
         message = payload.get("message")
         if message is None:
             error = payload.get("error")
             if isinstance(error, Mapping):
                 message = error.get("message")
-        return _string_or_none(message)
-    return body[:512]
+        text = _string_or_none(message)
+        return redact(text, api_key) if text is not None else None
+    return redact(body, api_key)[:512]
 
 
 def _string_or_none(value: Any) -> Optional[str]:
     if value is None:
         return None
-    return str(value)
+    try:
+        return str(value)
+    except (ValueError, RecursionError):
+        return None
 
 
 def parse_int_header(value: Optional[str]) -> Optional[int]:

@@ -259,7 +259,7 @@ def test_async_api_error_mapping_preserves_details() -> None:
         transport.enqueue_response(401, '{"message":"invalid key"}')
 
         client = AsyncIpGeolocationClient(
-            IpGeolocationClientConfig(api_key="k"),
+            IpGeolocationClientConfig(api_key="test-credential"),
             transport=transport,
         )
         with pytest.raises(UnauthorizedException) as exc:

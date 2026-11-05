@@ -20,6 +20,7 @@ class Language(str, Enum):
     KO = "ko"
     FA = "fa"
     PT = "pt"
+    AR = "ar"
 
     @classmethod
     def from_code(cls, code: str) -> "Language":

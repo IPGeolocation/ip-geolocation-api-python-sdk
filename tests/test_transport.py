@@ -23,6 +23,9 @@ class StubRawHeaders:
 
 
 class StubResponse:
+    next = None
+    encoding = "utf-8"
+
     def __init__(self, status_code=200, body="{}", headers=None, iter_exception=None) -> None:
         self.status_code = status_code
         self._body_bytes = body.encode("utf-8")
@@ -49,6 +52,7 @@ class StubResponse:
 
 class StubSession:
     def __init__(self, response=None, exception=None) -> None:
+        self.headers = {}
         self.response = response
         self.exception = exception
         self.closed = False

@@ -119,7 +119,7 @@ def test_bulk_typed_response_rejects_malformed_json() -> None:
     transport = TestTransport()
     transport.enqueue_response(200, "[{")
 
-    client = IpGeolocationClient(IpGeolocationClientConfig(api_key="k"), transport=transport)
+    client = IpGeolocationClient(IpGeolocationClientConfig(api_key="demo"), transport=transport)
     with pytest.raises(SerializationException, match="Failed to deserialize bulk lookup response"):
         client.bulk_lookup_ip_geolocation(BulkLookupIpGeolocationRequest(ips=["8.8.8.8"]))
 

@@ -3,10 +3,12 @@
 from __future__ import annotations
 
 import math
-from dataclasses import dataclass
+from dataclasses import dataclass, fields
 from datetime import timedelta
-from typing import Optional, Union
+from typing import Dict, Optional, Union
 from urllib.parse import urlparse
+
+from ._redaction import MASK, redact
 
 TimeoutValue = Union[float, int, timedelta]
 
@@ -53,7 +55,7 @@ def _normalize_request_origin(value: Optional[str]) -> Optional[str]:
     return f"{parsed_origin.scheme}://{parsed_origin.netloc}"
 
 
-@dataclass(frozen=True)
+@dataclass(frozen=True, repr=False)
 class IpGeolocationClientConfig:
     """Immutable configuration for :class:`IpGeolocationClient`."""
 
@@ -62,6 +64,19 @@ class IpGeolocationClientConfig:
     base_url: str = "https://api.ipgeolocation.io"
     connect_timeout: TimeoutValue = 10.0
     read_timeout: TimeoutValue = 30.0
+
+    def _for_output(self) -> Dict[str, object]:
+        result = {}
+        for field in fields(self):
+            value = getattr(self, field.name)
+            if isinstance(value, str):
+                value = MASK if field.name == "api_key" else redact(value, self.api_key)
+            result[field.name] = value
+        return result
+
+    def __repr__(self) -> str:
+        settings = ", ".join(f"{name}={value!r}" for name, value in self._for_output().items())
+        return f"{type(self).__name__}({settings})"
 
     def __post_init__(self) -> None:
         if self.api_key is not None and not isinstance(self.api_key, str):

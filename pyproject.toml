@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "ipgeolocationio"
-version = "3.0.0"
+version = "3.0.1"
 description = "Typed Python SDK for the IPGeolocation.io IP location API, with sync and async clients."
 readme = "README.md"
 license = "MIT"
@@ -40,13 +40,15 @@ classifiers = [
 dependencies = [
   "httpx>=0.28.1,<1",
   "requests>=2.33.0,<3",
-  "urllib3>=2.8.0,<3",
+  "urllib3[zstd]>=2.8.0,<3",
   "anyio>=4.14.2,<5",
   "certifi>=2026.10.23",
 ]
 
 [project.optional-dependencies]
 dev = [
+  "httpx[http2]>=0.28.1,<1",
+  "urllib3[brotli,zstd]>=2.8.0,<3",
   "pytest>=9.0.3,<10",
   "pytest-cov>=7.0.0,<8",
   "pyright>=1.1.408,<2",

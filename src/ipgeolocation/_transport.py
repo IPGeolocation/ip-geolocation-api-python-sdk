@@ -2,13 +2,18 @@
 
 from __future__ import annotations
 
-import codecs
 import importlib
+from contextlib import AsyncExitStack
 from dataclasses import dataclass
-from typing import Any, Dict, List, Optional, Protocol
+from typing import Any, Dict, List, Mapping, Optional, Protocol
 
 import requests
+from urllib3.exceptions import HTTPError as Urllib3Error
+from urllib3.exceptions import ReadTimeoutError
+from urllib3.response import HTTPResponse
+from urllib3.util import parse_url
 
+from ._response import ACCEPT_ENCODING, CHUNK_SIZE, ResponseBody
 from .exceptions import RequestTimeoutException, TransportException
 
 
@@ -63,6 +68,49 @@ class AsyncHttpTransport(Protocol):
         ...
 
 
+def _same_origin(source: str, target: str) -> bool:
+    original, destination = parse_url(source), parse_url(target)
+    default = {"http": 80, "https": 443}
+    return (
+        destination.auth is None
+        and original.scheme in default
+        and original.scheme == destination.scheme
+        and original.host == destination.host
+        and (original.port if original.port is not None else default[original.scheme])
+        == (destination.port if destination.port is not None else default[original.scheme])
+    )
+
+
+def _headers(request: HttpRequestData, defaults: Mapping[str, str]) -> Dict[str, str]:
+    headers = {k: ", ".join(v) for k, v in request.headers.items() if k and v}
+    if not any(name.lower() == "accept-encoding" for name in headers):
+        inherited = defaults.get("Accept-Encoding")
+        if inherited:
+            offered = [item.strip() for item in inherited.split(",")]
+            unsafe = {"br", "zstd"} - set(ACCEPT_ENCODING.split(", "))
+            safe = [
+                item for item in offered if item.partition(";")[0].strip().lower() not in unsafe
+            ]
+            if safe != offered:
+                headers["Accept-Encoding"] = ", ".join(safe) or "identity"
+    return headers
+
+
+def _close_redirect(response: requests.Response, **kwargs: Any) -> requests.Response:
+    if response.is_redirect:
+        response.close()
+    return response
+
+
+_BODY_ERRORS: tuple[type[BaseException], ...] = (
+    TransportException,
+    ValueError,
+    LookupError,
+    Urllib3Error,
+    *HTTPResponse.DECODER_ERROR_CLASSES,
+)
+
+
 class RequestsHttpTransport:
     """Requests-based HTTP transport with response-size protection."""
 
@@ -77,79 +125,79 @@ class RequestsHttpTransport:
             raise ValueError("max_response_body_chars must be greater than zero")
         self._session = session or requests.Session()
         self._owns_session = session is None
+        if self._owns_session:
+            self._session.headers["Accept-Encoding"] = ACCEPT_ENCODING
         self._max_response_body_chars = max_response_body_chars
 
     def send(self, request: HttpRequestData) -> HttpResponseData:
-        header_map = {
-            key: values[0] if len(values) == 1 else ", ".join(values)
-            for key, values in request.headers.items()
-            if key is not None and values
-        }
+        timeout = (request.connect_timeout, request.read_timeout)
+        hooks = getattr(self._session, "hooks", {}).get("response") or ()
+        if callable(hooks):
+            hooks = (hooks,)
         try:
             response = self._session.request(
                 method=request.method,
                 url=request.url,
-                headers=header_map,
+                headers=_headers(request, getattr(self._session, "headers", {})),
                 data=request.body,
-                timeout=(request.connect_timeout, request.read_timeout),
+                timeout=timeout,
                 stream=True,
+                allow_redirects=False,
+                hooks={"response": [_close_redirect, *hooks]},
             )
-        except requests.exceptions.Timeout as exc:
+            redirects = 0
+            while True:
+                try:
+                    next_request = response.next
+                    if next_request is None:
+                        return self._read_response(response)
+                    target = next_request.url
+                    if not target or not _same_origin(request.url, target):
+                        return HttpResponseData(
+                            response.status_code, "", _extract_headers(response)
+                        )
+                    if redirects >= self._session.max_redirects:
+                        raise TransportException("Too many redirects")
+                    redirects += 1
+                finally:
+                    response.close()
+                options = self._session.merge_environment_settings(target, {}, True, None, None)
+                response = self._session.send(
+                    next_request, timeout=timeout, allow_redirects=False, **options
+                )
+        except (requests.exceptions.Timeout, ReadTimeoutError) as exc:
             raise RequestTimeoutException("HTTP request timed out") from exc
-        except requests.exceptions.RequestException as exc:
+        except (requests.exceptions.RequestException, Urllib3Error, ValueError) as exc:
             raise TransportException("HTTP transport error") from exc
-
-        try:
-            try:
-                body = self._read_body(response)
-            except requests.exceptions.Timeout as exc:
-                raise RequestTimeoutException("HTTP request timed out") from exc
-            except requests.exceptions.RequestException as exc:
-                raise TransportException("HTTP transport error") from exc
-            return HttpResponseData(
-                status_code=response.status_code,
-                body=body,
-                headers=_extract_headers(response),
-            )
-        finally:
-            response.close()
 
     def close(self) -> None:
         if self._owns_session:
             self._session.close()
 
-    def _read_body(self, response: requests.Response) -> str:
-        encoding = getattr(response, "encoding", None) or "utf-8"
+    def _read_response(self, response: requests.Response) -> HttpResponseData:
+        if response.status_code in (204, 205):
+            return HttpResponseData(response.status_code, "", _extract_headers(response))
         try:
-            decoder = codecs.getincrementaldecoder(encoding)(errors="replace")
-        except LookupError:
-            decoder = codecs.getincrementaldecoder("utf-8")(errors="replace")
-        body_parts: List[str] = []
-        total_chars = 0
-
-        for chunk in response.iter_content(chunk_size=8192):
-            if not chunk:
-                continue
-            decoded = decoder.decode(chunk)
-            if decoded:
-                total_chars += len(decoded)
-                if total_chars > self._max_response_body_chars:
-                    raise TransportException(
-                        "Response body exceeded max size of "
-                        f"{self._max_response_body_chars} characters"
-                    )
-                body_parts.append(decoded)
-
-        final_chunk = decoder.decode(b"", final=True)
-        if final_chunk:
-            total_chars += len(final_chunk)
-            if total_chars > self._max_response_body_chars:
-                raise TransportException(
-                    f"Response body exceeded max size of {self._max_response_body_chars} characters"
-                )
-            body_parts.append(final_chunk)
-
-        return "".join(body_parts)
+            raw_stream = getattr(response.raw, "stream", None)
+            if raw_stream is None or getattr(response, "_content_consumed", False):
+                chunks = response.iter_content(CHUNK_SIZE)
+                coding = ""
+            else:
+                chunks = raw_stream(CHUNK_SIZE, False)
+                coding = response.headers.get("Content-Encoding", "")
+            reader = ResponseBody(self._max_response_body_chars, response.encoding, coding)
+            for chunk in chunks:
+                reader.feed(chunk)
+            body = reader.finish()
+        except (requests.exceptions.RequestException,) + _BODY_ERRORS as exc:
+            if 200 <= response.status_code < 300:
+                if isinstance(
+                    exc, (requests.exceptions.RequestException, Urllib3Error, TransportException)
+                ):
+                    raise
+                raise TransportException("Invalid response body") from exc
+            body = ""
+        return HttpResponseData(response.status_code, body, _extract_headers(response))
 
 
 def _extract_headers(response: requests.Response) -> Dict[str, List[str]]:
@@ -194,54 +242,65 @@ class HttpxAsyncTransport:
         httpx = _load_httpx()
         client = self._client
         if client is None:
-            client = httpx.AsyncClient()
+            client = httpx.AsyncClient(headers={"Accept-Encoding": ACCEPT_ENCODING})
             self._client = client
 
-        header_map = {
-            key: values[0] if len(values) == 1 else ", ".join(values)
-            for key, values in request.headers.items()
-            if key is not None and values
-        }
         timeout = httpx.Timeout(request.read_timeout, connect=request.connect_timeout)
-
         try:
-            async with client.stream(
-                method=request.method,
-                url=request.url,
-                headers=header_map,
-                content=request.body,
-                timeout=timeout,
-            ) as response:
-                body = await self._read_body(response)
+            async with (
+                client.stream(
+                    method=request.method,
+                    url=request.url,
+                    headers=_headers(request, getattr(client, "headers", {})),
+                    content=request.body,
+                    timeout=timeout,
+                    follow_redirects=False,
+                ) as response,
+                AsyncExitStack() as stack,
+            ):
+                redirects = 0
+                while getattr(client, "follow_redirects", False) and response.next_request:
+                    next_request = response.next_request
+                    if not _same_origin(request.url, str(next_request.url)):
+                        return HttpResponseData(
+                            response.status_code, "", _extract_httpx_headers(response.headers)
+                        )
+                    if redirects >= client.max_redirects:
+                        raise TransportException("Too many redirects")
+                    redirects += 1
+                    await response.aclose()
+                    response = await client.send(next_request, stream=True, follow_redirects=False)
+                    stack.push_async_callback(response.aclose)
+
+                if response.status_code in (204, 205):
+                    return HttpResponseData(
+                        response.status_code, "", _extract_httpx_headers(response.headers)
+                    )
+                try:
+                    buffered = response.is_stream_consumed
+                    coding = "" if buffered else response.headers.get("Content-Encoding", "")
+                    reader = ResponseBody(self._max_response_body_chars, response.encoding, coding)
+                    chunks = response.aiter_bytes(CHUNK_SIZE) if buffered else response.aiter_raw()
+                    async for chunk in chunks:
+                        reader.feed(chunk)
+                    body = reader.finish()
+                except (httpx.HTTPError,) + _BODY_ERRORS as exc:
+                    if 200 <= response.status_code < 300:
+                        if isinstance(exc, (httpx.HTTPError, TransportException)):
+                            raise
+                        raise TransportException("Invalid response body") from exc
+                    body = ""
                 return HttpResponseData(
-                    status_code=response.status_code,
-                    body=body,
-                    headers=_extract_httpx_headers(response.headers),
+                    response.status_code, body, _extract_httpx_headers(response.headers)
                 )
         except httpx.TimeoutException as exc:
             raise RequestTimeoutException("HTTP request timed out") from exc
-        except httpx.HTTPError as exc:
+        except (httpx.HTTPError, httpx.InvalidURL, UnicodeError, Urllib3Error) as exc:
             raise TransportException("HTTP transport error") from exc
 
     async def close(self) -> None:
         if self._owns_client and self._client is not None:
             await self._client.aclose()
-
-    async def _read_body(self, response: Any) -> str:
-        body_parts: List[str] = []
-        total_chars = 0
-
-        async for chunk in response.aiter_text():
-            if not chunk:
-                continue
-            total_chars += len(chunk)
-            if total_chars > self._max_response_body_chars:
-                raise TransportException(
-                    f"Response body exceeded max size of {self._max_response_body_chars} characters"
-                )
-            body_parts.append(chunk)
-
-        return "".join(body_parts)
 
 
 def _extract_httpx_headers(headers: Any) -> Dict[str, List[str]]:
