@@ -41,7 +41,11 @@ class _RequestLogFilter(logging.Filter):
     def filter(self, record: logging.LogRecord) -> bool:
         key = _active_key.get()
         if record.name.startswith("hpack."):
-            if key:
+            if key or (
+                record.name == "hpack.hpack"
+                and isinstance(record.msg, str)
+                and record.msg.startswith(("Decoding %s", "Decoded %s,"))
+            ):
                 return False
             if (
                 record.name == "hpack.table"

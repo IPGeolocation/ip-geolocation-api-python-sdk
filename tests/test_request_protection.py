@@ -416,7 +416,7 @@ def test_raw_deflate_can_start_with_a_valid_zlib_header():
 
 
 def test_http2_logs_hide_keys_during_request_and_later_table_eviction(caplog):
-    from hpack import Encoder
+    from hpack import Decoder, Encoder
 
     from ipgeolocation._redaction import protect_api_key
 
@@ -424,10 +424,12 @@ def test_http2_logs_hide_keys_during_request_and_later_table_eviction(caplog):
     encoder = Encoder()
     caplog.set_level(logging.DEBUG)
     with protect_api_key(key):
-        encoder.encode(
+        block = encoder.encode(
             [(b":path", ("/v3/ipgeo?apiKey=" + key).encode()), (b"x-trace", key.encode())]
         )
     assert not any(record.name.startswith("hpack.") for record in caplog.records)
+    assert Decoder().decode(block)[1][1] == key
+    assert not any(r.msg.startswith(("Decoding %s", "Decoded %s,")) for r in caplog.records)
     encoder.header_table.maxsize = 1
     encoder.encode([(b":path", b"/normal")])
     assert key not in caplog.text and "/normal" in caplog.text
