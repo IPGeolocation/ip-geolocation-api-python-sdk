@@ -27,9 +27,9 @@ Typed Python SDK for the [IPGeolocation.io](https://ipgeolocation.io/) IP Geoloc
 pip install ipgeolocationio
 ```
 
-PyPI package: `ipgeolocationio`
-Package page: <https://pypi.org/project/ipgeolocationio/>
-Import: `ipgeolocation`
+- PyPI package: `ipgeolocationio`
+- Package page: <https://pypi.org/project/ipgeolocationio/>
+- Import: `ipgeolocation`
 
 ## Quick Start
 
